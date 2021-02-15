@@ -1,4 +1,4 @@
 package com.example.nidoqueue;
 
-public classCircle extends Shape{
+public class Circle extends Shape{
 }
