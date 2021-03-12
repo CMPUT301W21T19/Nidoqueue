@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Nidoqueue</string>
+    <string name="sign_in">Sign In</string>
+    <string name="welcome">Welcome!</string>
+    <string name="click_here">(Click Here)</string>
+    <string name="new_device">New device and already have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="done">Done</string>
+    <string name="username">Username</string>
+    <string name="back_arrow">Back Arrow</string>
+    <string name="username_label">Username:</string>
+    <string name="email">user@example.com</string>
+    <string name="phone">123-456-7890</string>
+    <string name="email_label">Email:</string>
+    <string name="phone_label">Phone# (Optional)</string>
+    <string name="send">Send</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="recovery">Recovery</string>
+    <string name="enter_email_label">Enter your registered email address</string>
+    <string name="code_sent_label">(A code will be sent to your email, enter it at the next step)</string>
+    <string name="welcome_user">Welcome User</string>
+    <string name="subscribed_experiments">Subscribed Experiments</string>
+    <string name="created_experiments">Created Experiments</string>
+    <string name="search_trials">Search Trials</string>
+    <string name="search_results">Search Results</string>
 </resources>
