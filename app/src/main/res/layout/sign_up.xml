@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80D9FF">
+    android:background="#80D9FF"
+    tools:context=".SignUp">
 
     <TextView
         android:id="@+id/phone_label"
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
+        app:layout_constraintTop_toBottomOf="@+id/exp_data"
         app:layout_constraintVertical_bias="0.584" />
 
     <TextView
@@ -46,13 +46,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
+        app:layout_constraintTop_toBottomOf="@+id/exp_data"
         app:layout_constraintVertical_bias="0.321" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -78,7 +78,7 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -119,13 +119,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
+        app:layout_constraintTop_toBottomOf="@+id/exp_data"
         app:layout_constraintVertical_bias="0.054" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -149,14 +149,12 @@
         app:layout_constraintVertical_bias="0.384" />
 
     <ImageButton
-        android:id="@+id/back_arrow_button"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
+        android:id="@+id/back_button2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="#80D9FF"
         android:contentDescription="@string/back_arrow"
@@ -192,7 +190,7 @@
         app:layout_constraintVertical_bias="0.939" />
 
     <TextView
-        android:id="@+id/welcome_user_title"
+        android:id="@+id/exp_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
