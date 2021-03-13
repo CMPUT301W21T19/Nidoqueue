@@ -5,18 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80D9FF">
+    android:background="#80D9FF"
+    tools:context=".Recovery">
 
     <TextView
         android:id="@+id/code_sent_label"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/exo"
         android:gravity="center"
         android:text="@string/code_sent_label"
@@ -27,10 +26,10 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/send_button"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.226" />
 
     <TextView
-        android:id="@+id/welcome_user_title"
+        android:id="@+id/exp_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo"
@@ -45,7 +44,7 @@
         app:layout_constraintVertical_bias="0.083" />
 
     <ImageButton
-        android:id="@+id/back_arrow_button"
+        android:id="@+id/back_button2"
         android:layout_width="56dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
@@ -82,13 +81,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
+        app:layout_constraintTop_toBottomOf="@+id/exp_data"
         app:layout_constraintVertical_bias="0.082" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="208dp"
@@ -116,10 +115,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/exo"
         android:text="@string/send"
@@ -128,9 +125,8 @@
         app:backgroundTint="#80D9FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

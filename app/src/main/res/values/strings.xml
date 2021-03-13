@@ -23,4 +23,9 @@
     <string name="created_experiments">Created Experiments</string>
     <string name="search_trials">Search Trials</string>
     <string name="search_results">Search Results</string>
+    <string name="experiment_name">Experiment A</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="user013">User013</string>
+    <string name="experiment_data">Experiment Data</string>
 </resources>
