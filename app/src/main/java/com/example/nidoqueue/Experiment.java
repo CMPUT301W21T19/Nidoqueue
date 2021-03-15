@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Experiment {
     // class attributes
 
-    //private User owner;
+    private User owner;
     private String description;
     private String Region;
     private int num_of_trials;
@@ -16,6 +16,10 @@ public class Experiment {
     //private ArrayList<Trials> trials;
     //private ArrayList<User> experimenterList;
 
+
+    public Experiment(User owner) {
+        this.owner = owner;
+    }
 
     public void publish() {
         this.published = true;
