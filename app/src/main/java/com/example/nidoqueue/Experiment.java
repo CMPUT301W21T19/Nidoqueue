@@ -17,15 +17,15 @@ public class Experiment {
     //private ArrayList<User> experimenterList;
 
 
-    public void publish(){
+    public void publish() {
         this.published = true;
     }
 
-    public void unpublish(){
+    public void unpublish() {
         this.published = false;
     }
 
-//    public void subscribe(User user){
+    //    public void subscribe(User user){
 //
 //    }
     // getters and setters
@@ -60,3 +60,4 @@ public class Experiment {
     public void setPublished(boolean published) {
         this.published = published;
     }
+}
