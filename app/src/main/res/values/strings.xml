@@ -28,4 +28,17 @@
     <string name="plus">+</string>
     <string name="user013">User013</string>
     <string name="experiment_data">Experiment Data</string>
+    <string name="forum">Forum</string>
+    <string name="add_question">Add Question</string>
+    <string name="post">Post</string>
+    <string name="question_1">Question 1</string>
+    <string name="add_reply">Add Reply</string>
+    <string name="measurement">Measurement</string>
+    <string name="qr">QR</string>
+    <string name="count_based">Count Based</string>
+    <string name="non_negative">Non-Negative</string>
+    <string name="options_button">Options Button</string>
+    <string name="enter_question_here">Enter Question Here</string>
+    <string name="enter_reply_here">Enter Reply Here</string>
+    <string name="binomial_title">Binomial</string>
 </resources>

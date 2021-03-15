@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
-        android:id="@+id/back_button5"
+        android:id="@+id/back_button4"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_info"
+        android:id="@+id/exp_info"
         android:layout_width="320dp"
         android:layout_height="500dp"
         android:layout_marginStart="16dp"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.437" />
 
     <TextView
-        android:id="@+id/exp_data"
+        android:id="@+id/exp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.039" />
 
     <ImageButton
-        android:id="@+id/home_button3"
+        android:id="@+id/home_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"

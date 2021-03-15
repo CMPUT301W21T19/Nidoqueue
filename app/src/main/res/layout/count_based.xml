@@ -6,10 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80D9FF"
-    tools:context=".UserProfile">
+    tools:context=".Forum">
+
+    <Button
+        android:id="@+id/QR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/qr"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 
     <ImageButton
-        android:id="@+id/back_button5"
+        android:id="@+id/back_button12"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -28,7 +48,7 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_info"
+        android:id="@+id/event_value"
         android:layout_width="320dp"
         android:layout_height="500dp"
         android:layout_marginStart="16dp"
@@ -47,11 +67,11 @@
         app:layout_constraintVertical_bias="0.437" />
 
     <TextView
-        android:id="@+id/user_title"
+        android:id="@+id/count_based_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo"
-        android:text="@string/user013"
+        android:text="@string/count_based"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +81,7 @@
         app:layout_constraintVertical_bias="0.039" />
 
     <ImageButton
-        android:id="@+id/home_button2"
+        android:id="@+id/home_button9"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -73,10 +93,30 @@
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/done_button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/done"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

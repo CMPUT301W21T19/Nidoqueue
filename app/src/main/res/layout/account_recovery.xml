@@ -29,7 +29,7 @@
         app:layout_constraintVertical_bias="0.226" />
 
     <TextView
-        android:id="@+id/exp_data"
+        android:id="@+id/Recovery_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo"
@@ -69,20 +69,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="544dp"
         android:fontFamily="@font/exo"
         android:text="@string/enter_email_label"
         android:textColor="#038CC6"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exp_data"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintTop_toBottomOf="@+id/Recovery_Title"
+        app:layout_constraintVertical_bias="0.558" />
 
     <EditText
         android:id="@+id/username"
