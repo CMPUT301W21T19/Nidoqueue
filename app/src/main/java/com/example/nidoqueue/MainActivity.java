@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -17,19 +15,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void signIn(View view){
         setContentView(R.layout.welcome_user);
-        Intent intent = new Intent(MainActivity.this, SignIn.class);
+        Intent intent = new Intent(MainActivity.this, SignInActivity.class);
         //startActivity(intent);
     }
 
     public void signUp(View view){
         setContentView(R.layout.sign_up);
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, SignUpAcitvity.class);
         //startActivity(intent);
     }
 
     public void clickHere(View view){
         setContentView(R.layout.account_recovery);
-        Intent intent = new Intent(MainActivity.this, Recovery.class);
+        Intent intent = new Intent(MainActivity.this, RecoveryActivity.class);
         //startActivity(intent);
     }
 

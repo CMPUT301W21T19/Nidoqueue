@@ -1,15 +1,16 @@
 package com.example.nidoqueue;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignIn extends AppCompatActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+public class SignUpAcitvity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_user);
+        setContentView(R.layout.sign_up);
         Intent intent = getIntent();
     }
 }
