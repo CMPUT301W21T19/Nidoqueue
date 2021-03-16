@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class NonNegativeIntegerCounts extends Experiment{
     private ArrayList<Integer> trials;
 
-    public NonNegativeIntegerCounts(User owner) {
-        super(owner);
+    public NonNegativeIntegerCounts(User owner, String description) {
+        super(owner, description);
         trials = new ArrayList<>();
     }
 

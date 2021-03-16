@@ -4,8 +4,8 @@ public class Counts extends Experiment{
 
     private int count;
 
-    public Counts(User owner) {
-        super(owner);
+    public Counts(User owner, String description) {
+        super(owner, description);
         count = 0;
     }
 
