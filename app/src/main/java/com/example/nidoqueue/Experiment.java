@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Experiment {
     // class attributes
 
-    //private User owner;
+    private User owner;
     private String description;
     private String Region;
     private int num_of_trials;
@@ -17,15 +17,19 @@ public class Experiment {
     //private ArrayList<User> experimenterList;
 
 
-    public void publish(){
+    public Experiment(User owner) {
+        this.owner = owner;
+    }
+
+    public void publish() {
         this.published = true;
     }
 
-    public void unpublish(){
+    public void unpublish() {
         this.published = false;
     }
 
-//    public void subscribe(User user){
+    //    public void subscribe(User user){
 //
 //    }
     // getters and setters
@@ -60,3 +64,4 @@ public class Experiment {
     public void setPublished(boolean published) {
         this.published = published;
     }
+}
