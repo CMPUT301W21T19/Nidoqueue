@@ -15,6 +15,19 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
     Button clickHere;
     ArrayList<UserProfile> userList;
 
+    // initialize RequestManager
+    RequestManager requestManager = new RequestManager();
+
+    // initialize ExperimentManager
+    ExperimentManager experimentManager = new ExperimentManager();
+
+    // initialize UserControl
+    UserControl userControl = new UserControl();
+
+    // initialize QAForum
+    // TO DO
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
