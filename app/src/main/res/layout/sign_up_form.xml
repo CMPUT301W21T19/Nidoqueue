@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/username_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        android:ems="10"
+        android:hint="@string/username_hint"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/email_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/phone_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        android:ems="10"
+        android:hint="@string/phone_optional"
+        android:inputType="phone"
+        android:importantForAutofill="no" />
+</LinearLayout>
