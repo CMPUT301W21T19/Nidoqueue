@@ -4,8 +4,8 @@ public class ExpBinomial extends Experiment {
     private int pass;
     private int fail;
 
-    public ExpBinomial(User owner, String description) {
-        super(owner, description);
+    public ExpBinomial(User owner, String name, String description) {
+        super(owner, name, description);
         pass = 0;
         fail = 0;
     }

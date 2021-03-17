@@ -7,6 +7,7 @@ public class Experiment {
     // class attributes
 
     private User owner;
+    private String name;
     private String description;
     private String region;
     private int num_of_trials;
@@ -14,8 +15,9 @@ public class Experiment {
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
 
-    public Experiment(User owner, String description) {
+    public Experiment(User owner, String name, String description) {
         this.owner = owner;
+        this.name = name;
         this.description = description;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();

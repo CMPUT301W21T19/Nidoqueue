@@ -4,8 +4,8 @@ public class ExpCount extends Experiment{
 
     private int count;
 
-    public ExpCount(User owner, String description) {
-        super(owner, description);
+    public ExpCount(User owner, String name, String description) {
+        super(owner, name, description);
         count = 0;
     }
 

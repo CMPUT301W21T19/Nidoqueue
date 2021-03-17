@@ -10,8 +10,8 @@ public class ExpMeasurement extends Experiment{
     private String unit;
     private ArrayList<Double> trials;
 
-    public ExpMeasurement(User owner, String description, String unit) {
-        super(owner, description);
+    public ExpMeasurement(User owner, String name, String description, String unit) {
+        super(owner, name, description);
         this.unit = unit;
         this.trials = new ArrayList<>();
     }
