@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Search extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_trials);
+        setContentView(R.layout.welcome_user);
         Intent intent = getIntent();
     }
 }

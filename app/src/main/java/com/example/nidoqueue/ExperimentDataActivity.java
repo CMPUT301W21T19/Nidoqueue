@@ -5,11 +5,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserProfile extends AppCompatActivity {
+import com.example.nidoqueue.Experiment;
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.User;
+
+public class ExperimentDataActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_profile);
+        setContentView(R.layout.experiment_data);
         Intent intent = getIntent();
     }
 }

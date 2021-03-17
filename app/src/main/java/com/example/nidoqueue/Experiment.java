@@ -1,7 +1,6 @@
 package com.example.nidoqueue;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Experiment {
@@ -9,16 +8,17 @@ public class Experiment {
 
     private User owner;
     private String description;
-    private String Region;
+    private String region;
     private int num_of_trials;
     private boolean published;
-    //private QuestionList questons;
-    //private ArrayList<Trials> trials;
-    //private ArrayList<User> experimenterList;
+    private ArrayList<Question> questions;
+    private ArrayList<User> experimenters;
 
-
-    public Experiment(User owner) {
+    public Experiment(User owner, String description) {
         this.owner = owner;
+        this.description = description;
+        questions = new ArrayList<>();
+        experimenters = new ArrayList<>();
     }
 
     public void publish() {
@@ -29,9 +29,10 @@ public class Experiment {
         this.published = false;
     }
 
-    //    public void subscribe(User user){
-//
-//    }
+    public void subscribe(User user){
+        experimenters.add(user);
+    }
+
     // getters and setters
     public String getDescription() {
         return description;
@@ -42,11 +43,11 @@ public class Experiment {
     }
 
     public String getRegion() {
-        return Region;
+        return region;
     }
 
     public void setRegion(String region) {
-        Region = region;
+        this.region = region;
     }
 
     public int getNum_of_trials() {

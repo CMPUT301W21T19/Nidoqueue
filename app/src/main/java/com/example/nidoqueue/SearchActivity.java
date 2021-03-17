@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ExperimentData extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.experiment_data);
+        setContentView(R.layout.search_trials);
         Intent intent = getIntent();
     }
 }
