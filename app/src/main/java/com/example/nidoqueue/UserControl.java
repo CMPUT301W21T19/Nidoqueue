@@ -8,7 +8,7 @@ public class UserControl {
 
     static RequestManager requestManager = RequestManager.getInstance();
 
-    static ContextManager contextManager = ContextManager.getInstance();
+    ContextManager contextManager = ContextManager.getInstance();
 
     public static UserControl getInstance() {
         return userControl;

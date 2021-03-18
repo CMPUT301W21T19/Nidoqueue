@@ -1,17 +1,14 @@
 package com.example.nidoqueue;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     // initialize RequestManager
     //RequestManager requestManager = new RequestManager();
 
@@ -24,13 +21,16 @@ public class MainActivity extends AppCompatActivity{
     // initialize QAForum
     // TO DO
 
+    public static FirebaseFirestore db;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         welcome();
     }
-    public void welcome(){
+
+    public void welcome() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
