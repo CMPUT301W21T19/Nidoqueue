@@ -25,6 +25,7 @@
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
+        app:layout_constraintVertical_bias="0.529" />
         app:layout_constraintVertical_bias="0.536" />
 
     <TextView
@@ -49,6 +50,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/created_exp_list"
         android:layout_width="320dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -65,6 +70,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
         app:layout_constraintVertical_bias="0.957" />
 
     <ImageButton
@@ -113,6 +119,8 @@
         android:background="#80D9FF"
         android:contentDescription="@string/options_button"
         android:tint="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -124,6 +132,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sub_experiments"
         android:layout_width="320dp"
+        android:layout_height="175dp"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"

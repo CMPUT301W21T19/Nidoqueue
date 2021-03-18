@@ -65,6 +65,8 @@
         android:text="@string/sign_up"
         android:textColor="#04AFF8"
         android:textSize="40sp"
+        android:clickable="true"
+        android:focusable="true"
         android:onClick="signUp"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

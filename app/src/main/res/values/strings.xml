@@ -41,4 +41,21 @@
     <string name="enter_question_here">Enter Question Here</string>
     <string name="enter_reply_here">Enter Reply Here</string>
     <string name="binomial_title">Binomial</string>
+    <string name="type"><![CDATA[<Type>]]></string>
+    <string name="ignore">Ignore</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="sample_time">12:42pm</string>
+    <string name="sample_date">01/12/03</string>
+    <string name="sample_user">User03</string>
+    <string name="experiment">Experiment</string>
+    <string name="inactive">Inactive</string>
+    <string name="sample_description">Sample Description</string>
+    <string name="user_profile_text">User Profile</string>
+    <string name="phone_optional">Phone# (Optional):</string>
+    <string name="username_hint">Username:</string>
+    <string name="email_hint">Email:</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="email_display">Email</string>
+    <string name="phone_display">Phone Number</string>
+    <string name="username_display">Username</string>
 </resources>
