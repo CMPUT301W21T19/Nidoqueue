@@ -26,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
         app:layout_constraintVertical_bias="0.529" />
-        app:layout_constraintVertical_bias="0.536" />
 
     <TextView
         android:id="@+id/subscribed_exp_label"
@@ -50,12 +49,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/created_exp_list"
         android:layout_width="320dp"
-        android:layout_height="250dp"
+        android:layout_height="175dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
         android:clickable="true"
@@ -67,7 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87" />
-        app:layout_constraintVertical_bias="0.957" />
 
     <ImageButton
         android:id="@+id/search_button1"
@@ -128,7 +124,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sub_experiments"
         android:layout_width="320dp"
-        android:layout_height="250dp"
+        android:layout_height="175dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
