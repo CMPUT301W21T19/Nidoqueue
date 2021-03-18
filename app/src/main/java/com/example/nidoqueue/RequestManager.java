@@ -10,15 +10,12 @@ public class RequestManager {
 
     private RequestManager(){}
 
-    public static RequestManager getInstance() {
-        return requestManager;
-    }
-
     // initialize RequestManager
     UserControl userControl = UserControl.getInstance();
 
-    public void startApp() {
-        userControl.verifyLogin();
+
+    public static RequestManager getInstance() {
+        return requestManager;
     }
 
     // Transition between Activities
@@ -28,12 +25,13 @@ public class RequestManager {
         currentActivity.startActivity(intent);
     }
 
-
-    public void signIn() {
-        userControl.signIn();
+    public void startApp() {
+        userControl.verifyLogin();
     }
 
-    public void signUp() {
-        userControl.signUp();
-    }
+    public void signIn() { userControl.signIn(); }
+
+    public void signUp() { userControl.signUp(); }
+
+    public void signInOptions() { userControl.signInOptions(); }
 }
