@@ -5,15 +5,12 @@
     android:layout_height="match_parent"
     android:background="#80D9FF"
     tools:context=".SignUpActivity">
-    tools:context=".SignUpAcitvity">
 
     <TextView
         android:id="@+id/phone_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -29,15 +26,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_title"
         app:layout_constraintVertical_bias="0.573" />
-        app:layout_constraintVertical_bias="0.584" />
 
     <TextView
         android:id="@+id/email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -53,7 +47,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_title"
         app:layout_constraintVertical_bias="0.31" />
-        app:layout_constraintVertical_bias="0.321" />
 
     <EditText
         android:id="@+id/phone"
@@ -67,9 +60,9 @@
         android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:background="#FFFFFF"
-        android:gravity="center"
         android:ems="10"
         android:fontFamily="@font/exo"
+        android:gravity="center"
         android:hint="@string/phone"
         android:inputType="phone"
         android:textColorHint="#D7F2FD"
@@ -94,8 +87,8 @@
         android:autofillHints=""
         android:background="#FFFFFF"
         android:ems="10"
-        android:gravity="center"
         android:fontFamily="@font/exo"
+        android:gravity="center"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColorHint="#D7F2FD"
@@ -112,8 +105,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -129,7 +120,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_title"
         app:layout_constraintVertical_bias="0.045" />
-        app:layout_constraintVertical_bias="0.054" />
 
     <EditText
         android:id="@+id/username"

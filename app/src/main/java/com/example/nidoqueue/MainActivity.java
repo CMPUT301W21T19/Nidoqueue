@@ -10,15 +10,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity{
     // initialize RequestManager
-    RequestManager requestManager = new RequestManager();
+    //RequestManager requestManager = new RequestManager();
 
     // initialize ExperimentManager
     ExperimentManager experimentManager = new ExperimentManager();
 
     // initialize UserControl
-    UserControl userControl = new UserControl();
+    //UserControl userControl = new UserControl();
 
     // initialize QAForum
     // TO DO
