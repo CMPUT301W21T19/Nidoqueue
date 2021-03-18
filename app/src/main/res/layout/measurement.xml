@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="#80D9FF"
     tools:context=".Forum">
-    tools:context=".ForumActivity">
 
     <Button
         android:id="@+id/QR"

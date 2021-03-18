@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class AddUser extends DialogFragment {
+public class UserProfileAdd extends DialogFragment {
     private EditText Username, Email, Phone;
     private String username, email, phone;
     private OnFragmentInteractionListener listener;
-    public AddUser(String username, String email, String phone){
+    public UserProfileAdd(String username, String email, String phone){
         this.username = username;
         this.email = email;
         this.phone = phone;

@@ -1,7 +1,7 @@
 package com.example.nidoqueue;
 
 public class UserProfile {
-    private String username, email, phone;
+    public String username, email, phone;
     UserProfile(String username, String email, String phone){
         this.username = username;
         this.email = email;
