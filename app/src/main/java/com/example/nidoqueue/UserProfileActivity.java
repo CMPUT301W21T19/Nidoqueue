@@ -3,37 +3,52 @@ package com.example.nidoqueue;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class UserProfileActivity extends AbstractActivity {
+import java.util.ArrayList;
+
+public class UserProfileActivity extends AppCompatActivity{
+    ListView userView;
     ImageButton backButton;
-    ImageButton homeButton;
-
-    private View.OnClickListener Home = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-                
-//            Intent intent = new Intent(this, SignInActivity.class);
-//            startActivity(intent);
-        }
-    };
-    private View.OnClickListener Back = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-//            Intent intent = new Intent(this, SignInActivity.class);
-//            startActivity(intent);
-        }
-    };
+    ArrayList<User> userList;
+    ArrayAdapter<User> Adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
-        homeButton = findViewById(R.id.home_button2);
         backButton = findViewById(R.id.back_button5);
-        backButton.setOnClickListener(Back);
-        homeButton.setOnClickListener(Home);
+        userView = findViewById(R.id.user_info);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
+        userList = new ArrayList<>();
+        String[] Username = {"Username"};
+        String[] Email = {"Email"};
+        String[] Phone = {"Phone"};
+        for (int i = 0; i < Username.length; i++) {
+            userList.add((new User(Username[i], Email[i], Phone[i])));
+        }
+        Adapter = new UserProfileContent(this, userList);
+        userView.setAdapter(Adapter); // This view is setup to display the experiments
+    }
+    public void back(){
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+    }
+
+    public void profile(){
+
+
     }
 
 }

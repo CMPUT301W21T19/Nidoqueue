@@ -13,7 +13,6 @@ public class SignUpActivity extends AppCompatActivity{
     private Button doneButton;
     private ImageButton backButton;
     private EditText username, email, phone;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -45,16 +45,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_info"
         android:layout_width="320dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_height="540dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
         android:clickable="true"
@@ -66,7 +60,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.451" />
-        app:layout_constraintVertical_bias="0.735" />
 
     <EditText
         android:id="@+id/search_bar"

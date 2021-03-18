@@ -1,5 +1,6 @@
 package com.example.nidoqueue;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,5 +14,11 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void test() {
+        Experiment test = new ExpCount(new User("June", "@gmail.com", "0000000"), "Testing", "testing now");
+        assertEquals("count", test.getType());
     }
 }
