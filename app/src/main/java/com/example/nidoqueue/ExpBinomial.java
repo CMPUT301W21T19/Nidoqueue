@@ -3,10 +3,9 @@ package com.example.nidoqueue;
 public class ExpBinomial extends Experiment {
     private int pass;
     private int fail;
-    private final String TYPE = "binomial";
 
-    public ExpBinomial(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpBinomial(User owner, String description) {
+        super(owner, description);
         pass = 0;
         fail = 0;
     }
@@ -25,10 +24,5 @@ public class ExpBinomial extends Experiment {
 
     public int getFail() {
         return fail;
-    }
-
-    @Override
-    public String getType() {
-        return TYPE;
     }
 }
