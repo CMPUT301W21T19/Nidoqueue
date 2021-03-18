@@ -37,7 +37,7 @@ public class RecoveryActivity extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
     }
     public void backMain(View view){
         setContentView(R.layout.activity_main);

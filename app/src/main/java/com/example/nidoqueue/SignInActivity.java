@@ -25,6 +25,6 @@ public class SignInActivity extends AppCompatActivity {
     public void options(){
         Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
     }
 }

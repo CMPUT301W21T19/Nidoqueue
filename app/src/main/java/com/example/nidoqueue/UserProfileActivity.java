@@ -36,6 +36,6 @@ public class UserProfileActivity extends AppCompatActivity {
     public void back(){
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
     }
 }
