@@ -3,20 +3,24 @@ package com.example.nidoqueue;
 
 import java.util.ArrayList;
 
-public class Experiment {
+public abstract class Experiment {
     // class attributes
 
     private User owner;
+    private String name;
     private String description;
     private String region;
     private int num_of_trials;
+    private boolean geoLocation;
     private boolean published;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
 
-    public Experiment(User owner, String description) {
+    public Experiment(User owner, String name, String description, Boolean geoLocation) {
         this.owner = owner;
+        this.name = name;
         this.description = description;
+        this.geoLocation = geoLocation;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
     }
@@ -34,6 +38,14 @@ public class Experiment {
     }
 
     // getters and setters
+    public User getOwner() {
+        return owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -58,6 +70,14 @@ public class Experiment {
         this.num_of_trials = num_of_trials;
     }
 
+    public boolean getGeoLocation() {
+        return geoLocation;
+    }
+
+    public void setGeoLocation(Boolean geoLocation) {
+        this.geoLocation = geoLocation;
+    }
+
     public boolean isPublished() {
         return published;
     }
@@ -65,4 +85,6 @@ public class Experiment {
     public void setPublished(boolean published) {
         this.published = published;
     }
+
+    public abstract String getType();
 }
