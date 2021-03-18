@@ -9,15 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nidoqueue">
-        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".UserProfileActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".RecoveryActivity"></activity>
         <activity android:name=".ExperimentDataActivity"></activity>
         <activity android:name=".ExperimentActivity"></activity>
         <activity android:name=".ForumActivity"></activity>
-
+        <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
