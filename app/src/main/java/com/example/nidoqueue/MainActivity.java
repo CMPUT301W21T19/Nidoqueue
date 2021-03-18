@@ -9,28 +9,37 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AddUser.OnFragmentInteractionListener{
+public class MainActivity extends AbstractActivity {
     Button signUp;
     Button signIn;
     Button clickHere;
     ArrayList<UserProfile> userList;
 
     // initialize RequestManager
-    RequestManager requestManager = new RequestManager();
+    RequestManager requestManager = RequestManager.getInstance();
 
-    // initialize ExperimentManager
-    ExperimentManager experimentManager = new ExperimentManager();
+    ContextManager contextManager = ContextManager.getInstance();
 
-    // initialize UserControl
-    UserControl userControl = new UserControl();
+    private View.OnClickListener SignUp = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signUp();
+        }
+    };
 
-    // initialize QAForum
-    // TO DO
+    private View.OnClickListener SignIn = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signIn();
+        }
+    };
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
         signIn = findViewById(R.id.sign_in_button);
         signUp = findViewById(R.id.sign_up_button);
@@ -42,12 +51,7 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         for (int i = 0; i < Username.length; i++) {
             userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
         }
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
