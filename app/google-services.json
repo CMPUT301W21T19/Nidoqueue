@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405670863266",
+    "project_id": "nidoqueue-aa92e",
+    "storage_bucket": "nidoqueue-aa92e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405670863266:android:43ac3e32d9c2ee4ab992fb",
+        "android_client_info": {
+          "package_name": "com.example.nidoqueue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405670863266-gtl5pc3j9g7ts3vfsft2pt6kg6umckos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRohVGT4h1WNBf5izSHJIIY9o4384khIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405670863266-gtl5pc3j9g7ts3vfsft2pt6kg6umckos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
