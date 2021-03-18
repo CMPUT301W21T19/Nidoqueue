@@ -8,31 +8,90 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class MainActivity extends AppCompatActivity {
+/* public class MainActivity extends AppCompatActivity {
+    initialize RequestManager
+    RequestManager requestManager = new RequestManager();
+
+    initialize ExperimentManager
+    // ExperimentManager experimentManager = new ExperimentManager();
+
+    initialize UserControl
+    UserControl userControl = new UserControl();
+
+    initialize QAForum
+    TO DO
+
+    // public static FirebaseFirestore db;
+
+    // @Override
+    // protected void onCreate(Bundle savedInstanceState) {
+        // super.onCreate(savedInstanceState);
+        // setContentView(R.layout.activity_main);
+        // welcome();
+    // }
+
+    // public void welcome() {
+        // Intent intent = new Intent(this, WelcomeActivity.class);
+        // startActivity(intent);
+    // }
+   }
+   */
+
+public class MainActivity extends AbstractActivity {
+    Button signUp;
+    Button signIn;
+    Button clickHere;
+    ArrayList<UserProfile> userList;
+
     // initialize RequestManager
-    //RequestManager requestManager = new RequestManager();
+    RequestManager requestManager = RequestManager.getInstance();
 
-    // initialize ExperimentManager
-    ExperimentManager experimentManager = new ExperimentManager();
+    ContextManager contextManager = ContextManager.getInstance();
 
-    // initialize UserControl
-    //UserControl userControl = new UserControl();
+    private View.OnClickListener SignUp = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signUp();
+        }
+    };
 
-    // initialize QAForum
-    // TO DO
+    private View.OnClickListener SignIn = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signIn();
+        }
+    };
 
-    public static FirebaseFirestore db;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
-        welcome();
-    }
+        signIn = findViewById(R.id.sign_in_button);
+        signUp = findViewById(R.id.sign_up_button);
+        clickHere = findViewById(R.id.click_here_button);
+        userList = new ArrayList<>();
+        String[] Username = {};
+        String[] Email = {};
+        String[] Phone = {};
+        for (int i = 0; i < Username.length; i++) {
+            userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
+        }
 
-    public void welcome() {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               signUp();
+            }
+        });
+        clickHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickHere();
+            }
+        });
     }
 }
 
