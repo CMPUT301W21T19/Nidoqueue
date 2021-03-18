@@ -5,8 +5,20 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RequestManager {
+
+    private static final RequestManager requestManager = new RequestManager();
+
+    private RequestManager(){}
+
+    public static RequestManager getInstance() {
+        return requestManager;
+    }
+
+    // initialize RequestManager
+    UserControl userControl = UserControl.getInstance();
+
     public void startApp() {
-        UserControl.verifyLogin();
+        userControl.verifyLogin();
     }
 
     // Transition between Activities
@@ -17,4 +29,11 @@ public class RequestManager {
     }
 
 
+    public void signIn() {
+        userControl.signIn();
+    }
+
+    public void signUp() {
+        userControl.signUp();
+    }
 }

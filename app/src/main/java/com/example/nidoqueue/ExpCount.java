@@ -3,9 +3,10 @@ package com.example.nidoqueue;
 public class ExpCount extends Experiment{
 
     private int count;
+    final private String TYPE = "count";
 
-    public ExpCount(User owner, String description) {
-        super(owner, description);
+    public ExpCount(User owner, String name, String description, Boolean geoLocation) {
+        super(owner, name, description, geoLocation);
         count = 0;
     }
 
@@ -17,5 +18,10 @@ public class ExpCount extends Experiment{
 
     public int getCount() {
         return count;
+    }
+
+    @Override
+    public String getType() {
+        return TYPE;
     }
 }
