@@ -1,12 +1,13 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.nidoqueue.R;
 
 public class SignInActivity extends AppCompatActivity {
     ImageButton options, search;

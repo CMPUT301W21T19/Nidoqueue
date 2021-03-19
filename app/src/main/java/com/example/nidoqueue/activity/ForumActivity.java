@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

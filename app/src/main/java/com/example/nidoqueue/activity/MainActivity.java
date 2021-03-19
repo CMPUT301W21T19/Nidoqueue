@@ -1,11 +1,10 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.RequestManager;
 
 
 /* public class MainActivity extends AppCompatActivity {
@@ -106,7 +105,7 @@ public class MainActivity extends AbstractActivity {
 
 // import java.util.ArrayList;
 
-// import static com.example.nidoqueue.UserControl.contextManager;
+// import static com.example.nidoqueue.controller.UserControl.contextManager;
 
 // //public class MainActivity extends AbstractActivity {
 // //    ArrayList<UserProfile> userList;

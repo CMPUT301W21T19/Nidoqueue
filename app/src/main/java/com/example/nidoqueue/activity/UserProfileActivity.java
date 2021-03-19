@@ -1,20 +1,19 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.User;
+import com.example.nidoqueue.model.UserProfileContent;
 
 import java.util.ArrayList;
 
-public class UserProfileActivity extends AppCompatActivity{
+public class UserProfileActivity extends AbstractActivity{
     ListView userView;
     ImageButton backButton;
     ArrayList<User> userList;

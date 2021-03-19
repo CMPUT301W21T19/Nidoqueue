@@ -1,14 +1,11 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.example.nidoqueue.Experiment;
 import com.example.nidoqueue.R;
-import com.example.nidoqueue.User;
 
 public class ExperimentDataActivity extends AppCompatActivity {
     @Override
