@@ -11,7 +11,7 @@ public class RequestManager {
     private RequestManager(){}
 
     // initialize RequestManager
-    UserControl userControl = UserControl.getInstance();
+    private static final UserControl userControl = UserControl.getInstance();
 
 
     public static RequestManager getInstance() {
