@@ -8,7 +8,7 @@ public class ExpMeasurement extends Experiment{
     // the reason I didn't just implement this is that it may make certain things that I cannot foresee more difficult
 
     private String unit;
-//    private ArrayList<Double> trials;
+    private ArrayList<Double> data;
     final private String TYPE = "measurement";
     private ArrayList<Trial> trials;
 
@@ -16,16 +16,17 @@ public class ExpMeasurement extends Experiment{
         super(owner, name, description, geoLocation);
         this.unit = unit;
         this.trials = new ArrayList<>();
+        this.data = new ArrayList<>();
     }
 
     public void addTrial(double measurement){
-//        trials.add(measurement);
+        data.add(measurement);
         trials.add(new Trial(measurement, Integer.toString(this.trials.size())));
     }
 
-//    public ArrayList<Double> getTrials() {
-//        return trials;
-//    }
+    public ArrayList<Double> getData() {
+        return data;
+    }
 
     public String getUnit() {
         return unit;

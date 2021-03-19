@@ -2,6 +2,7 @@ package com.example.nidoqueue;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,7 +19,20 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ExperimentDataActivity extends AppCompatActivity {
+public class ExperimentDataActivity extends AbstractActivity {
+
+    /**
+     * Classname:   ExperimentManager.java
+     * Version:     Prototype
+     * Date:        March 19th, 2021
+     * Purpose:     This handles experiment transitions similar to the UserControl class.
+     * Issues:      Incomplete, will be worked on in the future.
+     */
+
+
+    // NOTES:   I have complete faith that the calculations performed in DataCalc will work.
+    //          Unfortunately, I have been unable to test the experiment detection features and
+    //          how the code will respond to different experiment types.
 
     private Experiment experiment;
     private DataCalc calc;
@@ -38,6 +52,9 @@ public class ExperimentDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment_data);
         Intent intent = getIntent();
+        // NEED TO GET EXPERIMENT FROM PREVIOUS ACTIVITY
+
+
         calc = new DataCalc(experiment);
 
         quartilesView = findViewById(R.id.exp_stat_quartiles);
@@ -61,6 +78,19 @@ public class ExperimentDataActivity extends AppCompatActivity {
         }else if(experiment instanceof ExpMeasurement){
             measureDisplay((ExpMeasurement) experiment);
         }
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                requestManager.Home();
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
