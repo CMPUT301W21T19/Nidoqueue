@@ -1,10 +1,10 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.controller;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DatabaseManager {
 
-    static FirebaseFirestore db  = FirebaseFirestore.getInstance();
+    public static final FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
 //    DatabaseManager() {
 ////        FirebaseFirestore db =
