@@ -1,7 +1,5 @@
 package com.example.nidoqueue;
 
-import android.content.Intent;
-
 public class UserControl {
 
     private static UserControl userControl = new UserControl();
@@ -32,8 +30,6 @@ public class UserControl {
     }
 
     public void signInOptions() {
-
-        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
-
+        //requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
     }
 }

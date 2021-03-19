@@ -3,11 +3,15 @@ package com.example.nidoqueue;
 import java.util.ArrayList;
 
 public class User {
+
     private String userName;
     private String email;
     private String phoneNumber;
     private ArrayList<Experiment> createdExperiments;
     private ArrayList<Experiment> subscribedExperiments;
+
+    public User() {
+    }
 
     public User(String userName, String email) {
         this.userName = userName;
@@ -24,11 +28,11 @@ public class User {
         subscribedExperiments = new ArrayList<>();
     }
 
-    public void createExp(Experiment experiment){
+    public void createExp(Experiment experiment) {
         createdExperiments.add(experiment);
     }
 
-    public void subscribeExp(Experiment experiment){
+    public void subscribeExp(Experiment experiment) {
         subscribedExperiments.add(experiment);
     }
 
@@ -58,5 +62,13 @@ public class User {
 
     public ArrayList<Experiment> getSubscribedExp() {
         return subscribedExperiments;
+    }
+
+    public void setCreatedExp(ArrayList<Experiment> createdExperiments) {
+        this.createdExperiments = createdExperiments;
+    }
+
+    public void setSubscribedExp(ArrayList<Experiment> subscribedExperiments) {
+        this.subscribedExperiments = subscribedExperiments;
     }
 }

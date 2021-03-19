@@ -1,8 +1,12 @@
 package com.example.nidoqueue;
 
 
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
 import java.util.ArrayList;
 
+@IgnoreExtraProperties
 public abstract class Experiment {
     // class attributes
 
@@ -16,6 +20,10 @@ public abstract class Experiment {
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
 
+    public Experiment() {
+
+    }
+
     public Experiment(User owner, String name, String description, Boolean geoLocation) {
         this.owner = owner;
         this.name = name;
@@ -23,6 +31,7 @@ public abstract class Experiment {
         this.geoLocation = geoLocation;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
+        published = true;
     }
 
     public void publish() {
@@ -38,6 +47,7 @@ public abstract class Experiment {
     }
 
     // getters and setters
+    @Exclude
     public User getOwner() {
         return owner;
     }
