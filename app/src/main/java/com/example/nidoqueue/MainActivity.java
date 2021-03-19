@@ -15,11 +15,12 @@ public class MainActivity extends AbstractActivity {
     ContextManager contextManager = ContextManager.getInstance();
 
 
+    //initialize QAForum
+    //TO DO
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
         requestManager.startApp();
     }

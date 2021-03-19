@@ -1,9 +1,13 @@
 package com.example.nidoqueue;
 
 
+import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.IgnoreExtraProperties;
+
 import java.util.ArrayList;
 
-public class Experiment {
+@IgnoreExtraProperties
+public abstract class Experiment {
     // class attributes
 
     private User owner;
@@ -14,11 +18,16 @@ public class Experiment {
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
 
-    public Experiment(User owner, String description) {
+    public Experiment() {
+
+    }
+
+    public Experiment(User owner, String name, String description, Boolean geoLocation) {
         this.owner = owner;
         this.description = description;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
+        published = true;
     }
 
     public void publish() {
@@ -34,6 +43,15 @@ public class Experiment {
     }
 
     // getters and setters
+    @Exclude
+    public User getOwner() {
+        return owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -65,4 +83,6 @@ public class Experiment {
     public void setPublished(boolean published) {
         this.published = published;
     }
+
+    public abstract String getType();
 }

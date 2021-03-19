@@ -9,6 +9,7 @@ public class ExpMeasurement extends Experiment{
 
     private String unit;
     private ArrayList<Double> trials;
+    final private String TYPE = "measurement";
 
     public ExpMeasurement(User owner, String description, String unit) {
         super(owner, description);
@@ -18,6 +19,23 @@ public class ExpMeasurement extends Experiment{
 
     private void addTrial(double measurement){
         trials.add(measurement);
+    }
+
+    public ArrayList<Double> getTrials() {
+
+//    public ArrayList<Double> getTrials() {
+//        return trials;
+//    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+
+
+    @Override
+    public String getType() {
+        return TYPE;
     }
 
     public ArrayList<Double> getTrials() {

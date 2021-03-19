@@ -1,12 +1,16 @@
 package com.example.nidoqueue;
 
+import java.util.ArrayList;
+
 public class ExpCount extends Experiment{
 
     private int count;
+    final private String TYPE = "count";
 
-    public ExpCount(User owner, String description) {
-        super(owner, description);
-        count = 0;
+    public ExpCount(User owner, String name, String description, Boolean geoLocation) {
+        super(owner, name, description, geoLocation);
+        this.count = 0;
+        this.trials = new ArrayList<>();
     }
 
     private void increaseCount(){
@@ -18,4 +22,10 @@ public class ExpCount extends Experiment{
     public int getCount() {
         return count;
     }
-}
+
+
+    @Override
+    public String getType() {
+        return TYPE;
+    }
+  }

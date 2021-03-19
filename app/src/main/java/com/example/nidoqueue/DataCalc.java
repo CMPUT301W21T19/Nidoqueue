@@ -1,21 +1,20 @@
+package com.example.nidoqueue;
 
-        package com.example.nidoqueue;
+import android.os.Build;
+import android.provider.ContactsContract;
 
-        import android.os.Build;
-        import android.provider.ContactsContract;
+import androidx.annotation.RequiresApi;
 
-        import androidx.annotation.RequiresApi;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
-        import com.jjoe64.graphview.series.BarGraphSeries;
-        import com.jjoe64.graphview.series.DataPoint;
-        import com.jjoe64.graphview.series.LineGraphSeries;
-        import com.jjoe64.graphview.series.PointsGraphSeries;
-
-        import java.time.LocalDateTime;
-        import java.time.ZonedDateTime;
-        import java.util.ArrayList;
-        import java.util.Calendar;
-        import java.util.Collections;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 
 public class DataCalc {
     private Experiment experiment;
