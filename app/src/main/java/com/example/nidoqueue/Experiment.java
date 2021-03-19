@@ -11,11 +11,9 @@ public abstract class Experiment {
     // class attributes
 
     private User owner;
-    private String name;
     private String description;
     private String region;
     private int num_of_trials;
-    private boolean geoLocation;
     private boolean published;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
@@ -26,9 +24,7 @@ public abstract class Experiment {
 
     public Experiment(User owner, String name, String description, Boolean geoLocation) {
         this.owner = owner;
-        this.name = name;
         this.description = description;
-        this.geoLocation = geoLocation;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
         published = true;
@@ -80,14 +76,6 @@ public abstract class Experiment {
         this.num_of_trials = num_of_trials;
     }
 
-    public boolean getGeoLocation() {
-        return geoLocation;
-    }
-
-    public void setGeoLocation(Boolean geoLocation) {
-        this.geoLocation = geoLocation;
-    }
-
     public boolean isPublished() {
         return published;
     }
@@ -97,6 +85,4 @@ public abstract class Experiment {
     }
 
     public abstract String getType();
-
-    public abstract ArrayList<Trial> getTrials();
 }

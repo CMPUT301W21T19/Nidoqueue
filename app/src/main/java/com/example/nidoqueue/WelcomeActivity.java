@@ -18,7 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-public class WelcomeActivity extends AppCompatActivity implements UserProfileAddFragment.OnFragmentInteractionListener {
+public class WelcomeActivity extends AbstractActivity implements UserProfileAddFragment.OnFragmentInteractionListener {
     Button signUp, signIn, clickHere;
     ArrayAdapter<User> Adapter;
     String Message; // String that is used to display information for each experiment on click.
@@ -73,7 +73,7 @@ public class WelcomeActivity extends AppCompatActivity implements UserProfileAdd
                         boolean id_exist = false;
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                             if (documentSnapshot.getString("userName").equals(user.getUserName())) {
-                                new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
+                                //new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
                                 Toast.makeText(getApplicationContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_LONG).show();
                                 id_exist = true;
                                 break;

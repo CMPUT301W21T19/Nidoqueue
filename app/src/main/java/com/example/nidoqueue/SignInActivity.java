@@ -1,6 +1,7 @@
 package com.example.nidoqueue;
 
 import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -52,10 +53,26 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
 
     boolean doubleBackToExitPressedOnce = false;
 
+public class SignInActivity extends AbstractActivity {
+    ImageButton options;
+
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
+
+    private View.OnClickListener Options = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signInOptions();
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_user);
+        contextManager.setContext(this);
+
 
         dbManager = (DatabaseManager) getApplicationContext();
         db = dbManager.getDb();
@@ -210,9 +227,5 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
                         Log.d("FireStore", "Failed with: ", task.getException());
                     }
                 });
-    }
-
-    class ExpListHolder {
-        public List<Experiment> exps;
     }
 }

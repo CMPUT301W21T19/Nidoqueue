@@ -3,18 +3,12 @@ package com.example.nidoqueue;
 import java.util.ArrayList;
 
 public class ExpNonNegative extends Experiment{
-//    private ArrayList<Integer> trials;
+    private ArrayList<Integer> trials;
     final private String TYPE = "nonNegative";
-    private ArrayList<Trial> trials;
 
-    public ExpNonNegative(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpNonNegative(User owner, String description) {
+        super(owner, description);
         trials = new ArrayList<>();
-    }
-
-    @Override
-    public String getType() {
-        return TYPE;
     }
 
     public void addTrial(int count){

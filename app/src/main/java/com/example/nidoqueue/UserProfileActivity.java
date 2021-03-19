@@ -5,32 +5,37 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.DocumentSnapshot;
-
-public class UserProfileActivity extends AppCompatActivity {
-//    ListView userView;
+public class UserProfileActivity extends AbstractActivity {
     ImageButton backButton;
-//    ArrayList<User> userList;
-//    ArrayAdapter<User> Adapter;
-    User user;
+    ImageButton homeButton;
 
+    static RequestManager requestManager = RequestManager.getInstance();
+
+    private View.OnClickListener Home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.Home();
+        }
+    };
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.Home();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
+        homeButton = findViewById(R.id.home_button2);
         backButton = findViewById(R.id.back_button5);
-//        userView = findViewById(R.id.user_info);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                back();
-            }
-        });
+        backButton.setOnClickListener(Back);
+        homeButton.setOnClickListener(Home);
+
 
 //        userList = new ArrayList<>();
 //        String[] Username = {"Username"};
@@ -75,8 +80,6 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     public void profile() {
-
-
     }
 
 }

@@ -6,10 +6,9 @@ public class ExpBinomial extends Experiment {
     private int pass;
     private int fail;
     private final String TYPE = "binomial";
-    private ArrayList<Trial> trials;
 
-    public ExpBinomial(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpBinomial(User owner, String description) {
+        super(owner, description);
         pass = 0;
         fail = 0;
         this.trials = new ArrayList<>();
@@ -32,6 +31,8 @@ public class ExpBinomial extends Experiment {
     public int getFail() {
         return fail;
     }
+<<<<<<< HEAD
+=======
 
     @Override
     public String getType() {
@@ -41,4 +42,5 @@ public class ExpBinomial extends Experiment {
     public ArrayList<Trial> getTrials() {
         return trials;
     }
+>>>>>>> main
 }

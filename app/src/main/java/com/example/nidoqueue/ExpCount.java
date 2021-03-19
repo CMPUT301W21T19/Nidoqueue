@@ -6,7 +6,6 @@ public class ExpCount extends Experiment{
 
     private int count;
     final private String TYPE = "count";
-    private ArrayList<Trial> trials;
 
     public ExpCount(User owner, String name, String description, Boolean geoLocation) {
         super(owner, name, description, geoLocation);
@@ -18,7 +17,6 @@ public class ExpCount extends Experiment{
         // I have this designed to be used with a button that is pressed to increment the value by one
         // we could have it take a specific number input from the user but I think that would be confusing and cumbersome to the user
         count += 1;
-        trials.add(new Trial((double) this.getCount(), Integer.toString(this.getCount())));
     }
 
     public int getCount() {
@@ -26,13 +24,8 @@ public class ExpCount extends Experiment{
     }
 
 
-
     @Override
     public String getType() {
         return TYPE;
     }
-
-    public ArrayList<Trial> getTrials() {
-        return trials;
-    }
-}
+  }

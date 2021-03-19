@@ -33,6 +33,18 @@ public class ExperimentDataActivity extends AppCompatActivity {
     private GraphView plots;
 
     private static DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+    private View.OnClickListener Home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
