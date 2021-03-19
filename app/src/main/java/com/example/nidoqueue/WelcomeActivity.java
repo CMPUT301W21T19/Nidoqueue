@@ -10,14 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -64,21 +60,20 @@ public class WelcomeActivity extends AppCompatActivity implements UserProfileAdd
 
     public void onOkPressed(User user) {
         //Adapter.add(newUser);
-
         DatabaseManager.db.collection("users")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
-                            for(QueryDocumentSnapshot documentSnapshot: task.getResult()) {
-                                if(documentSnapshot.getString("userName").equals(user.getUserName())) {
-                                    new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
-                                    Toast.makeText(getApplicationContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_LONG).show();
-                                    break;
-                                }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        boolean id_exist = false;
+                        for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                            if (documentSnapshot.getString("userName").equals(user.getUserName())) {
+                                new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
+                                Toast.makeText(getApplicationContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_LONG).show();
+                                id_exist = true;
+                                break;
                             }
-                        } else {
+                        }
+                        if (!id_exist) {
                             DatabaseManager.db.collection("users")
                                     .document(android_id)
                                     .set(user)
@@ -87,10 +82,12 @@ public class WelcomeActivity extends AppCompatActivity implements UserProfileAdd
                                             Log.d("FireStore", "Succeed");
                                             signIn();
                                         } else {
-                                            Log.d("FireStore", "Failed with: ", task.getException());
+                                            Log.d("FireStore", "Failed with: ", action.getException());
                                         }
                                     });
                         }
+                    } else {
+                        Log.d("FireStore", "Failed with: ", task.getException());
                     }
                 });
     }
