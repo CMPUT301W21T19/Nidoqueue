@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.nidoqueue.UserControl.contextManager;
+
 public class RequestManager {
 
     private static final RequestManager requestManager = new RequestManager();
@@ -34,4 +36,27 @@ public class RequestManager {
     public void signUp() { userControl.signUp(); }
 
     public void signInOptions() { userControl.signInOptions(); }
+
+    public void Home() {
+        //Transition to Home page
+        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), SignInActivity.class);
+        //            Intent intent = new Intent(this, SignInActivity.class);
+//            startActivity(intent);
+    }
+
+    public void signUp_Username() {
+    }
+
+    public void signUp_Email() {
+    }
+
+    public void signUp_Phone() {
+    }
+
+    public void signUp_Done() {
+    }
+
+    public void resetApp() {
+        requestManager.transition(R.layout.activity_main, (AbstractActivity) contextManager.getContext(), MainActivity.class);
+    }
 }
