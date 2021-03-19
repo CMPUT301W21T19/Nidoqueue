@@ -34,6 +34,9 @@ public abstract class Experiment {
         published = true;
     }
 
+    /**
+     * This publish the experiment to the public.
+     */
     public void publish() {
         this.published = true;
     }
