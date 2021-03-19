@@ -2,98 +2,98 @@ package com.example.nidoqueue;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.firestore.DocumentSnapshot;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
-
-/* public class MainActivity extends AppCompatActivity {
-    initialize RequestManager
-    RequestManager requestManager = new RequestManager();
-
-    initialize ExperimentManager
-    // ExperimentManager experimentManager = new ExperimentManager();
-
-    initialize UserControl
-    UserControl userControl = new UserControl();
-
-    initialize QAForum
-    TO DO
-
-    // public static FirebaseFirestore db;
-
-    // @Override
-    // protected void onCreate(Bundle savedInstanceState) {
-        // super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
-        // welcome();
-    // }
-
-    // public void welcome() {
-        // Intent intent = new Intent(this, WelcomeActivity.class);
-        // startActivity(intent);
-    // }
-   }
-   */
 
 public class MainActivity extends AbstractActivity {
-    Button signUp;
-    Button signIn;
-    Button clickHere;
-    ArrayList<UserProfile> userList;
+    //initialize RequestManager
+    //RequestManager requestManager = new RequestManager();
 
-    // initialize RequestManager
-    RequestManager requestManager = RequestManager.getInstance();
+    //ContextManager contextManager = ContextManager.getInstance();
 
-    ContextManager contextManager = ContextManager.getInstance();
+    //initialize ExperimentManager
+    // ExperimentManager experimentManager = new ExperimentManager();
 
-    private View.OnClickListener SignUp = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.signUp();
-        }
-    };
+    //initialize UserControl
+    //UserControl userControl = new UserControl();
 
-    private View.OnClickListener SignIn = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.signIn();
-        }
-    };
-
-
+    //initialize QAForum
+    //TO DO
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
-        signIn = findViewById(R.id.sign_in_button);
-        signUp = findViewById(R.id.sign_up_button);
-        clickHere = findViewById(R.id.click_here_button);
-        userList = new ArrayList<>();
-        String[] Username = {};
-        String[] Email = {};
-        String[] Phone = {};
-        for (int i = 0; i < Username.length; i++) {
-            userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
-        }
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               signUp();
-            }
-        });
-        clickHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickHere();
-            }
-        });
+        welcome();
+    }
+
+    public void welcome() {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 }
+
+//public class MainActivity extends AbstractActivity {
+//    Button signUp;
+//    Button signIn;
+//    Button clickHere;
+//    ArrayList<UserProfile> userList;
+//
+//    // initialize RequestManager
+//    RequestManager requestManager = RequestManager.getInstance();
+//
+//    ContextManager contextManager = ContextManager.getInstance();
+//
+//    private View.OnClickListener SignUp = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            requestManager.signUp();
+//        }
+//    };
+//
+//    private View.OnClickListener SignIn = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            requestManager.signIn();
+//        }
+//    };
+//
+//
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//        contextManager.setContext(MainActivity.this);
+//        setContentView(R.layout.activity_main);
+//        signIn = findViewById(R.id.sign_in_button);
+//        signUp = findViewById(R.id.sign_up_button);
+//        clickHere = findViewById(R.id.click_here_button);
+//        userList = new ArrayList<>();
+//        String[] Username = {};
+//        String[] Email = {};
+//        String[] Phone = {};
+//        for (int i = 0; i < Username.length; i++) {
+//            userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
+//        }
+//
+//        signUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               signUp();
+//            }
+//        });
+//        clickHere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                clickHere();
+//            }
+//        });
+//    }
+//}
 
 // package com.example.nidoqueue;
 
