@@ -32,6 +32,8 @@ public class UserControl {
     }
 
     public void signInOptions() {
-        //requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
+        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
     }
 }

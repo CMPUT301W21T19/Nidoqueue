@@ -7,7 +7,8 @@ public class ContextManager {
 
     Context context;
 
-    private ContextManager(){}
+    private ContextManager() {
+    }
 
     public static ContextManager getInstance() {
         return contextManager;

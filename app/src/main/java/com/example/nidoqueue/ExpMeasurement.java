@@ -9,16 +9,19 @@ public class ExpMeasurement extends Experiment{
 
     private String unit;
     private ArrayList<Double> trials;
+    private ArrayList<Trial> trial;
     final private String TYPE = "measurement";
 
     public ExpMeasurement(User owner, String name, String description, String unit, Boolean geoLocation) {
         super(owner, name, description, geoLocation);
         this.unit = unit;
         this.trials = new ArrayList<>();
+        this.trial = new ArrayList<>();
     }
 
     public void addTrial(double measurement){
         trials.add(measurement);
+        trial.add(new Trial(measurement, Integer.toString(this.trial.size())));
     }
 
     public ArrayList<Double> getTrials() {
@@ -29,7 +32,9 @@ public class ExpMeasurement extends Experiment{
         return unit;
     }
 
-
+    public ArrayList<Trial> getTrial() {
+        return trial;
+    }
 
     @Override
     public String getType() {

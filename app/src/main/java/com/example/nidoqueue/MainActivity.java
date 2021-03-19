@@ -11,31 +11,31 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AbstractActivity {
-//    // initialize RequestManager
-//    RequestManager requestManager = RequestManager.getInstance();
-//    ContextManager contextManager = ContextManager.getInstance();
-//
-//
-//    //initialize QAForum
-//    //TO DO
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        requestManager.startApp();
-//    }
+    // initialize RequestManager
+    RequestManager requestManager = RequestManager.getInstance();
+    //ContextManager contextManager = ContextManager.getInstance();
+
+
+    //initialize QAForum
+    //TO DO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        welcome();
+        requestManager.startApp();
     }
 
-    public void welcome() {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//
+//        welcome();
+//    }
+//
+//    public void welcome() {
+//        Intent intent = new Intent(this, WelcomeActivity.class);
+//        startActivity(intent);
+//    }
 }
