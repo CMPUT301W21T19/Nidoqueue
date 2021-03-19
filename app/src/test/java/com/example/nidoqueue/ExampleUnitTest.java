@@ -1,9 +1,12 @@
 package com.example.nidoqueue;
 
-import org.junit.Assert;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.Experiment;
+import com.example.nidoqueue.model.User;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,7 +21,7 @@ public class ExampleUnitTest {
 
     @Test
     public void test() {
-        Experiment test = new ExpCount(new User("June", "@gmail.com", "0000000"), "Testing", "testing now");
+        Experiment test = new ExpCount(new User("June", "@gmail.com", "0000000"), "Testing", "testing now", true);
         assertEquals("count", test.getType());
     }
 }
