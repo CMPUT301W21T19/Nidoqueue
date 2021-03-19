@@ -1,12 +1,44 @@
 package com.example.nidoqueue;
 
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class ExperimentActivity extends AppCompatActivity {
+public class ExperimentActivity extends AbstractActivity {
+
+    private View.OnClickListener Home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+    private View.OnClickListener Add = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+    private View.OnClickListener Remove = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.experiment);
+        Intent intent = getIntent();
+    }
     // class attributes
 
     //private User owner;
@@ -18,48 +50,4 @@ public class ExperimentActivity extends AppCompatActivity {
     //private ArrayList<Trials> trials;
     //private ArrayList<User> experimenterList;
 
-
-    public void publish() {
-        this.published = true;
-    }
-
-    public void unpublish() {
-        this.published = false;
-    }
-
-    //    public void subscribe(User user){
-//
-//    }
-    // getters and setters
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getRegion() {
-        return Region;
-    }
-
-    public void setRegion(String region) {
-        Region = region;
-    }
-
-    public int getNum_of_trials() {
-        return num_of_trials;
-    }
-
-    public void setNum_of_trials(int num_of_trials) {
-        this.num_of_trials = num_of_trials;
-    }
-
-    public boolean isPublished() {
-        return published;
-    }
-
-    public void setPublished(boolean published) {
-        this.published = published;
-    }
 }

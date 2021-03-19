@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class UserProfileActivity extends AppCompatActivity{
     ListView userView;
     ImageButton backButton;
-    ArrayList<UserProfile> userList;
-    ArrayAdapter<UserProfile> Adapter;
+    ArrayList<User> userList;
+    ArrayAdapter<User> Adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class UserProfileActivity extends AppCompatActivity{
         String[] Email = {"Email"};
         String[] Phone = {"Phone"};
         for (int i = 0; i < Username.length; i++) {
-            userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
+            userList.add((new User(Username[i], Email[i], Phone[i])));
         }
         Adapter = new UserProfileContent(this, userList);
         userView.setAdapter(Adapter); // This view is setup to display the experiments
