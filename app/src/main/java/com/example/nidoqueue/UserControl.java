@@ -20,7 +20,7 @@ public class UserControl {
         if(true) {
             requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), SignInActivity.class);
         } else {
-//            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
+//          requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
         }
     }
 

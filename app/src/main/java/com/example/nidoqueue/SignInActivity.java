@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SignInActivity extends AbstractActivity {
     ImageButton options;
 
-    RequestManager requestManager = RequestManager.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
 
     private View.OnClickListener Options = new View.OnClickListener() {
         @Override
@@ -26,6 +27,8 @@ public class SignInActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_user);
+        contextManager.setContext(this);
+
         options = findViewById(R.id.options_button);
         options.setOnClickListener(Options);
     }

@@ -11,19 +11,18 @@ public class UserProfileActivity extends AbstractActivity {
     ImageButton backButton;
     ImageButton homeButton;
 
+    static RequestManager requestManager = RequestManager.getInstance();
+
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-//            Intent intent = new Intent(this, SignInActivity.class);
-//            startActivity(intent);
+            requestManager.Home();
         }
     };
     private View.OnClickListener Back = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Intent intent = new Intent(this, SignInActivity.class);
-//            startActivity(intent);
+            requestManager.Home();
         }
     };
     @Override
