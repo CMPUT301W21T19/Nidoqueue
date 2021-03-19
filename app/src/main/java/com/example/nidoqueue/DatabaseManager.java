@@ -7,6 +7,13 @@ import android.util.Log;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Classname:   DatabaseManager.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Sets up the Firestore which handles our database and retrieving user information.
+ * Issues:      No issues currently.
+ */
 public class DatabaseManager extends Application {
 
     FirebaseFirestore db;
@@ -16,10 +23,18 @@ public class DatabaseManager extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        db  = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
+        updateUser();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void updateUser() {
         getDb().collection("users")
                 .document(getAndroid_id())
                 .get()
@@ -27,7 +42,7 @@ public class DatabaseManager extends Application {
                     if (task.isSuccessful()) {
                         Log.d("FireStore", "Success");
                         DocumentSnapshot document = task.getResult();
-                        if(document.exists()) {
+                        if (document.exists()) {
                             String userName = document.getString("userName");
                             String email = document.getString("email");
                             String phoneNumber = document.getString("phoneNumber");
@@ -39,11 +54,8 @@ public class DatabaseManager extends Application {
                 });
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public User getUser() {
+        updateUser();
         return user;
     }
 

@@ -12,16 +12,14 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Classname:   DataCalc.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Class that holds the functionality of all data calculations related to the experiments. This contains 6 sub classes inside this class
+ * Issues:      This needs to be tested in part 4
+ */
 public class DataCalc {
-    /**
-     * Classname:   DataCalc.java
-     * Version:     Prototype
-     * Date:        March 19th, 2021
-     * Purpose:     Class that holds the functionality of all data calculations related to the experiments. This contains 6 sub classes inside this class
-     * Issues:      This needs to be tested in part 4
-     */
-
-
     private Experiment experiment;
     private Calculator calculator;
 

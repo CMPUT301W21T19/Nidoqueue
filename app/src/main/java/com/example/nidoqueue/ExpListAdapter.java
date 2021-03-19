@@ -12,6 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * Classname:   ExpListAdapter.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Adapter for recyclerview that shows list of experiments
+ * Issues:      None
+ */
 public class ExpListAdapter extends RecyclerView.Adapter<Holder> {
         ArrayList<String> list;
 

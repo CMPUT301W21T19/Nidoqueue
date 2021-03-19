@@ -6,6 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import static com.example.nidoqueue.UserControl.contextManager;
 
+/**
+ * Classname:   RequestManager.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     This will handle the majority of the transitions in the first two screens.
+ * Issues:      Needs to be tested.
+ */
 public class RequestManager {
 
     private static final RequestManager requestManager = new RequestManager();

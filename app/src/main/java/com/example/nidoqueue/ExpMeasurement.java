@@ -2,6 +2,13 @@ package com.example.nidoqueue;
 
 import java.util.ArrayList;
 
+/**
+ * Classname:   ExpMeasurement.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Handles the measurement aspect of the experiments.
+ * Issues:      Non-functional, planning stages.
+ */
 public class ExpMeasurement extends Experiment{
     // since measurements require units, I think we should consider using a custom ArrayList or something similar
     // doing this may make it easier to display.

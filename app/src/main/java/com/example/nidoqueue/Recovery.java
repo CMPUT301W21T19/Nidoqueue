@@ -13,6 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+/**
+ * Classname:   Recovery.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Fragment window that handles the Account Recovery for the user.
+ * Issues:      Needs to be tested.
+ */
 public class Recovery extends DialogFragment {
     private EditText Email;
     private String email;
@@ -21,7 +28,7 @@ public class Recovery extends DialogFragment {
         this.email = email;
     }
     public interface OnFragmentInteractionListener {
-        void onOkPressed(UserProfile newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context){

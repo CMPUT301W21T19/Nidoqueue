@@ -2,6 +2,13 @@ package com.example.nidoqueue;
 
 import java.util.ArrayList;
 
+/**
+ * Classname:   ExpCount.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Handles the Count aspect of the experiments.
+ * Issues:      Non-functional, planning stages.
+ */
 public class ExpCount extends Experiment {
 
     private int count;

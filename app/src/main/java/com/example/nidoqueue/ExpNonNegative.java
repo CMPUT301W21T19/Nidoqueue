@@ -2,6 +2,14 @@ package com.example.nidoqueue;
 
 import java.util.ArrayList;
 
+
+/**
+ * Classname:   ExpNonNegative.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Handles the Non-Negative aspect of the experiments.
+ * Issues:      Non-functional, planning stages.
+ */
 public class ExpNonNegative extends Experiment{
     private ArrayList<Integer> trials;
     private ArrayList<Trial> trial;

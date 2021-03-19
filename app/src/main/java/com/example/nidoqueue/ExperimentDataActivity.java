@@ -12,6 +12,13 @@ import com.jjoe64.graphview.GraphView;
 
 import java.text.DecimalFormat;
 
+/**
+ * Classname:   ExperimentDataActivity.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Activity that will handle the experiment data, using OnClickListeners.
+ * Issues:      Unable to take in data. Needs to be tested.
+ */
 public class ExperimentDataActivity extends AppCompatActivity {
 
     private Experiment experiment;
