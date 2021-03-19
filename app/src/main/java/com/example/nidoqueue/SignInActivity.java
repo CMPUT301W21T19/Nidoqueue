@@ -37,7 +37,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity implements ExperienceCreateFragment.OnFragmentInteractionListener {
+public class SignInActivity extends AbstractActivity implements ExperienceCreateFragment.OnFragmentInteractionListener {
 
     ImageButton add, options, search;
     RecyclerView created, subscribed;
@@ -52,10 +52,7 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
     ExpListAdapter adapter;
 
     boolean doubleBackToExitPressedOnce = false;
-
-public class SignInActivity extends AbstractActivity {
-    ImageButton options;
-
+    
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
 

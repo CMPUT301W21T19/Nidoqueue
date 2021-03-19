@@ -6,21 +6,21 @@ public class ExpNonNegative extends Experiment{
     private ArrayList<Integer> trials;
     final private String TYPE = "nonNegative";
 
-    public ExpNonNegative(User owner, String description) {
-        super(owner, description);
+    public ExpNonNegative(User owner, String name, String description, Boolean geoLocation) {
+        super(owner, name, description, geoLocation);
         trials = new ArrayList<>();
     }
 
-    public void addTrial(int count){
-//        trials.add(count);
-        trials.add(new Trial((double)count, Integer.toString(this.trials.size())));
+    @Override
+    public String getType() {
+        return TYPE;
     }
 
-//    public ArrayList<Integer> getTrials() {
-//        return trials;
-//    }
+    public void addTrial(int count){
+        trials.add(count);
+    }
 
-    public ArrayList<Trial> getTrials() {
+    public ArrayList<Integer> getTrials() {
         return trials;
     }
 }

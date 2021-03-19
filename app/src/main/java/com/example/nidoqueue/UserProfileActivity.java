@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class UserProfileActivity extends AbstractActivity {
     ImageButton backButton;
     ImageButton homeButton;
+
+    DatabaseManager dbManager;
+    User user;
 
     static RequestManager requestManager = RequestManager.getInstance();
 
@@ -26,6 +30,7 @@ public class UserProfileActivity extends AbstractActivity {
             requestManager.Home();
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,9 @@ public class UserProfileActivity extends AbstractActivity {
 
         backButton.setOnClickListener(Back);
         homeButton.setOnClickListener(Home);
+
+        dbManager = (DatabaseManager) getApplicationContext();
+        user = dbManager.getUser();
 
 
 //        userList = new ArrayList<>();
@@ -52,26 +60,29 @@ public class UserProfileActivity extends AbstractActivity {
         TextView email = findViewById(R.id.email_display);
         TextView phoneNumber = findViewById(R.id.phone_display);
 
-        DatabaseManager dbManager = (DatabaseManager)getApplicationContext();
+        //DatabaseManager dbManager = (DatabaseManager) getApplicationContext();
 
-        dbManager.getDb().collection("users")
-                .document(dbManager.getAndroid_id())
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("FireStore", "Success");
-                        DocumentSnapshot document = task.getResult();
-                        if(document!=null) {
-                            user = document.toObject(User.class);
-                            userName.setText(user.getUserName());
-                            email.setText(user.getEmail());
-                            phoneNumber.setText(user.getPhoneNumber());
-                        }
-                    } else {
-                        Log.d("FireStore", "Failed with: ", task.getException());
-                    }
-                });
+//        dbManager.getDb().collection("users")
+//                .document(dbManager.getAndroid_id())
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        Log.d("FireStore", "Success");
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document != null) {
+//                            user = document.toObject(User.class);
+//                            userName.setText(user.getUserName());
+//                            email.setText(user.getEmail());
+//                            phoneNumber.setText(user.getPhoneNumber());
+//                        }
+//                    } else {
+//                        Log.d("FireStore", "Failed with: ", task.getException());
+//                    }
+//                });
 
+        userName.setText(user.getUserName());
+        email.setText(user.getEmail());
+        phoneNumber.setText(user.getPhoneNumber());
     }
 
     public void back() {

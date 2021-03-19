@@ -2,21 +2,15 @@ package com.example.nidoqueue;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.lang.reflect.Type;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class ExperimentDataActivity extends AppCompatActivity {
 
