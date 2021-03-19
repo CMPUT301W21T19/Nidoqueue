@@ -7,7 +7,7 @@ public class DatabaseManager {
     static FirebaseFirestore db  = FirebaseFirestore.getInstance();
 
 //    DatabaseManager() {
-////        FirebaseFirestore db =
+//       FirebaseFirestore db =
 //    }
 
 }
