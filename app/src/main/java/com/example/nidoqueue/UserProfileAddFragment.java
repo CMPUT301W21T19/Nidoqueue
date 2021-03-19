@@ -3,6 +3,7 @@ package com.example.nidoqueue;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,12 +56,14 @@ public class UserProfileAddFragment extends DialogFragment {
                 .setView(view)
                 .setTitle("Add Profile")
                 .setNegativeButton("Cancel", null)
-                .setPositiveButton("OK", (dialogInterface, i) -> {
-                    String userName = userName_EditText.getText().toString(); // Allows the user to input text
-                    String email = email_EditText.getText().toString();
-                    String phoneNumber = phoneNumber_EditText.getText().toString();
-
-                    listener.onOkPressed(new User(userName, email, phoneNumber));
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String userName = userName_EditText.getText().toString(); // Allows the user to input text
+                        String email = email_EditText.getText().toString();
+                        String phoneNumber = phoneNumber_EditText.getText().toString();
+                        listener.onOkPressed(new User(userName, email, phoneNumber));
+                    }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();
 
