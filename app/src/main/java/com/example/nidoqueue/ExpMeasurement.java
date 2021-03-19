@@ -8,8 +8,9 @@ public class ExpMeasurement extends Experiment{
     // the reason I didn't just implement this is that it may make certain things that I cannot foresee more difficult
 
     private String unit;
-    private ArrayList<Double> trials;
+//    private ArrayList<Double> trials;
     final private String TYPE = "measurement";
+    private ArrayList<Trial> trials;
 
     public ExpMeasurement(User owner, String name, String description, String unit, Boolean geoLocation) {
         super(owner, name, description, geoLocation);
@@ -18,12 +19,13 @@ public class ExpMeasurement extends Experiment{
     }
 
     public void addTrial(double measurement){
-        trials.add(measurement);
+//        trials.add(measurement);
+        trials.add(new Trial(measurement, Integer.toString(this.trials.size())));
     }
 
-    public ArrayList<Double> getTrials() {
-        return trials;
-    }
+//    public ArrayList<Double> getTrials() {
+//        return trials;
+//    }
 
     public String getUnit() {
         return unit;
@@ -32,5 +34,9 @@ public class ExpMeasurement extends Experiment{
     @Override
     public String getType() {
         return TYPE;
+    }
+
+    public ArrayList<Trial> getTrials() {
+        return trials;
     }
 }

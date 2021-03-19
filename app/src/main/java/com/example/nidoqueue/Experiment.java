@@ -87,4 +87,6 @@ public abstract class Experiment {
     }
 
     public abstract String getType();
+
+    public abstract ArrayList<Trial> getTrials();
 }
