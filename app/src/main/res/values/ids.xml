@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="container_exp_stats" type="id" />
+    <item name="exp_data_title" type="id" />
+    <item name="label_quartiles" type="id" />
+    <item name="exp_stat_quartiles" type="id" />
+    <item name="label_mean" type="id" />
+    <item name="exp_stat_mean" type="id" />
+    <item name="label_median" type="id" />
+    <item name="exp_stat_median" type="id" />
+    <item name="label_stDev" type="id" />
+    <item name="exp_stat_stDev" type="id" />
+</resources>

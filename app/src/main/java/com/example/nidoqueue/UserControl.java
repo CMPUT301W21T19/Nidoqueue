@@ -16,9 +16,9 @@ public class UserControl {
 
     public void verifyLogin() {
         if(true) {
-            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
+            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), SignInActivity.class);
         } else {
-            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
+//          requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
         }
     }
 
@@ -27,9 +27,13 @@ public class UserControl {
     }
 
     public void signUp() {
+        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
     }
 
     public void signInOptions() {
-        //requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
+        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
     }
 }

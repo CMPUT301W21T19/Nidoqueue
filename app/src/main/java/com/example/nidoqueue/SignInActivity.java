@@ -5,26 +5,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,11 +23,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity implements ExperienceCreateFragment.OnFragmentInteractionListener {
+public class SignInActivity extends AbstractActivity implements ExperienceCreateFragment.OnFragmentInteractionListener {
 
     ImageButton add, options, search;
     RecyclerView created, subscribed;
@@ -46,16 +35,32 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
     String android_id;
 
     ArrayList<Experiment> createdExps;
+    ArrayList<Experiment> subscribedExps;
     ArrayList<String> createdExpsName;
+    ArrayList<String> subscribedExpsName;
 
-    ExpListAdapter adapter;
+    ExpListAdapter createdAdapter;
+    ExpListAdapter subscribedAdapter;
 
     boolean doubleBackToExitPressedOnce = false;
+
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
+
+    private View.OnClickListener Options = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.signInOptions();
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_user);
+        contextManager.setContext(this);
+
 
         dbManager = (DatabaseManager) getApplicationContext();
         db = dbManager.getDb();
@@ -64,6 +69,8 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
 
         createdExps = new ArrayList<>();
         createdExpsName = new ArrayList<>();
+        subscribedExps = new ArrayList<>();
+        subscribedExpsName = new ArrayList<>();
 
         add = findViewById(R.id.create_exp_button);
         options = findViewById(R.id.options_button);
@@ -84,15 +91,15 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
                             Object object = document.getData();
                             String json = new Gson().toJson(object);
                             Log.v("json", json);
+                            JSONArray expArray;
                             try {
-                                JSONArray expArray = new JSONObject(json).getJSONArray("createdExp");
+                                expArray = new JSONObject(json).getJSONArray("createdExp");
                                 Log.v("json", expArray.toString());
                                 Log.d("Length", String.valueOf(expArray.length()));
                                 int i = 0;
                                 while (i < expArray.length()) {
                                     Log.d("Update", "Progress");
-                                    //String key = iterator.next();
-                                    //SONObject objArray = expArray.getJSONObject(key);
+
                                     String expType = expArray.getJSONObject(i).getString("type");
                                     Log.d("Type", expType);
                                     Experiment experiment = null;
@@ -120,36 +127,68 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
                                     Log.d("Name", exps.getName());
                                 }
 
-                                adapter = new ExpListAdapter(createdExpsName);
+                                createdAdapter = new ExpListAdapter(createdExpsName);
 
                                 created = findViewById(R.id.created_exps_list);
                                 created.setLayoutManager(new LinearLayoutManager(this));
-                                created.setAdapter(adapter);
-
-                                subscribed = findViewById(R.id.sub_exps_list);
-                                subscribed.setLayoutManager(new LinearLayoutManager(this));
-                                subscribed.setAdapter(adapter);
-
-//                                DividerItemDecoration dividerItemDecoration =
-//                                        new DividerItemDecoration(created.getContext(),new LinearLayoutManager(this).getOrientation());
-//                                created.addItemDecoration(dividerItemDecoration);
+                                created.setAdapter(createdAdapter);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            //createdExps = document.toObject(ExpDocument.class).experiments;
+
+                            object = document.getData();
+                            json = new Gson().toJson(object);
+                            Log.v("json", json);
+                            try {
+                                expArray = new JSONObject(json).getJSONArray("subscribedExp");
+                                Log.v("json", expArray.toString());
+                                Log.d("Length", String.valueOf(expArray.length()));
+                                int i = 0;
+                                while (i < expArray.length()) {
+                                    Log.d("Update", "Progress");
+
+                                    String expType = expArray.getJSONObject(i).getString("type");
+                                    Log.d("Type", expType);
+                                    Experiment experiment = null;
+                                    switch (expType) {
+                                        case "count":
+                                            experiment = new ExpCount(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
+                                            break;
+                                        case "binomial":
+                                            experiment = new ExpBinomial(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
+                                            break;
+                                        case "nonNegative":
+                                            experiment = new ExpNonNegative(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
+                                            break;
+                                        case "measurement":
+                                            experiment = new ExpMeasurement(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getString("unit"), expArray.getJSONObject(i).getBoolean("geoLocation"));
+                                            break;
+                                    }
+                                    createdExps.add(experiment);
+                                    i++;
+                                }
+
+                                subscribedExpsName = new ArrayList<>();
+                                for (Experiment exps : subscribedExps) {
+                                    subscribedExpsName.add(exps.getName());
+                                    Log.d("Name", exps.getName());
+                                }
+
+                                subscribedAdapter = new ExpListAdapter(subscribedExpsName);
+
+                                subscribed = findViewById(R.id.sub_exps_list);
+                                subscribed.setLayoutManager(new LinearLayoutManager(this));
+                                subscribed.setAdapter(subscribedAdapter);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 });
-
-//        ExpListAdapter adapter = new ExpListAdapter(createdExpsName);
-//
-//
-//
-//        created.setLayoutManager(new LinearLayoutManager(this));
-//        created.setAdapter(adapter);
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -176,8 +215,6 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
 
     @Override
     public void onOkPressed(Experiment exp, String type) {
-        Log.d("Test", "Clicked");
-
         db.collection("experiments")
                 .document(exp.getName().toLowerCase())
                 .get()
@@ -210,9 +247,5 @@ public class SignInActivity extends AppCompatActivity implements ExperienceCreat
                         Log.d("FireStore", "Failed with: ", task.getException());
                     }
                 });
-    }
-
-    class ExpListHolder {
-        public List<Experiment> exps;
     }
 }
