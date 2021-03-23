@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -67,7 +66,6 @@ public class WelcomeActivity extends AbstractActivity implements UserProfileAddF
                         boolean id_exist = false;
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                             if (documentSnapshot.getString("userName").equals(user.getUserName())) {
-                                //new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
                                 Toast.makeText(getApplicationContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_LONG).show();
                                 id_exist = true;
                                 break;
@@ -93,44 +91,24 @@ public class WelcomeActivity extends AbstractActivity implements UserProfileAddF
     }
 
     public void signIn() {
-        db.collection("users")
-                .document(android_id)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("FireStore", "Document exists!");
-                            Intent intent = new Intent(this, SignInActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Log.d("FireStore", "Document does not exists!");
-                            Toast.makeText(getApplicationContext(), "Device is not registered Yet!\nPlease sign up to continue", Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        Log.d("FireStore", "Failed with: ", task.getException());
-                    }
-                });
+        dbManager.checkDocument("users", android_id, exist -> {
+            if (exist) {
+                Intent intent = new Intent(getContext(), SignInActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "Device is not registered Yet!\nPlease sign up to continue", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void signUp() {
-        db.collection("users")
-                .document(android_id)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("FireStore", "Document exists!");
-                            Toast.makeText(getApplicationContext(), "Device already registered!\nTry sign in into your account", Toast.LENGTH_LONG).show();
-                        } else {
-                            Log.d("FireStore", "Document does not exists!");
-                            new UserProfileAddFragment("", "", "").show(getSupportFragmentManager(), "Add_User");
-                        }
-                    } else {
-                        Log.d("FireStore", "Failed with: ", task.getException());
-                    }
-                });
+        dbManager.checkDocument("users", android_id, exist -> {
+            if (exist) {
+                Toast.makeText(getApplicationContext(), "Device already registered!\nTry sign in into your account", Toast.LENGTH_LONG).show();
+            } else {
+                new UserProfileAddFragment("", "", "").show(getSupportFragmentManager(), "Add_User");
+            }
+        });
     }
 
     public void clickHere() {
