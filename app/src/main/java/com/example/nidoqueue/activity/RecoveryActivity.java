@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RecoveryActivity extends AbstractActivity {
     ImageButton backButton;
@@ -43,6 +44,9 @@ public class RecoveryActivity extends AbstractActivity {
         sendButton = findViewById(R.id.send_button);
         backButton.setOnClickListener(Back);
         sendButton.setOnClickListener(Send);
+    }
+    public FirebaseFirestore getDB() {
+        return null;
     }
 
 

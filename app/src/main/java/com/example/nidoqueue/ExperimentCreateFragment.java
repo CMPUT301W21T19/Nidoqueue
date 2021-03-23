@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;
 import com.example.nidoqueue.model.ExpMeasurement;
@@ -25,7 +24,7 @@ import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-public class ExperienceCreateFragment extends DialogFragment {
+public class ExperimentCreateFragment extends DialogFragment {
     private EditText expName_EditText, expDesc_EditText, minTrials_EditText;
     private Spinner region, type;
     private MaterialCheckBox geoLocation;
@@ -34,10 +33,10 @@ public class ExperienceCreateFragment extends DialogFragment {
     private String name, desc, minTrials, regionInfo, typeInfo;
     private Boolean geoLocationInfo;
 
-    DatabaseManager dbManager;
+    Database dbManager;
 
 
-    public ExperienceCreateFragment(String name, String desc, String minTrials, String regionInfo, String typeInfo, Boolean geoLocationInfo, DatabaseManager dbManager) {
+    public ExperimentCreateFragment(String name, String desc, String minTrials, String regionInfo, String typeInfo, Boolean geoLocationInfo, Database dbManager) {
         this.name = name;
         this.desc = desc;
         this.minTrials = minTrials;
