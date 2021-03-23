@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nidoqueue.DataCalc;
+import com.example.nidoqueue.model.ExpBinomial;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.ExpMeasurement;
+import com.example.nidoqueue.model.ExpNonNegative;
+import com.example.nidoqueue.model.Experiment;
 import com.jjoe64.graphview.GraphView;
 
 import java.text.DecimalFormat;
+import com.example.nidoqueue.R;
 
 /**
  * Classname:   ExperimentDataActivity.java
@@ -45,7 +52,7 @@ public class ExperimentDataActivity extends AppCompatActivity {
         public void onClick(View v) {
         }
     };
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

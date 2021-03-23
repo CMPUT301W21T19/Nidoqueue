@@ -1,14 +1,11 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.example.nidoqueue.R;
 
 /**
  * Classname:   ExperimentActivity.java

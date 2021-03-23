@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,18 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nidoqueue.ExpListAdapter;
+import com.example.nidoqueue.ExperienceCreateFragment;
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.controller.RequestManager;
+import com.example.nidoqueue.model.ExpBinomial;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.ExpMeasurement;
+import com.example.nidoqueue.model.ExpNonNegative;
+import com.example.nidoqueue.model.Experiment;
+import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,6 +66,7 @@ public class SignInActivity extends AbstractActivity implements ExperienceCreate
 
         }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.controller;
 
 import android.app.Application;
 import android.provider.Settings;

@@ -17,6 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.model.ExpBinomial;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.ExpMeasurement;
+import com.example.nidoqueue.model.ExpNonNegative;
+import com.example.nidoqueue.model.Experiment;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 public class ExperienceCreateFragment extends DialogFragment {

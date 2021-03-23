@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.User;
 
 public class UserProfileAddFragment extends DialogFragment {
     private EditText userName_EditText, email_EditText, phoneNumber_EditText;
