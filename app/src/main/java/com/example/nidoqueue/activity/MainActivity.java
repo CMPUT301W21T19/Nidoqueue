@@ -1,51 +1,26 @@
 package com.example.nidoqueue.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 
-
-/* public class MainActivity extends AppCompatActivity {
-    initialize RequestManager
-    RequestManager requestManager = new RequestManager();
-
-    initialize ExperimentManager
-    // ExperimentManager experimentManager = new ExperimentManager();
-
-    initialize UserControl
-    UserControl userControl = new UserControl();
-
-    initialize QAForum
-    TO DO
-
-    // public static FirebaseFirestore db;
-
-    // @Override
-    // protected void onCreate(Bundle savedInstanceState) {
-        // super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
-        // welcome();
-    // }
-
-    // public void welcome() {
-        // Intent intent = new Intent(this, WelcomeActivity.class);
-        // startActivity(intent);
-    // }
-   }
-   */
+/**
+ * Classname:   MainActivity.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In, Recover Account)
+ * Issues:      No issues, however this needs to be tested.
+ */
 
 public class MainActivity extends AbstractActivity {
-    Button signUp;
-    Button signIn;
-    Button clickHere;
-    ArrayList<UserProfile> userList;
-
     // initialize RequestManager
     RequestManager requestManager = RequestManager.getInstance();
-
     ContextManager contextManager = ContextManager.getInstance();
+
 
     private View.OnClickListener SignUp = new View.OnClickListener() {
         @Override
@@ -62,35 +37,18 @@ public class MainActivity extends AbstractActivity {
     };
 
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
-        signIn = findViewById(R.id.sign_in_button);
-        signUp = findViewById(R.id.sign_up_button);
-        clickHere = findViewById(R.id.click_here_button);
-        userList = new ArrayList<>();
-        String[] Username = {};
-        String[] Email = {};
-        String[] Phone = {};
-        for (int i = 0; i < Username.length; i++) {
-            userList.add((new UserProfile(Username[i], Email[i], Phone[i])));
-        }
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               signUp();
-            }
-        });
-        clickHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickHere();
-            }
-        });
+        welcome();
+    }
+
+    public void welcome() {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 }
 

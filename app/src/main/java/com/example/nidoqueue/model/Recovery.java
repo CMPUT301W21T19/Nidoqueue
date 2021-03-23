@@ -12,8 +12,15 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
 import com.example.nidoqueue.R;
+
+/**
+ * Classname:   Recovery.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Fragment window that handles the Account Recovery for the user.
+ * Issues:      Needs to be tested.
+ */
 
 public class Recovery extends DialogFragment {
     private EditText Email;

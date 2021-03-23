@@ -2,7 +2,7 @@ package com.example.nidoqueue.controller;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.activity.AbstractActivity;
-import com.example.nidoqueue.activity.ExperimentActivity;
+import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileActivity;
 
 public class UserControl {
@@ -21,9 +21,9 @@ public class UserControl {
 
     public void verifyLogin() {
         if(true) {
-            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
+            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), SignInActivity.class);
         } else {
-            requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
+//          requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), ExperimentActivity.class);
         }
     }
 
@@ -32,6 +32,8 @@ public class UserControl {
     }
 
     public void signUp() {
+        requestManager.transition(R.layout.welcome_user, (AbstractActivity) contextManager.getContext(), UserProfileActivity.class);
+
     }
 
     public void signInOptions() {

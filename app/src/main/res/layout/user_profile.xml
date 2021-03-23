@@ -1,12 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80D9FF"
     tools:context=".activity.UserProfileActivity">
+
+    <View
+        android:id="@+id/user_info"
+        android:layout_width="320dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585" />
+
+    <TextView
+        android:id="@+id/phone_display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/phone_display"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/user_info"
+        app:layout_constraintStart_toStartOf="@+id/user_info"
+        app:layout_constraintTop_toTopOf="@+id/user_info" />
+
+    <TextView
+        android:id="@+id/email_display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/email_display"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/username_display"
+        app:layout_constraintEnd_toEndOf="@+id/phone_display"
+        app:layout_constraintStart_toStartOf="@+id/phone_display"
+        app:layout_constraintTop_toBottomOf="@+id/phone_display" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/username_display"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:fontFamily="@font/exo"-->
+<!--        android:padding="10dp"-->
+<!--        android:text="@string/username_display"-->
+<!--        android:textColor="@color/Nido_Blue"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/email_display"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/email_display"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/email_display" />-->
+
 
     <TextView
         android:id="@+id/user_profile_text"
@@ -46,25 +109,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
-    <ListView
-        android:id="@+id/user_info"
-        android:layout_width="320dp"
-        android:layout_height="400dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
-
     <TextView
         android:id="@+id/user_title"
         android:layout_width="wrap_content"
@@ -78,5 +122,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039" />
+
+    <ImageButton
+        android:id="@+id/home_button2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#80D9FF"
+        android:contentDescription="@string/back_arrow"
+        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/arrow_up_float" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

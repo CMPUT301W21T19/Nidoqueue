@@ -7,6 +7,13 @@ import android.view.View;
 
 import com.example.nidoqueue.R;
 
+/**
+ * Classname:   ExperimentActivity.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Activity that handles the experiments. OnClickListeners are housed here.
+ * Issues:      Not actived yet.
+ */
 public class ExperimentActivity extends AbstractActivity {
 
     private View.OnClickListener Home = new View.OnClickListener() {
@@ -36,15 +43,4 @@ public class ExperimentActivity extends AbstractActivity {
         setContentView(R.layout.experiment);
         Intent intent = getIntent();
     }
-    // class attributes
-
-    //private User owner;
-    private String description;
-    private String Region;
-    private int num_of_trials;
-    private boolean published;
-    //private QuestionList questons;
-    //private ArrayList<Trials> trials;
-    //private ArrayList<User> experimenterList;
-
 }
