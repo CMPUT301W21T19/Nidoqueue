@@ -1,15 +1,25 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ListView;
 
+import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.controller.RequestManager;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.User;
+import com.example.nidoqueue.model.UserProfileContent;
 
-public class UserProfileActivity extends AbstractActivity {
+import java.util.ArrayList;
+
+public class UserProfileActivity extends AbstractActivity{
+    ListView userView;
     ImageButton backButton;
     ImageButton homeButton;
 

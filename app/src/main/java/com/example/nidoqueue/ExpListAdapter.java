@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class ExpListAdapter extends RecyclerView.Adapter<Holder> {
         ArrayList<String> list;
 
-        ExpListAdapter(ArrayList<String> list) {
+        public ExpListAdapter(ArrayList<String> list) {
             this.list = list;
         }
 

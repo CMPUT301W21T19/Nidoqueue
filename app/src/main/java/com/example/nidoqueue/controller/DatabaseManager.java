@@ -1,9 +1,10 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.controller;
 
 import android.app.Application;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 

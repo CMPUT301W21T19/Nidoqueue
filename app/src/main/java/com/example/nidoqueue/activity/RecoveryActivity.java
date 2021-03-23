@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.RequestManager;
 
 public class RecoveryActivity extends AbstractActivity {
     ImageButton backButton;
