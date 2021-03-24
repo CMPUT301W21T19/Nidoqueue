@@ -3,6 +3,9 @@ package com.example.nidoqueue;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.nidoqueue.activity.AbstractActivity;
+import com.example.nidoqueue.activity.WelcomeActivity;
+
 /**
  * Classname:   MainActivity.java
  * Version:     Prototype

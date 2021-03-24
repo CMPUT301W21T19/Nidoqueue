@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.nidoqueue.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,12 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Purpose:     Sets up the Firestore which handles our database and retrieving user information.
  * Issues:      No issues currently.
  */
-
-
-interface documentCallBack {
-    void isDocumentExist(boolean exist);
-}
-
 
 public class DatabaseManager extends Application {
 

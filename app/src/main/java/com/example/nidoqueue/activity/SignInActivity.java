@@ -95,7 +95,7 @@ public class SignInActivity extends AbstractActivity implements ExperienceCreate
 
         dbManager.checkDocument("users", android_id, exist -> {
             if (exist) {
-                Object object = dbManager.document.getData();
+                Object object = dbManager.getDocument().getData();
                 String json = new Gson().toJson(object);
                 Log.v("json", json);
                 JSONArray expArray;
