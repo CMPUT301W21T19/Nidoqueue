@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.nidoqueue.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Classname:   ExperimentActivity.java
@@ -42,5 +43,8 @@ public class ExperimentActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.experiment);
         Intent intent = getIntent();
+    }
+    public FirebaseFirestore getDB() {
+        return null;
     }
 }

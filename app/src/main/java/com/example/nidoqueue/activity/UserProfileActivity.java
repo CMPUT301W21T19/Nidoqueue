@@ -2,31 +2,29 @@ package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ListView;
 
-import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.UserControl;
+import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
-import com.example.nidoqueue.model.UserProfileContent;
-
-import java.util.ArrayList;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserProfileActivity extends AbstractActivity{
     ListView userView;
     ImageButton backButton;
     ImageButton homeButton;
 
-    DatabaseManager dbManager;
     User user;
 
     static RequestManager requestManager = RequestManager.getInstance();
+    static Database database = Database.getInstance();
+    static UserControl userControl = UserControl.getInstance();
 
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
@@ -51,8 +49,7 @@ public class UserProfileActivity extends AbstractActivity{
         backButton.setOnClickListener(Back);
         homeButton.setOnClickListener(Home);
 
-        dbManager = (DatabaseManager) getApplicationContext();
-        user = dbManager.getUser();
+        user = userControl.getUser();
 
 
 //        userList = new ArrayList<>();
@@ -102,5 +99,7 @@ public class UserProfileActivity extends AbstractActivity{
 
     public void profile() {
     }
-
+    public FirebaseFirestore getDB() {
+        return null;
+    }
 }

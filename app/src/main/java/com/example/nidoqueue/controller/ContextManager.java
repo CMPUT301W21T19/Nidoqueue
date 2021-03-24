@@ -2,30 +2,28 @@ package com.example.nidoqueue.controller;
 
 import android.content.Context;
 
-/**
- * Classname:   ContextManager.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Handles the context get & set context calls. Places a big part in the overall functionality.
- * Issues:      No issues currently.
- */
+import com.example.nidoqueue.activity.AbstractActivity;
+
 public class ContextManager {
     private static ContextManager contextManager = new ContextManager();
 
-    Context context;
+    AbstractActivity context;
 
-    private ContextManager() {
-    }
+
+    private ContextManager(){}
 
     public static ContextManager getInstance() {
         return contextManager;
     }
 
-    public void setContext(Context context) {
+    public void setContext(AbstractActivity context) {
         this.context = context;
     }
 
     public Context getContext() {
         return context;
     }
+
+    public AbstractActivity getActivity() { return context; }
+
 }

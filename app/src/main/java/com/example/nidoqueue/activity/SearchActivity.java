@@ -1,12 +1,9 @@
 package com.example.nidoqueue.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.nidoqueue.controller.ContextManager;
-import com.example.nidoqueue.controller.DatabaseManager;
+import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
@@ -23,15 +20,14 @@ import java.util.ArrayList;
  */
 import com.example.nidoqueue.R;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AbstractActivity {
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
-
-    FirebaseFirestore db;
+    static Database database = Database.getInstance();
     User user;
     String android_id;
-    DatabaseManager dbManager;
+
 
     ArrayList<Experiment> exps;
 
@@ -41,13 +37,14 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_trials);
         contextManager.setContext(this);
 
-        dbManager = (DatabaseManager) getApplicationContext();
-        db = dbManager.getDb();
         //user = dbManager.getUser();
         //android_id = dbManager.getAndroid_id();
 
         exps = new ArrayList<>();
 
 
+    }
+    public FirebaseFirestore getDB() {
+        return null;
     }
 }
