@@ -1,7 +1,5 @@
 package com.example.nidoqueue.model;
 
-import com.example.nidoqueue.Trial;
-
 import java.util.ArrayList;
 
 

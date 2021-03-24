@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nidoqueue.DataCalc;
+import com.example.nidoqueue.controller.DataCalc;
 import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;
 import com.example.nidoqueue.model.ExpMeasurement;

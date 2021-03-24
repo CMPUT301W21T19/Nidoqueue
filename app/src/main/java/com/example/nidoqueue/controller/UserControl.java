@@ -1,6 +1,5 @@
 package com.example.nidoqueue.controller;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -120,5 +119,19 @@ public class UserControl {
             }
         });
 
+    }
+
+    public void setUserDB() {
+        database.getDb().collection("users")
+                .document(database.getAndroid_id())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            database.readDocument(document);
+                        }
+                    }
+                });
     }
 }
