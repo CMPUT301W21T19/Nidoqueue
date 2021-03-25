@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.nidoqueue.activity.AbstractActivity;
 import com.example.nidoqueue.activity.WelcomeActivity;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Classname:   MainActivity.java
@@ -34,7 +35,6 @@ public class MainActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         welcome();
     }
 

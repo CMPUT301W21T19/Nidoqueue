@@ -4,7 +4,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nidoqueue.DataCalc;
-import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,9 +22,9 @@ public class ExperimentManager {
         return experimentManager;
     }
 
-    private static final ContextManager contextManager = ContextManager.getInstance();
     private static final RequestManager requestManager = RequestManager.getInstance();
-    private static final UserControl userControl = UserControl.getInstance();
+    private static final ContextManager contextManager = requestManager.getContextManager();
+    private static final UserControl userControl = requestManager.getUserControl();
 //    private static final Database database = Database.getInstance();
     String android_id;
 
@@ -49,42 +48,42 @@ public class ExperimentManager {
 
     public void addExp(Experiment exp, String type) {
 
-        FirebaseFirestore db = contextManager.getActivity().getDB();
-        User user = userControl.getUser();
-
-        Log.d("Test", "Clicked");
-
-        db.collection("experiments")
-                .document(exp.getName().toLowerCase())
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("FireStore", "Document exists!");
-                            Toast.makeText(contextManager.getActivity().getApplicationContext(), "Name already exists!\nTry use other name", Toast.LENGTH_LONG).show();
-                        } else {
-                            user.createExp(exp);
-                            db.collection("experiments")
-                                    .document(exp.getName().toLowerCase())
-                                    .set(exp)
-                                    .addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) {
-                                            Map<String, String> ownerId = new HashMap<>();
-                                            ownerId.put("owner", android_id);
-                                            db.collection("experiments")
-                                                    .document(exp.getName().toLowerCase())
-                                                    .set(ownerId, SetOptions.merge());
-
-                                            db.collection("users")
-                                                    .document(android_id)
-                                                    .update("createdExp", FieldValue.arrayUnion(exp));
-                                        }
-                                    });
-                        }
-                    } else {
-                        Log.d("FireStore", "Failed with: ", task.getException());
-                    }
-                });
+//        FirebaseFirestore db = contextManager.getActivity().getDB();
+//        User user = userControl.getUser();
+//
+//        Log.d("Test", "Clicked");
+//
+//        db.collection("experiments")
+//                .document(exp.getName().toLowerCase())
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            Log.d("FireStore", "Document exists!");
+//                            Toast.makeText(contextManager.getActivity().getApplicationContext(), "Name already exists!\nTry use other name", Toast.LENGTH_LONG).show();
+//                        } else {
+//                            user.createExp(exp);
+//                            db.collection("experiments")
+//                                    .document(exp.getName().toLowerCase())
+//                                    .set(exp)
+//                                    .addOnCompleteListener(task1 -> {
+//                                        if (task1.isSuccessful()) {
+//                                            Map<String, String> ownerId = new HashMap<>();
+//                                            ownerId.put("owner", android_id);
+//                                            db.collection("experiments")
+//                                                    .document(exp.getName().toLowerCase())
+//                                                    .set(ownerId, SetOptions.merge());
+//
+//                                            db.collection("users")
+//                                                    .document(android_id)
+//                                                    .update("createdExp", FieldValue.arrayUnion(exp));
+//                                        }
+//                                    });
+//                        }
+//                    } else {
+//                        Log.d("FireStore", "Failed with: ", task.getException());
+//                    }
+//                });
     }
 }

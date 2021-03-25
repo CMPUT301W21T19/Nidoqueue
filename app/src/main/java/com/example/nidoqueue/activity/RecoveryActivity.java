@@ -18,7 +18,7 @@ public class RecoveryActivity extends AbstractActivity {
     Button sendButton;
 
     static RequestManager requestManager = RequestManager.getInstance();
-    static ContextManager contextManager = ContextManager.getInstance();
+    static ContextManager contextManager = requestManager.getContextManager();
 
     private View.OnClickListener Send = new View.OnClickListener() {
         @Override

@@ -1,64 +1,95 @@
 package com.example.nidoqueue.controller;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Intent;
 import android.provider.Settings;
 
 import com.example.nidoqueue.DataCalc;
-import com.example.nidoqueue.model.Database;
-import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.R;
-import com.example.nidoqueue.model.User;
 import com.example.nidoqueue.activity.AbstractActivity;
 import com.example.nidoqueue.activity.MainActivity;
 import com.example.nidoqueue.activity.SearchActivity;
 import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileActivity;
+import com.example.nidoqueue.model.Experiment;
+import com.example.nidoqueue.model.User;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import static com.example.nidoqueue.controller.UserControl.contextManager;
-
-public class RequestManager {
+public class RequestManager extends Application {
 
     // Singleton pattern
-    private static final RequestManager requestManager = new RequestManager();
-    private RequestManager(){}
+    private static RequestManager requestManager;
+    private ContextManager contextManager;
+    private DatabaseManager databaseManager;
+    private UserControl userControl;
+    private ExperimentManager experimentManager;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        requestManager = this;
+        contextManager = new ContextManager();
+        databaseManager = new DatabaseManager();
+        userControl = new UserControl();
+        experimentManager = new ExperimentManager();
+    }
+
     public static RequestManager getInstance() {
         return requestManager;
     }
 
-    // Get instances of other Singleton classes needed
-    private static final UserControl userControl = UserControl.getInstance();
-    private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
-    private static final Database database = Database.getInstance();
+    public ContextManager getContextManager() {
+        return contextManager;
+    }
+
+    public DatabaseManager getDatabaseManager() {
+        return databaseManager;
+    }
+
+    public UserControl getUserControl() {
+        return userControl;
+    }
+
+    public ExperimentManager getExperimentManager() {
+        return experimentManager;
+    }
 
     // Transition between Activities
     public <T extends AbstractActivity> void transition(int layout, Class<T> nextActivity) {
-        AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
-
-        currentActivity.setContentView(layout);
+        AbstractActivity currentActivity = contextManager.getActivity();
+        //currentActivity.setContentView(layout);
         Intent intent = new Intent(currentActivity, nextActivity);
         currentActivity.startActivity(intent);
     }
 
     // Application begins with login attempt
+    @SuppressLint("HardwareIds")
     public void startApp() {
         userControl.verifyLogin();
-        String android_id = Settings.Secure.getString(contextManager.getActivity().getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
-        database.setAndroid_id(android_id);
+        databaseManager.setAndroid_id(Settings.Secure.getString(contextManager.getActivity().getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        databaseManager.setDb(FirebaseFirestore.getInstance());
     }
 
-    public void signIn() { userControl.signIn(); }
+    public void signIn() {
+        userControl.signIn();
+    }
 
-    public void signUp() { userControl.signUp(); }
+    public void signUp() {
+        userControl.signUp();
+    }
 
     // Transition to Home page
     public void Home() {
         transition(R.layout.welcome_user, SignInActivity.class);
     }
+
     // Transition to MainActivity
     public void resetApp() {
         transition(R.layout.activity_main, MainActivity.class);
     }
+
     // Transition to SearchActivity
     public void search() {
         transition(R.layout.search_trials, SearchActivity.class);
@@ -77,9 +108,6 @@ public class RequestManager {
     public DataCalc getCurrentCalc() {
         DataCalc calc = experimentManager.getCurrentCalc();
         return (calc);
-    }
-
-    public void setUserDB() {
     }
 
     public void addExperiment(Experiment exp, String type) {

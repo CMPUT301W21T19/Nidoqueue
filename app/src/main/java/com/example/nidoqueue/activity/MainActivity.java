@@ -1,15 +1,12 @@
 package com.example.nidoqueue.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
-import com.example.nidoqueue.model.Database;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Classname:   MainActivity.java
@@ -22,8 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends AbstractActivity {
     // initialize RequestManager
     RequestManager requestManager = RequestManager.getInstance();
-    ContextManager contextManager = ContextManager.getInstance();
-    Database database = Database.getInstance();
+    ContextManager contextManager = requestManager.getContextManager();
 
 
     private View.OnClickListener SignUp = new View.OnClickListener() {
@@ -47,9 +43,6 @@ public class MainActivity extends AbstractActivity {
         contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
         requestManager.startApp();
-    }
-    public FirebaseFirestore getDB() {
-        return database.getDb();
     }
 }
 

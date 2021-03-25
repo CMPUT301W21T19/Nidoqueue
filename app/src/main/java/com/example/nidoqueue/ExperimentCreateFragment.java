@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.controller.DatabaseManager;
 import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;
 import com.example.nidoqueue.model.ExpMeasurement;
@@ -33,10 +33,10 @@ public class ExperimentCreateFragment extends DialogFragment {
     private String name, desc, minTrials, regionInfo, typeInfo;
     private Boolean geoLocationInfo;
 
-    Database dbManager;
+    DatabaseManager dbManager;
 
 
-    public ExperimentCreateFragment(String name, String desc, String minTrials, String regionInfo, String typeInfo, Boolean geoLocationInfo, Database dbManager) {
+    public ExperimentCreateFragment(String name, String desc, String minTrials, String regionInfo, String typeInfo, Boolean geoLocationInfo, DatabaseManager dbManager) {
         this.name = name;
         this.desc = desc;
         this.minTrials = minTrials;
@@ -93,17 +93,17 @@ public class ExperimentCreateFragment extends DialogFragment {
                         String typeSelected = type.getSelectedItem().toString();
                         Boolean geoLocationChecked = geoLocation.isChecked();
 
-                        if (typeSelected.equals("Count")) {
-                            listener.onOkPressed(new ExpCount(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
-                        } else if (typeSelected.equals("Binomial")) {
-                            listener.onOkPressed(new ExpBinomial(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
-                        } else if (typeSelected.equals("Non Negative")) {
-                            listener.onOkPressed(new ExpNonNegative(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
-                        } else if (typeSelected.equals("Measurement")) {
-                            listener.onOkPressed(new ExpMeasurement(dbManager.getUser(), expName, expDesc, "", geoLocationChecked), typeSelected);
-                        } else {
-                            Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
-                        }
+//                        if (typeSelected.equals("Count")) {
+//                            listener.onOkPressed(new ExpCount(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+//                        } else if (typeSelected.equals("Binomial")) {
+//                            listener.onOkPressed(new ExpBinomial(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+//                        } else if (typeSelected.equals("Non Negative")) {
+//                            listener.onOkPressed(new ExpNonNegative(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+//                        } else if (typeSelected.equals("Measurement")) {
+//                            listener.onOkPressed(new ExpMeasurement(dbManager.getUser(), expName, expDesc, "", geoLocationChecked), typeSelected);
+//                        } else {
+//                            Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();
