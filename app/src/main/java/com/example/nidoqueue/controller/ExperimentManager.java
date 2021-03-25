@@ -3,8 +3,6 @@ package com.example.nidoqueue.controller;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.nidoqueue.DataCalc;
-import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -14,7 +12,13 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Classname:   ExperimentManager.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     This handles experiment transitions similar to the UserControl class.
+ * Issues:      Incomplete, will be worked on in the future.
+ */
 public class ExperimentManager {
 
     private static final ExperimentManager experimentManager = new ExperimentManager();

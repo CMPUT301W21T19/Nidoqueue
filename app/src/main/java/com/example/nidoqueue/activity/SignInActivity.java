@@ -1,16 +1,23 @@
 package com.example.nidoqueue.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
-import com.example.nidoqueue.ExpListAdapter;
-import com.example.nidoqueue.ExperimentCreateFragment;
+import com.example.nidoqueue.model.ExpListAdapter;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
@@ -22,24 +29,15 @@ import com.example.nidoqueue.model.ExpMeasurement;
 import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener {
     ImageButton add, options, search;
-    RecyclerView created, subscribed;
     User user;
     String android_id;
 
-    ArrayList<Experiment> createdExps;
-    ArrayList<String> createdExpsName;
+
 
     ExpListAdapter adapter;
 
@@ -75,8 +73,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         user = userControl.getUser();
         android_id = database.getAndroid_id();
 
-        createdExps = new ArrayList<>();
-        createdExpsName = new ArrayList<>();
+
 
         add = findViewById(R.id.create_exp_button);
         options = findViewById(R.id.options_button);
@@ -92,75 +89,97 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
 
 
 
-        database.getDb().collection("users")
-                .document(android_id)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Object object = document.getData();
-                            String json = new Gson().toJson(object);
-                            Log.v("json", json);
-                            try {
-                                JSONArray expArray = new JSONObject(json).getJSONArray("createdExp");
-                                Log.v("json", expArray.toString());
-                                Log.d("Length", String.valueOf(expArray.length()));
-                                int i = 0;
-                                while (i < expArray.length()) {
-                                    Log.d("Update", "Progress");
-                                    //String key = iterator.next();
-                                    //SONObject objArray = expArray.getJSONObject(key);
-                                    String expType = expArray.getJSONObject(i).getString("type");
-                                    Log.d("Type", expType);
-                                    Experiment experiment = null;
-                                    switch (expType) {
-                                        case "count":
-                                            experiment = new ExpCount(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
-                                            break;
-                                        case "binomial":
-                                            experiment = new ExpBinomial(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
-                                            break;
-                                        case "nonNegative":
-                                            experiment = new ExpNonNegative(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getBoolean("geoLocation"));
-                                            break;
-                                        case "measurement":
-                                            experiment = new ExpMeasurement(user, expArray.getJSONObject(i).getString("name"), expArray.getJSONObject(i).getString("description"), expArray.getJSONObject(i).getString("unit"), expArray.getJSONObject(i).getBoolean("geoLocation"));
-                                            break;
-                                    }
-                                    createdExps.add(experiment);
-                                    i++;
-                                }
 
-                                createdExpsName = new ArrayList<>();
-                                for (Experiment exps : createdExps) {
-                                    createdExpsName.add(exps.getName());
-                                    Log.d("Name", exps.getName());
-                                }
-
-                                adapter = new ExpListAdapter(createdExpsName);
-
-                                created = findViewById(R.id.created_exps_list);
-                                created.setLayoutManager(new LinearLayoutManager(this));
-                                created.setAdapter(adapter);
-
-                                subscribed = findViewById(R.id.sub_exps_list);
-                                subscribed.setLayoutManager(new LinearLayoutManager(this));
-                                subscribed.setAdapter(adapter);
-
-//                                DividerItemDecoration dividerItemDecoration =
-//                                        new DividerItemDecoration(created.getContext(),new LinearLayoutManager(this).getOrientation());
-//                                created.addItemDecoration(dividerItemDecoration);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            //createdExps = document.toObject(ExpDocument.class).experiments;
-                        }
-                    }
-                });
     }
     public FirebaseFirestore getDB() {
         return database.getDb();
+    }
+
+    public static class ExperimentCreateFragment extends DialogFragment {
+        private EditText expName_EditText, expDesc_EditText, minTrials_EditText;
+        private Spinner region, type;
+        private MaterialCheckBox geoLocation;
+        private OnFragmentInteractionListener listener;
+
+        private String name, desc, minTrials, regionInfo, typeInfo;
+        private Boolean geoLocationInfo;
+
+        Database dbManager;
+
+
+        public ExperimentCreateFragment(String name, String desc, String minTrials, String regionInfo, String typeInfo, Boolean geoLocationInfo, Database dbManager) {
+            this.name = name;
+            this.desc = desc;
+            this.minTrials = minTrials;
+            this.regionInfo = regionInfo;
+            this.typeInfo = typeInfo;
+            this.geoLocationInfo = geoLocationInfo;
+            this.dbManager = dbManager;
+        }
+
+        public interface OnFragmentInteractionListener {
+            void onOkPressed(Experiment exp, String type); // The new experiment is passed into this method when the "ok" button is pressed.
+        }
+
+        @Override
+        public void onAttach(Context context) {
+            super.onAttach(context);
+            if (context instanceof OnFragmentInteractionListener) {
+                listener = (OnFragmentInteractionListener) context;
+            } else {
+                throw new RuntimeException(context.toString()
+                        + " must implement onFragmentInteractionListener");
+            }
+        }
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.exp_create_from, null); //  Sets up the view for the add/edit experiment window
+
+            expName_EditText = view.findViewById(R.id.exp_name);
+            expDesc_EditText = view.findViewById(R.id.exp_desc);
+            minTrials_EditText = view.findViewById(R.id.minTrials);
+            region = view.findViewById(R.id.region);
+            type = view.findViewById(R.id.type);
+            geoLocation = view.findViewById(R.id.geoLocation);
+
+            ArrayAdapter regionAdapter = ArrayAdapter.createFromResource(getContext(), R.array.countries_array, R.layout.custom_dropdown);
+            ArrayAdapter typeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.expType_array, R.layout.custom_dropdown);
+            region.setAdapter(regionAdapter);
+            type.setAdapter(typeAdapter);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            return builder
+                    .setView(view)
+                    .setTitle("Create Experience")
+                    .setNegativeButton("Cancel", null)
+                    .setPositiveButton("Publish", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String expName = expName_EditText.getText().toString();
+                            String expDesc = expDesc_EditText.getText().toString();
+                            String minTrials = minTrials_EditText.getText().toString();
+                            String regionSelected = region.getSelectedItem().toString();
+                            String typeSelected = type.getSelectedItem().toString();
+                            Boolean geoLocationChecked = geoLocation.isChecked();
+
+                            if (typeSelected.equals("Count")) {
+                                listener.onOkPressed(new ExpCount(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+                            } else if (typeSelected.equals("Binomial")) {
+                                listener.onOkPressed(new ExpBinomial(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+                            } else if (typeSelected.equals("Non Negative")) {
+                                listener.onOkPressed(new ExpNonNegative(dbManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+                            } else if (typeSelected.equals("Measurement")) {
+                                listener.onOkPressed(new ExpMeasurement(dbManager.getUser(), expName, expDesc, "", geoLocationChecked), typeSelected);
+                            } else {
+                                Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }) // New experiment is created with new arguments on the press of the "ok" button.
+                    .create();
+
+        }
+
     }
 }
