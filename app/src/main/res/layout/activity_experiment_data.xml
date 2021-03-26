@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80D9FF"
+
+    tools:context=".ExperimentDataActivity">
+
+    <!--TITLE-->
+    <TextView
+        android:id="@+id/exp_data_title"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Experiment Data"
+
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toRightOf="@+id/back_button6"
+        app:layout_constraintRight_toLeftOf="@+id/home_button3"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--BACK BUTTON-->
+    <ImageButton
+        android:id="@+id/back_button6"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="#80D9FF"
+        android:contentDescription="back_arrow"
+        android:tint="#FFFFFF"
+
+
+        app:layout_constraintBottom_toBottomOf="@+id/exp_data_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/exp_data_title"
+
+
+        app:srcCompat="?attr/homeAsUpIndicator" />
+    <!--HOME BUTTON-->
+    <ImageButton
+        android:id="@+id/home_button3"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="#80D9FF"
+        android:contentDescription="Home_button"
+        android:tint="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="@+id/exp_data_title"
+        app:layout_constraintLeft_toRightOf="@+id/exp_data_title"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <!--EXPERIMENT STATS-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_exp_stats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+
+        app:layout_constraintTop_toBottomOf="@id/exp_data_title"
+        app:layout_constraintBottom_toTopOf="@id/histogram"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <TextView
+            android:id="@+id/label_quartiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            android:text="Quartiles:"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/exp_stat_quartiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:text="1xxx"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/label_mean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/label_quartiles"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            android:text="Mean:"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/exp_stat_mean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/exp_stat_quartiles"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:text="2xxx"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/label_median"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/label_mean"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            android:text="Meidan:"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/exp_stat_median"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/exp_stat_mean"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:text="3xxx"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/label_stDev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/label_median"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            android:text="St. Dev:"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/exp_stat_stDev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/exp_stat_median"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:text="4xxx"
+            android:textSize="16sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--HISTOGRAM-->
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/histogram"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/container_exp_stats"
+        app:layout_constraintBottom_toTopOf="@+id/plots"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <!--PLOTS-->
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/plots"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/histogram"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

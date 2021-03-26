@@ -1,22 +1,29 @@
+package com.example.nidoqueue;
 
-        package com.example.nidoqueue;
+import android.os.Build;
 
-        import android.os.Build;
-        import android.provider.ContactsContract;
+import androidx.annotation.RequiresApi;
 
-        import androidx.annotation.RequiresApi;
+import com.example.nidoqueue.model.ExpBinomial;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.ExpMeasurement;
+import com.example.nidoqueue.model.ExpNonNegative;
+import com.example.nidoqueue.model.Experiment;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
-        import com.jjoe64.graphview.series.BarGraphSeries;
-        import com.jjoe64.graphview.series.DataPoint;
-        import com.jjoe64.graphview.series.LineGraphSeries;
-        import com.jjoe64.graphview.series.PointsGraphSeries;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 
-        import java.time.LocalDateTime;
-        import java.time.ZonedDateTime;
-        import java.util.ArrayList;
-        import java.util.Calendar;
-        import java.util.Collections;
-
+/**
+ * Classname:   DataCalc.java
+ * Version:     Prototype
+ * Date:        March 19th, 2021
+ * Purpose:     Class that holds the functionality of all data calculations related to the experiments. This contains 6 sub classes inside this class
+ * Issues:      This needs to be tested in part 4
+ */
 public class DataCalc {
     private Experiment experiment;
     private Calculator calculator;
@@ -34,6 +41,8 @@ public class DataCalc {
             this.calculator = new MeasureCalc((ExpMeasurement) experiment);
         }
     }
+
+
 
     public double getMedian(){
         return calculator.getMedian();
@@ -264,7 +273,7 @@ class NonNegCalc extends Calculator{
 
     public NonNegCalc(ExpNonNegative nonNeg) {
         this.nonNeg = nonNeg;
-        this.trials = nonNeg.getTrials();
+        this.trials = nonNeg.getTrial();
         this.classData = new ArrayList<>();
 
         for(int i = 0; i < trials.size(); i++){
@@ -397,7 +406,7 @@ class MeasureCalc extends Calculator{
 
     public MeasureCalc(ExpMeasurement measure) {
         this.measure = measure;
-        this.trials = measure.getTrials();
+        this.trials = measure.getTrial();
         this.classData = new ArrayList<>();
 
         for(int i = 0; i < trials.size(); i++){
