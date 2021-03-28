@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#80D9FF"
-    tools:context=".SearchActivity">
+    tools:context=".activity.SearchActivity">
 
     <ImageButton
         android:id="@+id/search_button2"
@@ -45,7 +45,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_info"
         android:layout_width="320dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
