@@ -1,7 +1,6 @@
 package com.example.nidoqueue.activity;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,8 +8,6 @@ import android.widget.ImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nidoqueue.ExpListAdapter;
-import com.example.nidoqueue.ExperimentCreateFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;

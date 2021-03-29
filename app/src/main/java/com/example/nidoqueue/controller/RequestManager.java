@@ -3,7 +3,7 @@ package com.example.nidoqueue.controller;
 import android.content.Intent;
 import android.provider.Settings;
 
-import com.example.nidoqueue.DataCalc;
+import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.R;

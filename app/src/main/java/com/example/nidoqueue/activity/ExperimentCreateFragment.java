@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;

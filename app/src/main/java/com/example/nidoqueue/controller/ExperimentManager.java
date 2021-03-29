@@ -3,8 +3,7 @@ package com.example.nidoqueue.controller;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.nidoqueue.DataCalc;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
