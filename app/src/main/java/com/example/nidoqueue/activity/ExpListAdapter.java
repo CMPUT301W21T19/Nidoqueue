@@ -1,7 +1,6 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.activity;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.nidoqueue.R;
 
 import java.util.ArrayList;
 
