@@ -1,4 +1,4 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.model;
 
 import android.os.Build;
 
