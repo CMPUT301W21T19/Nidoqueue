@@ -1,14 +1,9 @@
-package com.example.nidoqueue;
+package com.example.nidoqueue.model;
 
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.nidoqueue.model.ExpBinomial;
-import com.example.nidoqueue.model.ExpCount;
-import com.example.nidoqueue.model.ExpMeasurement;
-import com.example.nidoqueue.model.ExpNonNegative;
-import com.example.nidoqueue.model.Experiment;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
