@@ -19,25 +19,10 @@ public class UserProfileActivity extends AbstractActivity{
     ListView userView;
     ImageButton backButton;
     ImageButton homeButton;
-
     User user;
-
     static RequestManager requestManager = RequestManager.getInstance();
     static Database database = Database.getInstance();
     static UserControl userControl = UserControl.getInstance();
-
-    private View.OnClickListener Home = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.Home();
-        }
-    };
-    private View.OnClickListener Back = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.Home();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +36,14 @@ public class UserProfileActivity extends AbstractActivity{
 
         user = userControl.getUser();
 
+        //userName.setText(user.getUserName());
+        //email.setText(user.getEmail());
+        //phoneNumber.setText(user.getPhoneNumber());
+
+        TextView userName = findViewById(R.id.user_title);
+        //TextView userName = findViewById(R.id.username_display);
+        TextView email = findViewById(R.id.email_display);
+        TextView phoneNumber = findViewById(R.id.phone_display);
 
 //        userList = new ArrayList<>();
 //        String[] Username = {"Username"};
@@ -61,11 +54,6 @@ public class UserProfileActivity extends AbstractActivity{
 //        }
 //        Adapter = new UserProfileContent(this, userList);
 //        userView.setAdapter(Adapter); // This view is setup to display the experiments
-
-        TextView userName = findViewById(R.id.user_title);
-        //TextView userName = findViewById(R.id.username_display);
-        TextView email = findViewById(R.id.email_display);
-        TextView phoneNumber = findViewById(R.id.phone_display);
 
         //DatabaseManager dbManager = (DatabaseManager) getApplicationContext();
 
@@ -87,18 +75,20 @@ public class UserProfileActivity extends AbstractActivity{
 //                    }
 //                });
 
-        userName.setText(user.getUserName());
-        email.setText(user.getEmail());
-        phoneNumber.setText(user.getPhoneNumber());
     }
+    private View.OnClickListener Home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.home();
+        }
+    };
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.home();
+        }
+    };
 
-    public void back() {
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
-    }
-
-    public void profile() {
-    }
     public FirebaseFirestore getDB() {
         return null;
     }
