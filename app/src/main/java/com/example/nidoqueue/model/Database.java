@@ -3,6 +3,7 @@ package com.example.nidoqueue.model;
 import android.app.Application;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.ExperimentManager;
@@ -18,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Issues:      No issues currently.
  */
 public class Database {
-
     FirebaseFirestore db;
     String android_id;
     User user;
@@ -28,10 +28,6 @@ public class Database {
 
     private Database() {
         db = FirebaseFirestore.getInstance();
-//        android_id = Settings.Secure.getString(contextManager.getActivity().getApplicationContext().getContentResolver(),
-//                Settings.Secure.ANDROID_ID);
-
-//        updateUser();
     }
     public static Database getInstance() {
         return database;
