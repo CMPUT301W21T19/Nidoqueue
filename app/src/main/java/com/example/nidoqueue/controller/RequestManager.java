@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
@@ -29,7 +30,6 @@ public class RequestManager {
     // Get instances of other Singleton classes needed
     private static final UserControl userControl = UserControl.getInstance();
     private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
-    private static final GeneralManager generalManager = GeneralManager.getInstance();
     private static final Database database = Database.getInstance();
 
     // Transition between Activities
@@ -68,19 +68,22 @@ public class RequestManager {
         experimentManager.getCurrentCalc();
     }
     /******************************************************************************
-     * GeneralManager methods are called.
+     * General methods are called.
      ******************************************************************************/
     public void startApp() {
-        generalManager.verifyLogin(); // Application begins with login attempt
+        transition(R.layout.welcome_main, WelcomeActivity.class);
     }
     public void resetApp() {
-        generalManager.resetApp();
+        transition(R.layout.activity_main, MainActivity.class);
     }
     public void home() {
-        generalManager.home();
+        transition(R.layout.welcome_user, SignInActivity.class);
     }
     public void search() {
-        generalManager.search();
+        transition(R.layout.search_trials, SearchActivity .class);
+    }
+    public void back() {
+        transition(R.layout.welcome_user, SignInActivity.class);
     }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
