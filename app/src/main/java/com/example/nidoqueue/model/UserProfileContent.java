@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 public class UserProfileContent extends ArrayAdapter<User> {
     private ArrayList<User> profiles;
     private Context context;
-    private User user;
 
     public UserProfileContent(Context context, ArrayList<User> profiles) {
         super(context, 0, profiles);
@@ -30,7 +30,11 @@ public class UserProfileContent extends ArrayAdapter<User> {
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.user_profile_display, parent, false);
         }
-        //User user = profiles.get(position);
+        User pro = profiles.get(position);
+        TextView Username = view.findViewById(R.id.username_display);
+        TextView Email = view.findViewById(R.id.email_display);
+        Username.setText(pro.getUsername()); // Retrieves the info from get methods found in the experiment class
+        Email.setText(pro.getEmail());
         return view;
     }
 

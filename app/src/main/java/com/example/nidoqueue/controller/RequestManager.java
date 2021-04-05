@@ -58,6 +58,12 @@ public class RequestManager {
     public void profile() {
         userControl.profile();
     }
+    public void edit() {
+        userControl.edit();
+    }
+    public void select() {
+        userControl.select();
+    }
     /******************************************************************************
      * ExperimentManager methods are called.
      ******************************************************************************/

@@ -36,6 +36,12 @@ public class User {
     public String getPassword() {
         return password;
     }
+    public ArrayList<Experiment> getCreatedExp() {
+        return createdExp;
+    }
+    public ArrayList<Experiment> getSubscribedExp() {
+        return subscribedExp;
+    }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
      ******************************************************************************/
@@ -46,17 +52,6 @@ public class User {
         subscribedExp.add(experiment);
     }
 
-    public ArrayList<Experiment> getCreatedExp() {
-        return createdExp;
-    }
-    public ArrayList<Experiment> getSubscribedExp() {
-        return subscribedExp;
-    }
 
-    public void setCreatedExp(ArrayList<Experiment> createdExp) {
-        this.createdExp = createdExp;
-    }
-    public void setSubscribedExp(ArrayList<Experiment> subscribedExp) {
-        this.subscribedExp = subscribedExp;
-    }
+
 }

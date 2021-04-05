@@ -58,42 +58,10 @@ public class UserControl {
     public void clickHere(){
         new RecoveryFragment("").show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
-    /******************************************************************************
-     * Dead Code --- Dead Code --- Dead Code
-     ******************************************************************************/
-    /**
-    public void setID(User user) {
-        this.user = user;
-        //setID_Firebase(user);
+    public void edit(){
+        new SignUpFragment(user.getUsername(), user.getEmail(), user.getPassword()).show(contextManager.getActivity().getSupportFragmentManager(), "Edit_User");
     }
-    public void setID_Firebase(User user){
-        contextManager.getActivity().setCollection("users", database.getAndroid_id(), task -> {
-            if (task.isSuccessful()) {
-                boolean id_exist = false;
-                for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                    if (documentSnapshot.getString("userName").equals(user.getUserName())) {
-                        //new UserProfileAddFragment(user.getUserName(), user.getEmail(), user.getPhoneNumber()).show(getSupportFragmentManager(), "Add_User");
-                        Toast.makeText(contextManager.getActivity().getApplicationContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_LONG).show();
-                        id_exist = true;
-                        break;
-                    }
-                }
-                if (!id_exist) {
-                    db.collection("users")
-                            .document(database.getAndroid_id())
-                            .set(user)
-                            .addOnCompleteListener(action -> {
-                                if (action.isSuccessful()) {
-                                    Log.d("FireStore", "Succeed");
-                                } else {
-                                    Log.d("FireStore", "Failed with: ", action.getException());
-                                }
-                            });
-                }
-            } else {
-                Log.d("FireStore", "Failed with: ", task.getException());
-            }
-        });
+    public void select(){
+
     }
-     */
 }

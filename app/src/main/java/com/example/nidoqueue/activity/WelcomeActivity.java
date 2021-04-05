@@ -15,6 +15,7 @@ import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
+import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.User;
 import com.example.nidoqueue.model.UserProfileContent;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,14 +30,15 @@ import java.util.ArrayList;
  */
 public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
     Button signUp, signIn, clickHere;
-    ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
     User username, email, password;
+    User currentUser = null;
 
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final Database database = Database.getInstance();
+    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
 
     @Override
@@ -46,14 +48,6 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         contextManager.setContext(this);
 
         userList = new ArrayList<>();
-
-        String[] Username = {};
-        String[] Email = {};
-        String[] Password = {};
-
-        for (int i = 0; i < Username.length; i++) {
-            userList.add((new User(Username[i], Email[i], Password[i], null, null )));
-        }
 
         signIn = findViewById(R.id.sign_in_button);
         signUp = findViewById(R.id.sign_up_button);
@@ -106,14 +100,14 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
                 Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
             }
         }else{
-            Adapter.add(newUser);
+            currentUser = newUser;
+            databaseAlt.add_UserDB(newUser);
             requestManager.transition(R.layout.welcome_user, SignInActivity.class);
         }
 
     }
 
 
-    //documentSnapshot.getString("userName").equals(user.getUserName())
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/

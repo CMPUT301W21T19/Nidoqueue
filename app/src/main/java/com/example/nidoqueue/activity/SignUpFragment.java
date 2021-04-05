@@ -53,6 +53,10 @@ public class SignUpFragment extends DialogFragment {
         email_EditText = view.findViewById(R.id.email_add);
         password_EditText = view.findViewById(R.id.password_add);
         passwordRe_EditText = view.findViewById(R.id.password_re_add);
+        //userName_EditText.setText(username);
+        //email_EditText.setText(email);
+        //password_EditText.setText(password);
+        //passwordRe_EditText.setText(password);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
