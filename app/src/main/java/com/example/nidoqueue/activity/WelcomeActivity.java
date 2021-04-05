@@ -101,7 +101,7 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
             }
         }else{
             currentUser = newUser;
-            databaseAlt.add_UserDB(newUser);
+            databaseAlt.addUserDB(newUser);
             requestManager.transition(R.layout.welcome_user, SignInActivity.class);
         }
 

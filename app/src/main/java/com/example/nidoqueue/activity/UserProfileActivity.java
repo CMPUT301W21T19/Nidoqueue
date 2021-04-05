@@ -15,6 +15,7 @@ import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.example.nidoqueue.model.UserProfileContent;
@@ -35,6 +36,7 @@ public class UserProfileActivity extends AbstractActivity{
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final Database database = Database.getInstance();
+    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
 
     @Override
@@ -52,17 +54,15 @@ public class UserProfileActivity extends AbstractActivity{
         homeButton.setOnClickListener(Home);
         editButton.setOnClickListener(Edit);
 
-        user = userControl.getUser();
+        //userList = databaseAlt.get_UserDB();
+        /**
 
-        userList = new ArrayList<>();
-        String[] Username = {};
-        String[] Email = {};
-
-        for (int i = 0; i < Username.length; i++) {
-            userList.add((new User(Username[i], Email[i], null, null, null)));
+        for (int i = 0; i < 1; i++) {
+            userList.get(i);
         }
-        Adapter = new UserProfileContent(this, userList);
-        userView.setAdapter(Adapter); // This view is setup to display the experiments
+         */
+        //Adapter = new UserProfileContent(this, userList);
+        //userView.setAdapter(Adapter); // This view is setup to display the experiments
 
         //Username.setText(user.getUsername());
         //email.setText(user.getEmail());
@@ -96,13 +96,6 @@ public class UserProfileActivity extends AbstractActivity{
             requestManager.select();
         }
     };
-
-
-
-
-
-
-
 
     /******************************************************************************
      * Firebase Database Code

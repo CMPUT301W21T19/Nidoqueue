@@ -16,8 +16,11 @@ public class DatabaseAlt {
     /******************************************************************************
      * User Arrays
      ******************************************************************************/
-    public void add_UserDB(User newUser){
+    public void addUserDB(User newUser){
         userList.add(newUser);
+    }
+    public ArrayList<User> getUserDB(){
+        return userList;
     }
     /******************************************************************************
      * Experiment Arrays
