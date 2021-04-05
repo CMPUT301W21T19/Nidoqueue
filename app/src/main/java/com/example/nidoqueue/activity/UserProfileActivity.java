@@ -17,12 +17,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserProfileActivity extends AbstractActivity{
     ListView userView;
-    ImageButton backButton;
-    ImageButton homeButton;
+    ImageButton backButton, homeButton;
     User user;
     static RequestManager requestManager = RequestManager.getInstance();
-    static Database database = Database.getInstance();
     static UserControl userControl = UserControl.getInstance();
+    static Database database = Database.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +35,12 @@ public class UserProfileActivity extends AbstractActivity{
 
         user = userControl.getUser();
 
-        //userName.setText(user.getUserName());
+        //Username.setText(user.getUsername());
         //email.setText(user.getEmail());
-        //phoneNumber.setText(user.getPhoneNumber());
 
-        TextView userName = findViewById(R.id.user_title);
-        //TextView userName = findViewById(R.id.username_display);
-        TextView email = findViewById(R.id.email_display);
-        TextView phoneNumber = findViewById(R.id.phone_display);
+       // TextView usernameT = findViewById(R.id.user_title);
+        //TextView username = findViewById(R.id.username_display);
+       // TextView email = findViewById(R.id.email_display);
 
     }
     private View.OnClickListener Home = new View.OnClickListener() {
@@ -59,13 +56,12 @@ public class UserProfileActivity extends AbstractActivity{
         }
     };
 
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }
-
-    /******************************************************************************
-     * Colin --- Saving this code for later. We can use this.
-     ******************************************************************************/
     /**
     public userArray(){
         userList = new ArrayList<>();

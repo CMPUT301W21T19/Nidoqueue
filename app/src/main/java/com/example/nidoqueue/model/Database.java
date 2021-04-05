@@ -37,7 +37,7 @@ public class Database {
     public void setUser(User user) {
         this.user = user;
     }
-
+    /**
     public void updateUser() {
         getDb().collection("users")
                 .document(getAndroid_id())
@@ -57,9 +57,9 @@ public class Database {
                     }
                 });
     }
-
+    */
     public User getUser() {
-        updateUser();
+        //updateUser();
         return user;
     }
 

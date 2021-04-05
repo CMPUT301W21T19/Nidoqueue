@@ -44,13 +44,16 @@ public class RequestManager {
      * UserControl methods are called.
      ******************************************************************************/
     public void setUserId(User user) {
-        userControl.setID(user);
+        //userControl.setID(user);
     }
     public void signIn() {
         userControl.signIn();
     }
     public void signUp() {
         userControl.signUp();
+    }
+    public void clickHere() {
+        userControl.clickHere();
     }
     public void profile() {
         userControl.profile();

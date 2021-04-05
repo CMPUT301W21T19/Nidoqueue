@@ -108,7 +108,9 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         subscribed.setLayoutManager(new LinearLayoutManager(this));
         subscribed.setAdapter(adapter);
     }
-
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return database.getDb();
     }

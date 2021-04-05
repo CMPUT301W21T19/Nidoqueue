@@ -4,7 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nidoqueue.activity.ExperimentCreateFragment;
-import com.example.nidoqueue.activity.UserProfileAddFragment;
+import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;

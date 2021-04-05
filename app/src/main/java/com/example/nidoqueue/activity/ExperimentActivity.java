@@ -44,6 +44,10 @@ public class ExperimentActivity extends AbstractActivity {
         setContentView(R.layout.experiment);
         Intent intent = getIntent();
     }
+
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }
