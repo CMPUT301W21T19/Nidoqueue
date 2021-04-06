@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
@@ -21,7 +21,7 @@ public class UserProfileActivity extends AbstractActivity{
     ImageButton homeButton;
     User user;
     static RequestManager requestManager = RequestManager.getInstance();
-    static Database database = Database.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
 
     @Override

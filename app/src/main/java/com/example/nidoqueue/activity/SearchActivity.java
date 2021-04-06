@@ -3,7 +3,7 @@ package com.example.nidoqueue.activity;
 import android.os.Bundle;
 
 import com.example.nidoqueue.controller.ContextManager;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
@@ -24,7 +24,7 @@ public class SearchActivity extends AbstractActivity {
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
-    static Database database = Database.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
     User user;
     String android_id;
 

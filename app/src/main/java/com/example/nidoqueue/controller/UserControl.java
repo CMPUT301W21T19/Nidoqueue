@@ -7,7 +7,7 @@ import android.widget.Toast;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.activity.UserProfileActivity;
 import com.example.nidoqueue.model.User;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileAddFragment;
 import com.example.nidoqueue.activity.WelcomeActivity;
@@ -34,10 +34,11 @@ public class UserControl {
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
-    static Database database = Database.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
 
 
     public void signIn(){
+        // Check if Android ID exists in User Database
         requestManager.transition(R.layout.welcome_user, SignInActivity.class);
     }
     public void profile(){
@@ -53,7 +54,7 @@ public class UserControl {
         //setID_Firebase(user);
     }
     public void setID_Firebase(User user){
-        contextManager.getActivity().setCollection("users", database.getAndroid_id(), task -> {
+        contextManager.getActivity().setCollection("users", databaseManager.getAndroid_id(), task -> {
             if (task.isSuccessful()) {
                 boolean id_exist = false;
                 for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
@@ -66,7 +67,7 @@ public class UserControl {
                 }
                 if (!id_exist) {
                     db.collection("users")
-                            .document(database.getAndroid_id())
+                            .document(databaseManager.getAndroid_id())
                             .set(user)
                             .addOnCompleteListener(action -> {
                                 if (action.isSuccessful()) {

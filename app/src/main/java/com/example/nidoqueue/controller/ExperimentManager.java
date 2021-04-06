@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.example.nidoqueue.activity.ExperimentCreateFragment;
 import com.example.nidoqueue.activity.UserProfileAddFragment;
 import com.example.nidoqueue.model.DataCalc;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,7 +25,7 @@ public class ExperimentManager {
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
-    private static final Database database = Database.getInstance();
+    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     String android_id;
     DataCalc calc;
     Experiment currentExperiment;
@@ -44,9 +44,7 @@ public class ExperimentManager {
         return (this.calc);
     }
 
-    public void addExp(){
-        new ExperimentCreateFragment(null, null, null, null, null, null, database).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
-    }
+
 
     public void addExp(Experiment exp, String type) {
 

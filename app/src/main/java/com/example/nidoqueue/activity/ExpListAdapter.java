@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.Experiment;
 
 import java.util.ArrayList;
 
@@ -20,38 +21,49 @@ import java.util.ArrayList;
  * Purpose:     Adapter for recyclerview that shows list of experiments
  * Issues:      None
  */
-public class ExpListAdapter extends RecyclerView.Adapter<Holder> {
-        ArrayList<String> list;
+public class ExpListAdapter extends RecyclerView.Adapter<ExpListAdapter.Vh> {
+    public ArrayList<Experiment> list;
+    private View.OnClickListener ExpClickListener;
 
-        public ExpListAdapter(ArrayList<String> list) {
-            this.list = list;
-        }
-
-        @NonNull
-        @Override
-        public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext();
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.experiment_list, parent, false);
-            return new Holder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull Holder holder, int position) {
-            holder.tv.setText(list.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return list.size();
-        }
+    public ExpListAdapter(ArrayList<Experiment> list, View.OnClickListener ExpClickListener) {
+        this.list = list;
+        this.ExpClickListener = ExpClickListener;
     }
 
-    class Holder extends RecyclerView.ViewHolder {
+
+
+
+    @NonNull
+    @Override
+
+    public Vh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.experiment_list, parent, false);
+        Vh Holder = new Vh(view);
+        Holder.itemView.setOnClickListener(ExpClickListener);
+        return Holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull Vh holder, int position) {
+        holder.tv.setText(list.get(position).getName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+
+    class Vh extends RecyclerView.ViewHolder {
         TextView tv;
 
-        public Holder(@NonNull View itemView) {
+        public Vh(@NonNull View itemView) {
             super(itemView);
+//            itemView.setOnClickListener(ExpClickListener);
             tv = itemView.findViewById(R.id.exp_list_name);
         }
     }
+
+}

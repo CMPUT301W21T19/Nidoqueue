@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import com.example.nidoqueue.activity.ExpListAdapter;
+import com.example.nidoqueue.activity.ExperimentCreateFragment;
 import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DataCalc;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
@@ -17,6 +19,7 @@ import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileActivity;
 
 import static com.example.nidoqueue.controller.UserControl.contextManager;
+import static com.example.nidoqueue.controller.UserControl.databaseManager;
 
 public class RequestManager {
 
@@ -30,7 +33,7 @@ public class RequestManager {
     // Get instances of other Singleton classes needed
     private static final UserControl userControl = UserControl.getInstance();
     private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
-    private static final Database database = Database.getInstance();
+    private static final DatabaseManager database = DatabaseManager.getInstance();
 
     // Transition between Activities
     public <T extends AbstractActivity> void transition(int layout, Class<T> nextActivity) {
@@ -58,8 +61,8 @@ public class RequestManager {
     /******************************************************************************
      * ExperimentManager methods are called.
      ******************************************************************************/
-    public void addExp() {
-        experimentManager.addExp();
+    public void createExp() {
+        new ExperimentCreateFragment(null, null, null, null, null, null, database).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
     }
     public void getCurrentExp(){
         experimentManager.getCurrentExperiment();
@@ -71,6 +74,12 @@ public class RequestManager {
      * General methods are called.
      ******************************************************************************/
     public void startApp() {
+        // Set user
+        String userName = "Name";
+        String email = "Email";
+        String phoneNumber = "9994445555";
+        databaseManager.setUser(new User(userName, email, phoneNumber));
+
         transition(R.layout.welcome_main, WelcomeActivity.class);
     }
     public void resetApp() {
@@ -84,6 +93,10 @@ public class RequestManager {
     }
     public void back() {
         transition(R.layout.welcome_user, SignInActivity.class);
+    }
+
+    public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
+        expListAdapter.list.add(exp);
     }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code

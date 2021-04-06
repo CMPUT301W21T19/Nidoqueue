@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.User;
 import com.example.nidoqueue.model.UserProfileContent;
@@ -27,7 +27,7 @@ public class WelcomeActivity extends AbstractActivity implements UserProfileAddF
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final Database database = Database.getInstance();
+    private static final DatabaseManager database = DatabaseManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
