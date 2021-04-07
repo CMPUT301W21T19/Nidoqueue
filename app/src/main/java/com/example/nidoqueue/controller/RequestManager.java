@@ -95,7 +95,7 @@ public class RequestManager {
         String userName = "Name";
         String email = "Email";
         String phoneNumber = "9994445555";
-        databaseManager.setUser(new User(userName, email, phoneNumber));
+        databaseManager.setUser(new User(userName, email, phoneNumber, null, null));
 
         transition(WelcomeActivity.class);
     }

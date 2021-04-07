@@ -22,8 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class WelcomeActivity extends AbstractActivity implements UserProfileAddFragment.OnFragmentInteractionListener {
-    Button signUp, signIn;
+public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
+    Button signUp, signIn, clickHere;
     ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
     User username, email, password;
@@ -97,14 +97,14 @@ public class WelcomeActivity extends AbstractActivity implements UserProfileAddF
             }
         }else if(newUser.getEmail()==null){
             if(newUser.getUsername().equals(username) && newUser.getPassword().equals(email)){
-                requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+                requestManager.transition(SignInActivity.class);
             }else{
                 Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
             }
         }else{
             currentUser = newUser;
             databaseAlt.addUserDB(newUser);
-            requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+            requestManager.transition(SignInActivity.class);
         }
 
     }

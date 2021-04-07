@@ -44,16 +44,16 @@ public class UserControl {
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
 
-
-    public void signIn(){
-        // Check if Android ID exists in User Database
-        requestManager.transition(SignInActivity.class);
-    }
+    /******************************************************************************
+     * User Control Methods
+     ******************************************************************************/
     public void profile(){
         requestManager.transition(UserProfileActivity.class);
     }
     public void signIn(){
         new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+        // Check if Android ID exists in User Database
+//        requestManager.transition(SignInActivity.class);
     }
     public void signUp(){
         new SignUpFragment("", "", "").show(contextManager.getActivity().getSupportFragmentManager(), "Add_User");
