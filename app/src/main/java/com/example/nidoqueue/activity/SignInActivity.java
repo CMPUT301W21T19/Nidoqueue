@@ -30,18 +30,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener {
+public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     ImageButton addExp, profile, search;
     RecyclerView created, subscribed;
     User user;
 
-    ArrayList<Experiment> createdExps;
+    static ArrayList<Experiment> createdExps;
     ExpListAdapter expListAdapter;
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        requestManager.transition(ExperimentActivity.class, position);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +65,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         profile.setOnClickListener(Profile);
         search.setOnClickListener(Search);
         addExp.setOnClickListener(AddExp);
-        expListAdapter = new ExpListAdapter(createdExps, ExpClickListener);
+        expListAdapter = new ExpListAdapter(createdExps, this);
         created = findViewById(R.id.created_exps_list);
         created.setLayoutManager(new LinearLayoutManager(this));
         created.setAdapter(expListAdapter);
@@ -92,20 +98,11 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
 
     @Override
     public void onOkPressed(Experiment exp, String type) {
-
         requestManager.addExperiment(exp, type, expListAdapter);
-//        requestManager.addExp();
     }
 
 
-    private View.OnClickListener ExpClickListener = new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View view)
-        {
-            requestManager.transition(R.layout.experiment, ExperimentActivity.class);
-        }
-    };
+
 //    public void populateList(){
 //        //populateList_Firebase();
 //

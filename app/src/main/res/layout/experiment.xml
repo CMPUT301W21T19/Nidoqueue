@@ -9,7 +9,7 @@
     tools:context=".activity.ExperimentActivity">
 
     <Button
-        android:id="@+id/remove_button"
+        android:id="@+id/unsubscribe_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/subscribe_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

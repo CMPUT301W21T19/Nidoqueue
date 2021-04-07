@@ -39,10 +39,10 @@ public class UserControl {
 
     public void signIn(){
         // Check if Android ID exists in User Database
-        requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+        requestManager.transition(SignInActivity.class);
     }
     public void profile(){
-        requestManager.transition(R.layout.user_profile, UserProfileActivity.class);
+        requestManager.transition(UserProfileActivity.class);
     }
 
     public void signUp(){

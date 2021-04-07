@@ -62,6 +62,6 @@ public class WelcomeActivity extends AbstractActivity implements UserProfileAddF
     public void onOkPressed(User newUser) {
         Adapter.add(newUser);
         requestManager.setUserId(newUser);
-        requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+        requestManager.transition(SignInActivity.class);
     }
 }

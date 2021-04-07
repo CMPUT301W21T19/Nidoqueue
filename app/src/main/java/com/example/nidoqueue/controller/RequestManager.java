@@ -36,12 +36,20 @@ public class RequestManager {
     private static final DatabaseManager database = DatabaseManager.getInstance();
 
     // Transition between Activities
-    public <T extends AbstractActivity> void transition(int layout, Class<T> nextActivity) {
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity) {
         AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
-        currentActivity.setContentView(layout);
         Intent intent = new Intent(currentActivity, nextActivity);
         currentActivity.startActivity(intent);
     }
+    // Transition between Activities with position parameter
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int position) {
+        AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
+        Intent intent = new Intent(currentActivity, nextActivity);
+        intent.putExtra("ListPosition", position);
+        currentActivity.startActivity(intent);
+    }
+
+
 
     /******************************************************************************
      * UserControl methods are called.
@@ -80,23 +88,27 @@ public class RequestManager {
         String phoneNumber = "9994445555";
         databaseManager.setUser(new User(userName, email, phoneNumber));
 
-        transition(R.layout.welcome_main, WelcomeActivity.class);
+        transition(WelcomeActivity.class);
     }
     public void resetApp() {
-        transition(R.layout.activity_main, MainActivity.class);
+        transition(MainActivity.class);
     }
     public void home() {
-        transition(R.layout.welcome_user, SignInActivity.class);
+        transition(SignInActivity.class);
     }
     public void search() {
-        transition(R.layout.search_trials, SearchActivity .class);
+        transition(SearchActivity .class);
     }
     public void back() {
-        transition(R.layout.welcome_user, SignInActivity.class);
+        transition(SignInActivity.class);
     }
 
     public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
         expListAdapter.list.add(exp);
+    }
+
+    public void sub_exp(Experiment experiment) {
+        databaseManager.getUser().addSubscribedExp(experiment);
     }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code

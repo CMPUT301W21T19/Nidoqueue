@@ -23,13 +23,12 @@ import java.util.ArrayList;
  */
 public class ExpListAdapter extends RecyclerView.Adapter<ExpListAdapter.Vh> {
     public ArrayList<Experiment> list;
-    private View.OnClickListener ExpClickListener;
+    private RecyclerViewClickListener ExpClickListener;
 
-    public ExpListAdapter(ArrayList<Experiment> list, View.OnClickListener ExpClickListener) {
+    public ExpListAdapter(ArrayList<Experiment> list, RecyclerViewClickListener ExpClickListener) {
         this.list = list;
         this.ExpClickListener = ExpClickListener;
     }
-
 
 
 
@@ -41,7 +40,6 @@ public class ExpListAdapter extends RecyclerView.Adapter<ExpListAdapter.Vh> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.experiment_list, parent, false);
         Vh Holder = new Vh(view);
-        Holder.itemView.setOnClickListener(ExpClickListener);
         return Holder;
     }
 
@@ -56,13 +54,18 @@ public class ExpListAdapter extends RecyclerView.Adapter<ExpListAdapter.Vh> {
     }
 
 
-    class Vh extends RecyclerView.ViewHolder {
+    class Vh extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tv;
 
         public Vh(@NonNull View itemView) {
             super(itemView);
-//            itemView.setOnClickListener(ExpClickListener);
+            itemView.setOnClickListener(this);
             tv = itemView.findViewById(R.id.exp_list_name);
+        }
+        @Override
+        public void onClick(View v) {
+            ExpClickListener.recyclerViewListClicked(v, this.getLayoutPosition());
+
         }
     }
 
