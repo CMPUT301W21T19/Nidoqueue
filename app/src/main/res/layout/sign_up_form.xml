@@ -29,7 +29,7 @@
         android:inputType="textEmailAddress"
         android:importantForAutofill="no" />
     <EditText
-        android:id="@+id/phone_add"
+        android:id="@+id/password_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/exo"
@@ -37,7 +37,19 @@
         android:textColor="@color/Nido_Blue"
         android:textSize="20sp"
         android:ems="10"
-        android:hint="@string/phone_optional"
-        android:inputType="phone"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
+    <EditText
+        android:id="@+id/password_re_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        android:ems="10"
+        android:hint="@string/re_enter_password"
+        android:inputType="textPassword"
         android:importantForAutofill="no" />
 </LinearLayout>

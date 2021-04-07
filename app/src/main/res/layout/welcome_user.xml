@@ -25,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
         android:id="@+id/subscribed_exp_label"
@@ -49,7 +49,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/created_exps_list"
         android:layout_width="320dp"
-        android:layout_height="175dp"
+        android:layout_height="125dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -63,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
+        app:layout_constraintVertical_bias="0.757" />
 
     <ImageButton
         android:id="@+id/search_button1"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <ImageButton
-        android:id="@+id/options_button"
+        android:id="@+id/profile_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -109,22 +109,22 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="#80D9FF"
-        android:contentDescription="@string/options_button"
-        android:tint="#FFFFFF"
         android:clickable="true"
+        android:contentDescription="@string/profile_button"
         android:focusable="true"
+        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sub_exps_list"
         android:layout_width="320dp"
-        android:layout_height="175dp"
+        android:layout_height="125dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -146,6 +146,8 @@
         android:id="@+id/create_exp_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="#80D9FF"
@@ -153,6 +155,10 @@
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/created_exps_list"
+        app:layout_constraintVertical_bias="0.746"
         app:srcCompat="@android:drawable/ic_menu_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package com.example.nidoqueue.controller;
 
 import android.content.Intent;
 import android.provider.Settings;
+import android.widget.Toast;
 
+import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
@@ -33,64 +35,71 @@ public class RequestManager {
     // Transition between Activities
     public <T extends AbstractActivity> void transition(int layout, Class<T> nextActivity) {
         AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
-
         currentActivity.setContentView(layout);
         Intent intent = new Intent(currentActivity, nextActivity);
         currentActivity.startActivity(intent);
     }
 
-    // Application begins with login attempt
+    /******************************************************************************
+     * UserControl methods are called.
+     ******************************************************************************/
+    public void setUserId(User user) {
+        //userControl.setID(user);
+    }
+    public void signIn() {
+        userControl.signIn();
+    }
+    public void signUp() {
+        userControl.signUp();
+    }
+    public void clickHere() {
+        userControl.clickHere();
+    }
+    public void profile() {
+        userControl.profile();
+    }
+    public void edit() {
+        userControl.edit();
+    }
+    public void select() {
+        userControl.select();
+    }
+    /******************************************************************************
+     * ExperimentManager methods are called.
+     ******************************************************************************/
+    public void addExp() {
+        experimentManager.addExp();
+    }
+    public void getCurrentExp(){
+        experimentManager.getCurrentExperiment();
+    }
+    public void getCurrentCalc(){
+        experimentManager.getCurrentCalc();
+    }
+    /******************************************************************************
+     * General methods are called.
+     ******************************************************************************/
     public void startApp() {
-        userControl.verifyLogin();
-        String android_id = Settings.Secure.getString(contextManager.getActivity().getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
-        database.setAndroid_id(android_id);
+        transition(R.layout.welcome_main, WelcomeActivity.class);
     }
-
-    public void signIn() { userControl.signIn(); }
-
-    public void signUp() { userControl.signUp(); }
-
-    // Transition to Home page
-    public void Home() {
-        transition(R.layout.welcome_user, SignInActivity.class);
-    }
-    // Transition to MainActivity
     public void resetApp() {
         transition(R.layout.activity_main, MainActivity.class);
     }
-    // Transition to SearchActivity
+    public void home() {
+        transition(R.layout.welcome_user, SignInActivity.class);
+    }
     public void search() {
-        transition(R.layout.search_trials, SearchActivity.class);
+        transition(R.layout.search_trials, SearchActivity .class);
     }
-
-    public void signInOptions() {
-        transition(R.layout.user_profile, UserProfileActivity.class);
+    public void back() {
+        transition(R.layout.welcome_user, SignInActivity.class);
     }
-
-
-    public Experiment getCurrentExp() {
-        Experiment experiment = experimentManager.getCurrentExperiment();
-        return (experiment);
-    }
-
-    public DataCalc getCurrentCalc() {
-        DataCalc calc = experimentManager.getCurrentCalc();
-        return (calc);
-    }
-
-    public void setUserDB() {
-    }
-
+    /******************************************************************************
+     * Dead Code --- Dead Code --- Dead Code
+     ******************************************************************************/
+    /**
     public void addExperiment(Experiment exp, String type) {
         experimentManager.addExp(exp, type);
     }
-
-    public void setUserId(User user) {
-        userControl.setID(user);
-    }
-
-//    public void setUserId() {
-//        userControl.setID();
-//    }
+    */
 }

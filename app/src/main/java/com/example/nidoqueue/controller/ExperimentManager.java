@@ -3,7 +3,10 @@ package com.example.nidoqueue.controller;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.nidoqueue.activity.ExperimentCreateFragment;
+import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.model.DataCalc;
+import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -15,20 +18,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExperimentManager {
-
     private static final ExperimentManager experimentManager = new ExperimentManager();
-
     public static ExperimentManager getInstance() {
         return experimentManager;
     }
-
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
-//    private static final Database database = Database.getInstance();
+    private static final Database database = Database.getInstance();
     String android_id;
-
-
     DataCalc calc;
     Experiment currentExperiment;
 
@@ -44,6 +42,10 @@ public class ExperimentManager {
 
     public DataCalc getCurrentCalc() {
         return (this.calc);
+    }
+
+    public void addExp(){
+        new ExperimentCreateFragment(null, null, null, null, null, null, database).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
     }
 
     public void addExp(Experiment exp, String type) {

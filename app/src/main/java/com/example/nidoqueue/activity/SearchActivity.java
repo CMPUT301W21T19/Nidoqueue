@@ -44,6 +44,9 @@ public class SearchActivity extends AbstractActivity {
 
 
     }
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }

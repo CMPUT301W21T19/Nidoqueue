@@ -11,17 +11,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  * Classname:   AbstractActivity.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Replaces AppCompactActivity, in which our Activities extend                  this class instead. Places a big part in the overall functionality.
- * Issues:	   No issues currently.
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Replaces AppCompactActivity, in which our Activities extend this class instead.
+ *              Places a big part in the overall functionality.
+ * Issues:	    No issues currently.
  */
 
 public abstract class AbstractActivity extends AppCompatActivity {
     public Context getContext() {
         return this;
     }
-
     public abstract FirebaseFirestore getDB();
 
     public void setDocument(String collectionPath, String android_id, OnCompleteListener<DocumentSnapshot> taskListener) {
@@ -30,7 +30,6 @@ public abstract class AbstractActivity extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(taskListener);
     }
-
     public void setCollection(String collectionPath, String android_id, OnCompleteListener<QuerySnapshot> taskListener) {
         getDB().collection(collectionPath)
                 .get()
