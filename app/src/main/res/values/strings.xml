@@ -68,4 +68,5 @@
     <string name="password">Password:</string>
     <string name="re_enter_password">Re-enter Password:</string>
     <string name="user_profile">User Profile</string>
+    <string name="enable_geolocation">Enable GeoLocation</string>
 </resources>

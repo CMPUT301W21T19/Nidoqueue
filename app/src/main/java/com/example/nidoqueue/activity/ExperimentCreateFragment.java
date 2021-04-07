@@ -82,7 +82,7 @@ public class ExperimentCreateFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
-                .setTitle("Create Experience")
+                .setTitle("Create Experiment")
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("Publish", new DialogInterface.OnClickListener() {
                     @Override
