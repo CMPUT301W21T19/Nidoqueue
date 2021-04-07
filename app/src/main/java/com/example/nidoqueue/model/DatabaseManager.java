@@ -18,19 +18,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Purpose:     Sets up the Firestore which handles our database and retrieving user information.
  * Issues:      No issues currently.
  */
-public class Database {
+public class DatabaseManager {
     FirebaseFirestore db;
     String android_id;
     User user;
 
-    private static final Database database = new Database();
+    private static final DatabaseManager databaseManager = new DatabaseManager();
     private static final ContextManager contextManager = ContextManager.getInstance();
 
-    private Database() {
+    private DatabaseManager() {
         db = FirebaseFirestore.getInstance();
     }
-    public static Database getInstance() {
-        return database;
+    public static DatabaseManager getInstance() {
+        return databaseManager;
     }
 
 
@@ -59,7 +59,7 @@ public class Database {
     }
     */
     public User getUser() {
-        //updateUser();
+//        updateUser();
         return user;
     }
 

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.DatabaseAlt;
@@ -31,13 +31,9 @@ public class UserProfileActivity extends AbstractActivity{
     User editRemove;
     String message;
     User user;
-
-    // get instances of RequestManager and ContextManager
-    private static final RequestManager requestManager = RequestManager.getInstance();
-    private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final Database database = Database.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
-    private static final UserControl userControl = UserControl.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static UserControl userControl = UserControl.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +51,16 @@ public class UserProfileActivity extends AbstractActivity{
         editButton.setOnClickListener(Edit);
 
         //userList = databaseAlt.get_UserDB();
-        /**
 
-        for (int i = 0; i < 1; i++) {
-            userList.get(i);
-        }
-         */
-        //Adapter = new UserProfileContent(this, userList);
-        //userView.setAdapter(Adapter); // This view is setup to display the experiments
 
-        //Username.setText(user.getUsername());
+        //userName.setText(user.getUserName());
         //email.setText(user.getEmail());
+        //phoneNumber.setText(user.getPhoneNumber());
 
-       // TextView usernameT = findViewById(R.id.user_title);
-        //TextView username = findViewById(R.id.username_display);
-       // TextView email = findViewById(R.id.email_display);
+        //TextView userName = findViewById(R.id.user_title);
+        //TextView userName = findViewById(R.id.username_display);
+        //TextView email = findViewById(R.id.email_display);
+        //TextView phoneNumber = findViewById(R.id.phone_display);
 
     }
     private View.OnClickListener Home = new View.OnClickListener() {
@@ -97,12 +88,25 @@ public class UserProfileActivity extends AbstractActivity{
         }
     };
 
-    /******************************************************************************
-     * Firebase Database Code
-     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }
 
+    /******************************************************************************
+     * Colin --- Saving this code for later. We can use this.
+     ******************************************************************************/
+    /**
+    public userArray(){
+        userList = new ArrayList<>();
+        String[] Username = {"Username"};
+        String[] Email = {"Email"};
+        String[] Phone = {"Phone"};
+        for (int i = 0; i < Username.length; i++) {
+            userList.add((new User(Username[i], Email[i], Phone[i])));
+        }
+        Adapter = new UserProfileContent(this, userList);
+        userView.setAdapter(Adapter); // This view is setup to display the experiments
+    }
+     */
 }
 

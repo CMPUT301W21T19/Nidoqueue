@@ -13,7 +13,7 @@ public class User {
     private String username, email, password;
     private ArrayList<Experiment> createdExp, subscribedExp;
     /******************************************************************************
-     * Setter methods. Contains "Username, Email, and Password"
+     * Setter methods. Contains "Username, Email, and Phone Number"
      ******************************************************************************/
     public User(String username, String email, String password, ArrayList<Experiment> createdExp, ArrayList<Experiment> subscribedExp) {
         this.username = username;
@@ -25,7 +25,7 @@ public class User {
        // subscribedExp = new ArrayList<>();
     }
     /******************************************************************************
-     * Getter methods. Contains "Username, Email, and Password"
+     * Getter methods. Contains "Username, Email, and Phone Number"
      ******************************************************************************/
     public String getUsername() {
         return username;
@@ -54,4 +54,13 @@ public class User {
 
 
 
+    public void setCreatedExp(ArrayList<Experiment> createdExperiments) {
+        this.createdExp = createdExperiments;
+    }
+    public void setSubscribedExp(ArrayList<Experiment> subscribedExperiments) {
+        this.subscribedExp = subscribedExperiments;
+    }
+    public void addSubscribedExp(Experiment experiment) {
+        subscribedExp.add(experiment);
+    }
 }
