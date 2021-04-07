@@ -53,13 +53,13 @@ public class UserControl {
         new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
     }
     public void signUp(){
-        new SignUpFragment("", "", "").show(contextManager.getActivity().getSupportFragmentManager(), "Add_User");
+        new SignUpFragment("", "", "", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Add_User");
     }
     public void clickHere(){
         new RecoveryFragment("").show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
     public void edit(){
-        new SignUpFragment(user.getUsername(), user.getEmail(), user.getPassword()).show(contextManager.getActivity().getSupportFragmentManager(), "Edit_User");
+        new SignUpFragment(user.getUsername(), user.getEmail(), user.getPassword(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Edit_User");
     }
     public void select(){
 

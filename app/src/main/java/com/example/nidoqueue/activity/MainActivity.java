@@ -32,7 +32,6 @@ public class MainActivity extends AbstractActivity {
         setContentView(R.layout.activity_main);
         requestManager.startApp();
     }
-
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
