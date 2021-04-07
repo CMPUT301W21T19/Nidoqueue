@@ -16,12 +16,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Classname:   MainActivity.java
  * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In, Recover Account)
- * Issues:      No issues, however this needs to be tested.
+ * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In)
  */
 
 public class MainActivity extends AbstractActivity {
-    // initialize RequestManager
+    // initialize Managers & Database
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
     DatabaseManager database = DatabaseManager.getInstance();
@@ -34,6 +33,9 @@ public class MainActivity extends AbstractActivity {
         requestManager.startApp();
     }
 
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return database.getDb();
     }

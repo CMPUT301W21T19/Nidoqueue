@@ -59,4 +59,14 @@
     <string name="phone_display">Phone Number</string>
     <string name="username_display">Username</string>
     <string name="profile_button">profile button</string>
+    <string name="name_expData">Name</string>
+    <string name="description_expData">Description</string>
+    <string name="region_expData">Region</string>
+    <string name="trial_expData">Trial #</string>
+    <string name="geo_location_expData">Geo-Location</string>
+    <string name="status_expData">Status</string>
+    <string name="password">Password:</string>
+    <string name="re_enter_password">Re-enter Password:</string>
+    <string name="user_profile">User Profile</string>
+    <string name="enable_geolocation">Enable GeoLocation</string>
 </resources>

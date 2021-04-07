@@ -10,54 +10,57 @@ import java.util.ArrayList;
  * Issues: 		None
  */
 public class User {
-    private String userName, email, phoneNumber;
-    private ArrayList<Experiment> createdExperiments, subscribedExperiments;
+    private String username, email, password;
+    private ArrayList<Experiment> createdExp, subscribedExp;
     /******************************************************************************
      * Setter methods. Contains "Username, Email, and Phone Number"
      ******************************************************************************/
-    public User(String userName, String email, String phoneNumber) {
-        this.userName = userName;
+    public User(String username, String email, String password, ArrayList<Experiment> createdExp, ArrayList<Experiment> subscribedExp) {
+        this.username = username;
         this.email = email;
-        this.phoneNumber = phoneNumber;
-        createdExperiments = new ArrayList<>();
-        subscribedExperiments = new ArrayList<>();
+        this.password = password;
+        this.createdExp = createdExp;
+        this.subscribedExp = subscribedExp;
+        //createdExp = new ArrayList<>();
+       // subscribedExp = new ArrayList<>();
     }
     /******************************************************************************
      * Getter methods. Contains "Username, Email, and Phone Number"
      ******************************************************************************/
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
     public String getEmail() {
         return email;
     }
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPassword() {
+        return password;
+    }
+    public ArrayList<Experiment> getCreatedExp() {
+        return createdExp;
+    }
+    public ArrayList<Experiment> getSubscribedExp() {
+        return subscribedExp;
     }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
      ******************************************************************************/
     public void createExp(Experiment experiment) {
-        createdExperiments.add(experiment);
+        createdExp.add(experiment);
     }
     public void subscribeExp(Experiment experiment) {
-        subscribedExperiments.add(experiment);
+        subscribedExp.add(experiment);
     }
 
-    public ArrayList<Experiment> getCreatedExp() {
-        return createdExperiments;
-    }
-    public ArrayList<Experiment> getSubscribedExp() {
-        return subscribedExperiments;
-    }
+
 
     public void setCreatedExp(ArrayList<Experiment> createdExperiments) {
-        this.createdExperiments = createdExperiments;
+        this.createdExp = createdExperiments;
     }
     public void setSubscribedExp(ArrayList<Experiment> subscribedExperiments) {
-        this.subscribedExperiments = subscribedExperiments;
+        this.subscribedExp = subscribedExperiments;
     }
     public void addSubscribedExp(Experiment experiment) {
-        subscribedExperiments.add(experiment);
+        subscribedExp.add(experiment);
     }
 }

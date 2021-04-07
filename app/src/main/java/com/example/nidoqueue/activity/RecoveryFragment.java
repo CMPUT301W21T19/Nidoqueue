@@ -1,4 +1,4 @@
-package com.example.nidoqueue.model;
+package com.example.nidoqueue.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,42 +12,41 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import com.example.nidoqueue.R;
 
+import com.example.nidoqueue.R;
+import com.example.nidoqueue.model.User;
 /**
  * Classname:   Recovery.java
  * Version:     Prototype
- * Date:        March 19th, 2021
+ * Date:        April 9th, 2021
  * Purpose:     Fragment window that handles the Account Recovery for the user.
- * Issues:      Needs to be tested.
  */
-
-public class Recovery extends DialogFragment {
-    private EditText Email;
+public class RecoveryFragment extends DialogFragment {
+    private EditText email_EditText;
     private String email;
     private OnFragmentInteractionListener listener;
-    public Recovery(String email){
+
+    public RecoveryFragment(String email) {
         this.email = email;
     }
     public interface OnFragmentInteractionListener {
         void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnFragmentInteractionListener){
+        if (context instanceof OnFragmentInteractionListener) {
             listener = (OnFragmentInteractionListener) context;
-        }else {
+        } else {
             throw new RuntimeException(context.toString()
                     + " must implement onFragmentInteractionListener");
         }
     }
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.recovery_form, null); //  Sets up the view for the add/edit experiment window
-        Email = view.findViewById(R.id.email_recovery);
-        Email.setText(email); // The text will not be set if the value represented in the argument is "null"
+        email_EditText = view.findViewById(R.id.email_recovery);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
@@ -55,10 +54,11 @@ public class Recovery extends DialogFragment {
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String email = Email.getText().toString();
-                        //listener.onOkPressed(new UserProfile(email));
-                    }}) // New experiment is created with new arguments on the press of the "ok" button.
+                    public void onClick(DialogInterface dialog, int i) {
+                        String email = email_EditText.getText().toString();
+                        listener.onOkPressed(new User(null, email, null, null, null));
+                    }
+                }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();
     }
 }

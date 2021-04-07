@@ -73,6 +73,10 @@ public class ExperimentActivity extends AbstractActivity {
         unsubscribeButton.setOnClickListener(Remove);
         homeButton.setOnClickListener(Home);
     }
+
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }

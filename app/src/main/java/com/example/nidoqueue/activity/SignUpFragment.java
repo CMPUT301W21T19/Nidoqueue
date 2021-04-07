@@ -8,23 +8,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.nidoqueue.R;
+import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
 
-public class UserProfileAddFragment extends DialogFragment {
-    private EditText userName_EditText, email_EditText, phoneNumber_EditText;
-    private String userName, email, phoneNumber;
+public class SignUpFragment extends DialogFragment {
+    private EditText userName_EditText, email_EditText, password_EditText, passwordRe_EditText;
+    private String username, email, password;
     private OnFragmentInteractionListener listener;
+    private static final ContextManager contextManager = ContextManager.getInstance();
 
-    public UserProfileAddFragment(String userName, String email, String phoneNumber) {
-        this.userName = userName;
+    public SignUpFragment(String username, String email, String password) {
+        this.username = username;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     public interface OnFragmentInteractionListener {
@@ -48,11 +51,12 @@ public class UserProfileAddFragment extends DialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.sign_up_form, null); //  Sets up the view for the add/edit experiment window
         userName_EditText = view.findViewById(R.id.username_add);
         email_EditText = view.findViewById(R.id.email_add);
-        phoneNumber_EditText = view.findViewById(R.id.phone_add);
-
-        userName_EditText.setText(userName); // Sets the text to the values in the get method called from the experiment class
-        email_EditText.setText(email); // The text will not be set if the value represented in the argument is "null"
-        phoneNumber_EditText.setText(phoneNumber);
+        password_EditText = view.findViewById(R.id.password_add);
+        passwordRe_EditText = view.findViewById(R.id.password_re_add);
+        //userName_EditText.setText(username);
+        //email_EditText.setText(email);
+        //password_EditText.setText(password);
+        //passwordRe_EditText.setText(password);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
@@ -61,11 +65,17 @@ public class UserProfileAddFragment extends DialogFragment {
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String userName = userName_EditText.getText().toString(); // Allows the user to input text
+                    public void onClick(DialogInterface dialog, int i) {
+                        String username = userName_EditText.getText().toString(); // Allows the user to input text
                         String email = email_EditText.getText().toString();
-                        String phoneNumber = phoneNumber_EditText.getText().toString();
-                        listener.onOkPressed(new User(userName, email, phoneNumber));
+                        String password = password_EditText.getText().toString();
+                        String passwordRe = passwordRe_EditText.getText().toString();
+                        if(!password.equals(passwordRe)){
+                            Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the passwords need to match", Toast.LENGTH_LONG).show();
+                        }else{
+                            listener.onOkPressed(new User(username, email, password, null, null));
+                        }
+
                     }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();

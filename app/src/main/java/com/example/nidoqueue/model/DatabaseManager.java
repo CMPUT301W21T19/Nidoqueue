@@ -37,7 +37,7 @@ public class DatabaseManager {
     public void setUser(User user) {
         this.user = user;
     }
-
+    /**
     public void updateUser() {
         getDb().collection("users")
                 .document(getAndroid_id())
@@ -57,7 +57,7 @@ public class DatabaseManager {
                     }
                 });
     }
-
+    */
     public User getUser() {
 //        updateUser();
         return user;
