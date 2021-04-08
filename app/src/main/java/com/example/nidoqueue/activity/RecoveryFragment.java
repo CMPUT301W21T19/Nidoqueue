@@ -30,7 +30,7 @@ public class RecoveryFragment extends DialogFragment {
         this.email = email;
     }
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onRecoveryOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context) {
@@ -56,7 +56,7 @@ public class RecoveryFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         String email = email_EditText.getText().toString();
-                        listener.onOkPressed(new User(null, email, null, null, null));
+                        listener.onRecoveryOkPressed(new User(null, email, null, null, null));
                     }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();

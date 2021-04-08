@@ -12,9 +12,14 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
+
+import static android.content.ContentValues.TAG;
+
 /**
  * Classname:   SignInFragment.java
  * Version:     Prototype
@@ -31,7 +36,7 @@ public class SignInFragment extends DialogFragment {
         this.password = password;
     }
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onSignInOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context) {
@@ -59,9 +64,16 @@ public class SignInFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int i) {
                         String username = username_EditText.getText().toString();
                         String password = password_EditText.getText().toString();
-                        listener.onOkPressed(new User(username, null, password, null, null));
+                        listener.onSignInOkPressed(new User(username, null, password, null, null));
                     }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();
+    }
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, TAG);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

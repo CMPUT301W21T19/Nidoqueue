@@ -7,24 +7,40 @@
     android:background="#80D9FF"
     tools:context=".activity.UserProfileActivity">
 
-    <ListView
+    <View
         android:id="@+id/user_info"
         android:layout_width="320dp"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:background="#FFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/edit_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintTop_toBottomOf="@+id/user_title"
+        app:layout_constraintVertical_bias="0.585" />
+
+    <TextView
+        android:id="@+id/email_display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/email_display"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/user_info"
+        app:layout_constraintStart_toStartOf="@+id/user_info"
+        app:layout_constraintTop_toTopOf="@+id/user_info" />
 
     <ImageButton
         android:id="@+id/back_button5"
@@ -32,62 +48,45 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="#80D9FF"
         android:contentDescription="@string/back_arrow"
         android:tint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <TextView
         android:id="@+id/user_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="6dp"
         android:fontFamily="@font/exo"
         android:text="@string/user_profile"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintEnd_toStartOf="@+id/home_button2"
+        app:layout_constraintStart_toEndOf="@+id/back_button5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/home_button2"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="#80D9FF"
         android:contentDescription="@string/back_arrow"
         android:tint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <ImageButton
         android:id="@+id/edit_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="#80D9FF"
@@ -95,10 +94,6 @@
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_info"
-        app:layout_constraintVertical_bias="0.746"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

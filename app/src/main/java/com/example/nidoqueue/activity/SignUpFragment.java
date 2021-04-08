@@ -13,10 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
+
+import static android.content.ContentValues.TAG;
+
 /**
  * Classname:   SignUpFragment.java
  * Version:     Prototype
@@ -39,7 +44,7 @@ public class SignUpFragment extends DialogFragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onSignUpOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
 
     @Override
@@ -136,50 +141,44 @@ public class SignUpFragment extends DialogFragment {
                 message = "Thank you for signing up!";
                 if(isTest){
                     displayTestResults(message);
-                    new User(username, email, password, null, null);
                     System.out.print("Username: "+username+"\nEmail: "+email+"\nPassword: "+password);
-                    break;
                 }else{
-                    listener.onOkPressed(new User(username, email, password, null, null));
+                    listener.onSignUpOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                    break;
                 }
+                break;
             case 1:
                 message = "Sorry, the username needs to be \nbetween 8 and 18 characters in length";
                 if(isTest){
                     displayTestResults(message);
-                    break;
                 }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                    break;
                 }
+                break;
             case 2:
                 message = "Sorry, the email needs to be \nbetween 10 and 34 characters in length";
                 if(isTest){
                     displayTestResults(message);
-                    break;
                 }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                    break;
                 }
+                break;
             case 3:
                 message = "Sorry, the password needs to be \nbetween 8 and 18 characters in length";
                 if(isTest){
                     displayTestResults(message);
-                    break;
                 }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-                    break;
                 }
+                break;
             case 4:
                 message = "Sorry, the passwords need to match";
                 if(isTest){
                     displayTestResults(message);
-                    break;
                 }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                    break;
                 }
+                break;
         }
     }
     /**
@@ -190,4 +189,15 @@ public class SignUpFragment extends DialogFragment {
         System.out.print("\n"+message+"\n");
     }
 
+//    @Override
+//    public void show(@NonNull FragmentManager manager, @Nullable String tag) {
+//        super.show(manager, tag);
+//    }
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, TAG);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 }

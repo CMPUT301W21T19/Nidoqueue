@@ -91,27 +91,40 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
      * @param newUser
      */
     @Override
-    public void onOkPressed(User newUser) {
-        Adapter.add(newUser);
-        requestManager.setUserId(newUser);
-        requestManager.transition(SignInActivity.class);
-        if(newUser.getUsername()==null){
-            if(newUser.getEmail().equals(email)){
-                String Message = "Username: "+username+"\nPassword: "+password;
-                Toast.makeText(contextManager.getActivity().getApplicationContext(), Message, Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, this email does not exist in the system.", Toast.LENGTH_LONG).show();
-            }
-        }else if(newUser.getEmail()==null){
-            if(newUser.getUsername().equals(username) && newUser.getPassword().equals(email)){
-                requestManager.transition(SignInActivity.class);
-            }else{
-                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
-            }
-        }else{
-            currentUser = newUser;
-            databaseAlt.addUserDB(newUser);
-            requestManager.transition(SignInActivity.class);
-        }
+    public void onSignUpOkPressed(User newUser) {
+        requestManager.trySignUp(newUser);
+//        requestManager.setUserId(newUser);
+//
+//        Adapter.add(newUser);
+//        requestManager.setUserId(newUser);
+//        requestManager.transition(SignInActivity.class);
+//        if(newUser.getUsername()==null){
+//            if(newUser.getEmail().equals(email)){
+//                String Message = "Username: "+username+"\nPassword: "+password;
+//                Toast.makeText(contextManager.getActivity().getApplicationContext(), Message, Toast.LENGTH_LONG).show();
+//            }else{
+//                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, this email does not exist in the system.", Toast.LENGTH_LONG).show();
+//            }
+//        }else if(newUser.getEmail()==null){
+//            if(newUser.getUsername().equals(username) && newUser.getPassword().equals(email)){
+//                requestManager.transition(SignInActivity.class);
+//            }else{
+//                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
+//            }
+//        }else{
+//            currentUser = newUser;
+//            databaseAlt.addUserDB(newUser);
+//            requestManager.transition(SignInActivity.class);
+//        }
+    }
+
+    @Override
+    public void onSignInOkPressed(User user) {
+        requestManager.trySignIn(user);
+    }
+
+    @Override
+    public void onRecoveryOkPressed(User newUser) {
+
     }
 }

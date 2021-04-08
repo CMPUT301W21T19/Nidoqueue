@@ -1,6 +1,8 @@
 package com.example.nidoqueue.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.DatabaseManager;
@@ -36,6 +38,8 @@ public class SearchActivity extends AbstractActivity {
     User user;
     String android_id;
 
+    ImageButton backButton;
+
 
     ArrayList<Experiment> exps;
 
@@ -45,13 +49,20 @@ public class SearchActivity extends AbstractActivity {
         setContentView(R.layout.search_trials);
         contextManager.setContext(this);
 
-        //user = dbManager.getUser();
-        //android_id = dbManager.getAndroid_id();
+        backButton = findViewById(R.id.back_button3);
+        backButton.setOnClickListener(Back);
+
 
         exps = new ArrayList<>();
-
-
     }
+
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.back();
+        }
+    };
+
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
