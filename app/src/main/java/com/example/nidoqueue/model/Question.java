@@ -27,4 +27,26 @@ public class Question {
     public void reply(Answer ans) {
         answers.add(ans);
     }
+
+    //region GETTERS
+    public String getQuestionPreview(int maxSize){
+        if(question.length() >= maxSize){
+            return question.substring(0,maxSize);
+        }
+        return question;
+    }
+
+    public int getTotalAnswers(){
+        return answers.size();
+    }
+
+    public ArrayList<Answer> getAnswers() {
+        return answers;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    //endregion
 }
