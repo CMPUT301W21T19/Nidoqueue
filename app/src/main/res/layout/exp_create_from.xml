@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enable_geolocation"
         android:textSize="20sp"
-
+        android:fontFamily="@font/exo"
         android:paddingTop="10sp"
 
         app:layout_constraintLeft_toRightOf="@+id/geoLocation"
