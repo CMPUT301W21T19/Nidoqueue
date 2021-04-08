@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+
+import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,7 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
-    ImageButton addExp, profile, search;
+    ImageButton createExp, profile, search;
     RecyclerView created, subscribed;
     User user;
 
@@ -48,7 +53,6 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         requestManager.transition(ExperimentActivity.class, position);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,22 +62,19 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
 
         createdExps = new ArrayList<>();
 
-        addExp = findViewById(R.id.create_exp_button);
+        createExp = findViewById(R.id.create_exp_button);
         profile = findViewById(R.id.profile_button);
         search = findViewById(R.id.search_button1);
 
         profile.setOnClickListener(Profile);
         search.setOnClickListener(Search);
-        addExp.setOnClickListener(AddExp);
+        createExp.setOnClickListener(CreateExp);
+
         expListAdapter = new ExpListAdapter(createdExps, this);
         created = findViewById(R.id.created_exps_list);
         created.setLayoutManager(new LinearLayoutManager(this));
         created.setAdapter(expListAdapter);
-//        subscribed = findViewById(R.id.sub_exps_list);
-//        subscribed.setLayoutManager(new LinearLayoutManager(this));
-//        subscribed.setAdapter(adapter);
-        //requestManager.populateList();
-        //populateList();
+
     }
 
     private View.OnClickListener Profile = new View.OnClickListener() {
@@ -89,7 +90,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
             requestManager.search();
         }
     };
-    private View.OnClickListener AddExp = new View.OnClickListener() {
+    private View.OnClickListener CreateExp = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             requestManager.createExp();
@@ -102,19 +103,9 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
     }
 
 
-
-//    public void populateList(){
-//        //populateList_Firebase();
-//
-//        expListAdapter = new ExpListAdapter(createdExps, ExpClickListener);
-//        created = findViewById(R.id.created_exps_list);
-//        created.setLayoutManager(new LinearLayoutManager(this));
-//        created.setAdapter(expListAdapter);
-//        subscribed = findViewById(R.id.sub_exps_list);
-//        subscribed.setLayoutManager(new LinearLayoutManager(this));
-//        subscribed.setAdapter(expListAdapter);
-//    }
-
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return databaseManager.getDb();
     }

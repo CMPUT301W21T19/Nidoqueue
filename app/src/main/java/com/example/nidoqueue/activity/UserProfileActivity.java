@@ -31,6 +31,8 @@ public class UserProfileActivity extends AbstractActivity{
     User editRemove;
     String message;
     User user;
+
+    // get instances of RequestManager and ContextManager
     static RequestManager requestManager = RequestManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
@@ -49,18 +51,6 @@ public class UserProfileActivity extends AbstractActivity{
         backButton.setOnClickListener(Back);
         homeButton.setOnClickListener(Home);
         editButton.setOnClickListener(Edit);
-
-        //userList = databaseAlt.get_UserDB();
-
-
-        //userName.setText(user.getUserName());
-        //email.setText(user.getEmail());
-        //phoneNumber.setText(user.getPhoneNumber());
-
-        //TextView userName = findViewById(R.id.user_title);
-        //TextView userName = findViewById(R.id.username_display);
-        //TextView email = findViewById(R.id.email_display);
-        //TextView phoneNumber = findViewById(R.id.phone_display);
 
     }
     private View.OnClickListener Home = new View.OnClickListener() {
@@ -87,26 +77,11 @@ public class UserProfileActivity extends AbstractActivity{
             requestManager.select();
         }
     };
-
+    /******************************************************************************
+     * Firebase Database Code
+     ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }
-
-    /******************************************************************************
-     * Colin --- Saving this code for later. We can use this.
-     ******************************************************************************/
-    /**
-    public userArray(){
-        userList = new ArrayList<>();
-        String[] Username = {"Username"};
-        String[] Email = {"Email"};
-        String[] Phone = {"Phone"};
-        for (int i = 0; i < Username.length; i++) {
-            userList.add((new User(Username[i], Email[i], Phone[i])));
-        }
-        Adapter = new UserProfileContent(this, userList);
-        userView.setAdapter(Adapter); // This view is setup to display the experiments
-    }
-     */
 }
 

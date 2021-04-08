@@ -23,7 +23,8 @@ public class MainActivity extends AbstractActivity {
     // initialize Managers & Database
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
-    DatabaseManager database = DatabaseManager.getInstance();
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class MainActivity extends AbstractActivity {
      * Firebase Database Code
      ******************************************************************************/
     public FirebaseFirestore getDB() {
-        return database.getDb();
+        return databaseManager.getDb();
     }
 }
 

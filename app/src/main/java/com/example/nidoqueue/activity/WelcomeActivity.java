@@ -22,6 +22,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+/**
+ * Classname:   WelcomeActivity.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In)
+ */
+
 public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
     Button signUp, signIn, clickHere;
     ArrayAdapter<User> Adapter;
@@ -106,6 +113,5 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
             databaseAlt.addUserDB(newUser);
             requestManager.transition(SignInActivity.class);
         }
-
     }
 }

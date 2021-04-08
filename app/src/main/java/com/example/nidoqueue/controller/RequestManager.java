@@ -49,8 +49,6 @@ public class RequestManager {
         currentActivity.startActivity(intent);
     }
 
-
-
     /******************************************************************************
      * UserControl methods are called.
      ******************************************************************************/
@@ -92,11 +90,10 @@ public class RequestManager {
      ******************************************************************************/
     public void startApp() {
         // Set user
-        String userName = "Name";
-        String email = "Email";
-        String phoneNumber = "9994445555";
-        databaseManager.setUser(new User(userName, email, phoneNumber, null, null));
-
+        String username = "NameNameName";
+        String email = "EmailEmailEmail";
+        String password = "9994445555";
+        databaseManager.setUser(new User(username, email, password, null, null));
         transition(WelcomeActivity.class);
     }
     public void resetApp() {
@@ -111,11 +108,9 @@ public class RequestManager {
     public void back() {
         transition(SignInActivity.class);
     }
-
     public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
         expListAdapter.list.add(exp);
     }
-
     public void sub_exp(Experiment experiment) {
         databaseManager.getUser().addSubscribedExp(experiment);
     }
