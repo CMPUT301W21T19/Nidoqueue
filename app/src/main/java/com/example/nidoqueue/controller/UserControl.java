@@ -43,6 +43,7 @@ public class UserControl {
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
+
     /******************************************************************************
      * User Control Methods
      ******************************************************************************/
@@ -51,6 +52,8 @@ public class UserControl {
     }
     public void signIn(){
         new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+        // Check if Android ID exists in User Database
+//        requestManager.transition(SignInActivity.class);
     }
     public void signUp(){
         new SignUpFragment("", "", "", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Add_User");

@@ -25,6 +25,7 @@ public class MainActivity extends AbstractActivity {
     ContextManager contextManager = ContextManager.getInstance();
     DatabaseManager databaseManager = DatabaseManager.getInstance();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

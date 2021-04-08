@@ -38,26 +38,26 @@ public class DatabaseManager {
         this.user = user;
     }
     /**
-     public void updateUser() {
-     getDb().collection("users")
-     .document(getAndroid_id())
-     .get()
-     .addOnCompleteListener(task -> {
-     if (task.isSuccessful()) {
-     Log.d("FireStore", "Success");
-     DocumentSnapshot document = task.getResult();
-     if (document.exists()) {
-     String userName = document.getString("userName");
-     String email = document.getString("email");
-     String phoneNumber = document.getString("phoneNumber");
-     setUser(new User(userName, email, phoneNumber));
-     }
-     } else {
-     Log.d("FireStore", "Failed with: ", task.getException());
-     }
-     });
-     }
-     */
+    public void updateUser() {
+        getDb().collection("users")
+                .document(getAndroid_id())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("FireStore", "Success");
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            String userName = document.getString("userName");
+                            String email = document.getString("email");
+                            String phoneNumber = document.getString("phoneNumber");
+                            setUser(new User(userName, email, phoneNumber));
+                        }
+                    } else {
+                        Log.d("FireStore", "Failed with: ", task.getException());
+                    }
+                });
+    }
+    */
     public User getUser() {
 //        updateUser();
         return user;

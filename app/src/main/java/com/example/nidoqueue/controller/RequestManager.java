@@ -111,7 +111,6 @@ public class RequestManager {
     public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
         expListAdapter.list.add(exp);
     }
-
     public void sub_exp(Experiment experiment) {
         databaseManager.getUser().addSubscribedExp(experiment);
     }

@@ -77,13 +77,11 @@ public class UserProfileActivity extends AbstractActivity{
             requestManager.select();
         }
     };
-
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
     public FirebaseFirestore getDB() {
         return null;
     }
-
 }
 
