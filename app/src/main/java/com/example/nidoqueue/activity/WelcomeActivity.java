@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.User;
@@ -28,8 +28,10 @@ import java.util.ArrayList;
  * Date:        April 9th, 2021
  * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In)
  */
+
 public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
     Button signUp, signIn, clickHere;
+    ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
     User username, email, password;
     User currentUser = null;
@@ -37,7 +39,8 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final Database database = Database.getInstance();
+    private static final DatabaseManager database = DatabaseManager.getInstance();
+    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
 
@@ -48,6 +51,7 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         contextManager.setContext(this);
 
         userList = new ArrayList<>();
+        Adapter = new UserProfileContent(this, userList);
 
         signIn = findViewById(R.id.sign_in_button);
         signUp = findViewById(R.id.sign_up_button);
@@ -61,7 +65,9 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         password = userControl.getPassword();
         email = userControl.getEmail();
     }
-
+    public FirebaseFirestore getDB() {
+        return database.getDb();
+    }
     private View.OnClickListener SignIn = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -86,6 +92,9 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
      */
     @Override
     public void onOkPressed(User newUser) {
+        Adapter.add(newUser);
+        requestManager.setUserId(newUser);
+        requestManager.transition(SignInActivity.class);
         if(newUser.getUsername()==null){
             if(newUser.getEmail().equals(email)){
                 String Message = "Username: "+username+"\nPassword: "+password;
@@ -95,24 +104,14 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
             }
         }else if(newUser.getEmail()==null){
             if(newUser.getUsername().equals(username) && newUser.getPassword().equals(email)){
-                requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+                requestManager.transition(SignInActivity.class);
             }else{
                 Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
             }
         }else{
             currentUser = newUser;
             databaseAlt.addUserDB(newUser);
-            requestManager.transition(R.layout.welcome_user, SignInActivity.class);
+            requestManager.transition(SignInActivity.class);
         }
-
     }
-
-
-    /******************************************************************************
-     * Firebase Database Code
-     ******************************************************************************/
-    public FirebaseFirestore getDB() {
-        return database.getDb();
-    }
-
 }

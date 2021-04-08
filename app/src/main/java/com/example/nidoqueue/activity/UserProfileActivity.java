@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.DatabaseAlt;
@@ -33,11 +33,9 @@ public class UserProfileActivity extends AbstractActivity{
     User user;
 
     // get instances of RequestManager and ContextManager
-    private static final RequestManager requestManager = RequestManager.getInstance();
-    private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final Database database = Database.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
-    private static final UserControl userControl = UserControl.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static UserControl userControl = UserControl.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +51,6 @@ public class UserProfileActivity extends AbstractActivity{
         backButton.setOnClickListener(Back);
         homeButton.setOnClickListener(Home);
         editButton.setOnClickListener(Edit);
-
-        //userList = databaseAlt.get_UserDB();
-        /**
-
-        for (int i = 0; i < 1; i++) {
-            userList.get(i);
-        }
-         */
-        //Adapter = new UserProfileContent(this, userList);
-        //userView.setAdapter(Adapter); // This view is setup to display the experiments
-
-        //Username.setText(user.getUsername());
-        //email.setText(user.getEmail());
-
-       // TextView usernameT = findViewById(R.id.user_title);
-        //TextView username = findViewById(R.id.username_display);
-       // TextView email = findViewById(R.id.email_display);
 
     }
     private View.OnClickListener Home = new View.OnClickListener() {

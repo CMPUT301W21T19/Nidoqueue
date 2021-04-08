@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.widget.Toast;
 
-import com.example.nidoqueue.activity.SignUpFragment;
+import com.example.nidoqueue.activity.ExpListAdapter;
+import com.example.nidoqueue.activity.ExperimentCreateFragment;
 import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DataCalc;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
@@ -18,6 +19,7 @@ import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileActivity;
 
 import static com.example.nidoqueue.controller.UserControl.contextManager;
+import static com.example.nidoqueue.controller.UserControl.databaseManager;
 
 public class RequestManager {
 
@@ -31,13 +33,19 @@ public class RequestManager {
     // Get instances of other Singleton classes needed
     private static final UserControl userControl = UserControl.getInstance();
     private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
-    private static final Database database = Database.getInstance();
+    private static final DatabaseManager database = DatabaseManager.getInstance();
 
     // Transition between Activities
-    public <T extends AbstractActivity> void transition(int layout, Class<T> nextActivity) {
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity) {
         AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
-        currentActivity.setContentView(layout);
         Intent intent = new Intent(currentActivity, nextActivity);
+        currentActivity.startActivity(intent);
+    }
+    // Transition between Activities with position parameter
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int position) {
+        AbstractActivity currentActivity = (AbstractActivity)  contextManager.getContext();
+        Intent intent = new Intent(currentActivity, nextActivity);
+        intent.putExtra("ListPosition", position);
         currentActivity.startActivity(intent);
     }
 
@@ -68,8 +76,8 @@ public class RequestManager {
     /******************************************************************************
      * ExperimentManager methods are called.
      ******************************************************************************/
-    public void addExp() {
-        experimentManager.addExp();
+    public void createExp() {
+        new ExperimentCreateFragment(null, null, null, null, null, null, database).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
     }
     public void getCurrentExp(){
         experimentManager.getCurrentExperiment();
@@ -81,19 +89,31 @@ public class RequestManager {
      * General methods are called.
      ******************************************************************************/
     public void startApp() {
-        transition(R.layout.welcome_main, WelcomeActivity.class);
+        // Set user
+        String username = "NameNameName";
+        String email = "EmailEmailEmail";
+        String password = "9994445555";
+        databaseManager.setUser(new User(username, email, password, null, null));
+        transition(WelcomeActivity.class);
     }
     public void resetApp() {
-        transition(R.layout.activity_main, MainActivity.class);
+        transition(MainActivity.class);
     }
     public void home() {
-        transition(R.layout.welcome_user, SignInActivity.class);
+        transition(SignInActivity.class);
     }
     public void search() {
-        transition(R.layout.search_trials, SearchActivity .class);
+        transition(SearchActivity .class);
     }
     public void back() {
-        transition(R.layout.welcome_user, SignInActivity.class);
+        transition(SignInActivity.class);
+    }
+    public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
+        expListAdapter.list.add(exp);
+    }
+
+    public void sub_exp(Experiment experiment) {
+        databaseManager.getUser().addSubscribedExp(experiment);
     }
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code

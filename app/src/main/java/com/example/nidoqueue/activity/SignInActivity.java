@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+
+import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.Database;
 import com.example.nidoqueue.controller.RequestManager;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;
 import com.example.nidoqueue.model.ExpMeasurement;
@@ -30,19 +35,23 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener {
-    ImageButton addExp, profile, search;
+public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
+    ImageButton createExp, profile, search;
     RecyclerView created, subscribed;
     User user;
 
-    ArrayList<Experiment> createdExps;
-    ArrayList<String> createdExpsName;
-    ExpListAdapter adapter;
+    static ArrayList<Experiment> createdExps;
+    ExpListAdapter expListAdapter;
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
-    static Database database = Database.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        requestManager.transition(ExperimentActivity.class, position);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +61,20 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         user = userControl.getUser();
 
         createdExps = new ArrayList<>();
-        createdExpsName = new ArrayList<>();
 
-        addExp = findViewById(R.id.create_exp_button);
+        createExp = findViewById(R.id.create_exp_button);
         profile = findViewById(R.id.profile_button);
         search = findViewById(R.id.search_button1);
 
         profile.setOnClickListener(Profile);
         search.setOnClickListener(Search);
-        addExp.setOnClickListener(AddExp);
+        createExp.setOnClickListener(CreateExp);
 
-        //requestManager.populateList();
-        //populateList();
+        expListAdapter = new ExpListAdapter(createdExps, this);
+        created = findViewById(R.id.created_exps_list);
+        created.setLayoutManager(new LinearLayoutManager(this));
+        created.setAdapter(expListAdapter);
+
     }
 
     private View.OnClickListener Profile = new View.OnClickListener() {
@@ -79,39 +90,22 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
             requestManager.search();
         }
     };
-    private View.OnClickListener AddExp = new View.OnClickListener() {
+    private View.OnClickListener CreateExp = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.addExp();
+            requestManager.createExp();
         }
     };
 
     @Override
     public void onOkPressed(Experiment exp, String type) {
-        //Adapter.add(newUser);
-        //requestManager.addExperiment(exp, type);
-        requestManager.addExp();
+        requestManager.addExperiment(exp, type, expListAdapter);
     }
 
-    public void populateList(){
-        //populateList_Firebase();
-        createdExpsName = new ArrayList<>();
-        for (Experiment exps : createdExps) {
-            createdExpsName.add(exps.getName());
-            Log.d("Name", exps.getName());
-        }
-        adapter = new ExpListAdapter(createdExpsName);
-        created = findViewById(R.id.created_exps_list);
-        created.setLayoutManager(new LinearLayoutManager(this));
-        created.setAdapter(adapter);
-        subscribed = findViewById(R.id.sub_exps_list);
-        subscribed.setLayoutManager(new LinearLayoutManager(this));
-        subscribed.setAdapter(adapter);
-    }
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
     public FirebaseFirestore getDB() {
-        return database.getDb();
+        return databaseManager.getDb();
     }
 }

@@ -9,7 +9,7 @@ import com.example.nidoqueue.activity.RecoveryFragment;
 import com.example.nidoqueue.activity.SignInFragment;
 import com.example.nidoqueue.activity.UserProfileActivity;
 import com.example.nidoqueue.model.User;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.activity.WelcomeActivity;
@@ -42,12 +42,12 @@ public class UserControl {
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
-    static Database database = Database.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
     /******************************************************************************
      * User Control Methods
      ******************************************************************************/
     public void profile(){
-        requestManager.transition(R.layout.user_profile, UserProfileActivity.class);
+        requestManager.transition(UserProfileActivity.class);
     }
     public void signIn(){
         new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");

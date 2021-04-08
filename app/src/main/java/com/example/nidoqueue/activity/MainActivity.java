@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
-import com.example.nidoqueue.model.Database;
+import com.example.nidoqueue.model.DatabaseManager;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
@@ -23,7 +23,7 @@ public class MainActivity extends AbstractActivity {
     // initialize Managers & Database
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
-    Database database = Database.getInstance();
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,12 @@ public class MainActivity extends AbstractActivity {
         setContentView(R.layout.activity_main);
         requestManager.startApp();
     }
+
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
     public FirebaseFirestore getDB() {
-        return database.getDb();
+        return databaseManager.getDb();
     }
 }
 

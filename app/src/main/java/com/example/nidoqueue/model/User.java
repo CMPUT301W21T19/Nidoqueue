@@ -54,4 +54,13 @@ public class User {
 
 
 
+    public void setCreatedExp(ArrayList<Experiment> createdExperiments) {
+        this.createdExp = createdExperiments;
+    }
+    public void setSubscribedExp(ArrayList<Experiment> subscribedExperiments) {
+        this.subscribedExp = subscribedExperiments;
+    }
+    public void addSubscribedExp(Experiment experiment) {
+        subscribedExp.add(experiment);
+    }
 }
