@@ -16,6 +16,7 @@
         <activity android:name=".activity.ExperimentActivity"></activity>
         <activity android:name=".activity.ForumActivity"></activity>
         <activity android:name=".activity.WelcomeActivity"></activity>
+        <activity android:name=".activity.TrialActivity"></activity>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,7 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nidoqueue.activity.RecoveryFragment;
-import com.example.nidoqueue.activity.SignInActivity;
+import com.example.nidoqueue.activity.SearchFragment;
 import com.example.nidoqueue.activity.SignInFragment;
 import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.activity.UserProfileActivity;
@@ -50,9 +50,10 @@ public class UserControl {
     public void profile() {
         requestManager.transition(UserProfileActivity.class);
     }
-
-    public void signIn() {
-        new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+    public void signIn(){
+        new SignInFragment("", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+        // Check if Android ID exists in User Database
+//        requestManager.transition(SignInActivity.class);
     }
 
     public void signUp() {
@@ -64,9 +65,8 @@ public class UserControl {
             }
         });
     }
-
-    public void clickHere() {
-        new RecoveryFragment("").show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
+    public void clickHere(){
+        new RecoveryFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
 
     public void edit() {
@@ -96,7 +96,7 @@ public class UserControl {
                         }
                         if (!id_exist) {
                             Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
-                            new SignInFragment(user.getUsername(), user.getPassword());
+                            new SignInFragment(user.getUsername(), user.getPassword(), false);
                         }
                     }
                 });
@@ -130,5 +130,8 @@ public class UserControl {
                         Log.d("FireStore", "Failed with: ", task.getException());
                     }
                 });
+    }
+    public void searchBar(){
+        new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
 }
