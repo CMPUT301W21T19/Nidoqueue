@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class UserProfileActivity extends AbstractActivity{
+public class UserProfileActivity extends AbstractActivity implements RecyclerViewClickListener{
     ListView userView;
     ImageButton backButton, homeButton, editButton;
     ArrayList<User> userList;
@@ -35,12 +35,19 @@ public class UserProfileActivity extends AbstractActivity{
     // get instances of RequestManager and ContextManager
     static RequestManager requestManager = RequestManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static final ContextManager contextManager = ContextManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        requestManager.transition(ExperimentActivity.class, position);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_profile);
+        contextManager.setContext(this);
 
         userView = findViewById(R.id.user_info);
         homeButton = findViewById(R.id.home_button2);

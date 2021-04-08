@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.activity.RecoveryFragment;
+import com.example.nidoqueue.activity.SearchFragment;
 import com.example.nidoqueue.activity.SignInFragment;
 import com.example.nidoqueue.activity.UserProfileActivity;
 import com.example.nidoqueue.model.User;
@@ -51,7 +52,7 @@ public class UserControl {
         requestManager.transition(UserProfileActivity.class);
     }
     public void signIn(){
-        new SignInFragment("", "").show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+        new SignInFragment("", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
         // Check if Android ID exists in User Database
 //        requestManager.transition(SignInActivity.class);
     }
@@ -59,12 +60,15 @@ public class UserControl {
         new SignUpFragment("", "", "", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Add_User");
     }
     public void clickHere(){
-        new RecoveryFragment("").show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
+        new RecoveryFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
     public void edit(){
         new SignUpFragment(user.getUsername(), user.getEmail(), user.getPassword(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Edit_User");
     }
     public void select(){
 
+    }
+    public void searchBar(){
+        new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
 }

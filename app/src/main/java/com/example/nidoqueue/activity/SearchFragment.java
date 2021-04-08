@@ -17,27 +17,23 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
-/**
- * Classname:   Recovery.java
- * Version:     Prototype
- * Date:        April 9th, 2021
- * Purpose:     Fragment window that handles the Account Recovery for the user.
- */
-public class SignInFragment extends DialogFragment {
-    private EditText username_EditText, password_EditText;
-    private String username, password;
+
+public class SearchFragment extends DialogFragment {
+    private EditText search_EditText;
+    private String search;
     private Boolean isTest;
     private OnFragmentInteractionListener listener;
     private static final ContextManager contextManager = ContextManager.getInstance();
 
-    public SignInFragment(String username, String password, Boolean isTest) {
-        this.username = username;
-        this.password = password;
+    public SearchFragment(String search, Boolean isTest) {
+        this.search = search;
         this.isTest = isTest;
     }
+
     public interface OnFragmentInteractionListener {
         void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -48,82 +44,77 @@ public class SignInFragment extends DialogFragment {
                     + " must implement onFragmentInteractionListener");
         }
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.sign_in_form, null); //  Sets up the view for the add/edit experiment window
-        username_EditText = view.findViewById(R.id.username_signIn);
-        password_EditText = view.findViewById(R.id.password_signIn);
-        username_EditText.setText(username);
-        password_EditText.setText(password);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.search_form, null); //  Sets up the view for the add/edit experiment window
+        search_EditText = view.findViewById(R.id.search_bar);
+        search_EditText.setText(search);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
-                .setTitle("Sign In")
+                .setTitle("Search")
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        String username = username_EditText.getText().toString();
-                        String password = password_EditText.getText().toString();
-                        trySignIn(username, password, false);
+                        String search = search_EditText.getText().toString(); // Allows the user to input text
+                        trySearch(search, false);
                     }
-                }) // New experiment is created with new arguments on the press of the "ok" button.
+                }) // New user is created with new arguments on the press of the "ok" button.
                 .create();
+
     }
     /******************************************************************************
      * Error Catching methods are called.
      ******************************************************************************/
     /**
      *
-     * @param username - User entered string is passed through.
-     * @param password - User entered string is passed through.
+     * @param search - User entered string is passed through.
      * @param isTest - The value is true if it's a test case.
      */
-    public void trySignIn(String username, String password, Boolean isTest){
+    public void trySearch(String search, Boolean isTest){
         /**
          * Comparisons made to contain the user entered strings into legal values for the scope of this project.
          */
-        if(username.length()>18 || username.length()<8){
+        if(search.length()>18 || search.length()<1){
             // Cancels fragment if user enters a username that is under 1 character or over 18 characters in string length.
-            errorCode(1, null,  null, isTest);
-        }else if(password.length()>18 || password.length()<8){
-            // Cancels fragment if user enters a username that is under 1 character or over 18 characters in string length.
-            errorCode(1, null,  null, isTest);
-        }else{
+            errorCode(1, null, isTest);
+        } else{
             // Sends a "0" for an error code, which successfully adds a new user through "onOkPressed" or "test case".
-            errorCode(0, username, password, isTest);
+            errorCode(0, search, isTest);
         }
     }
     /**
      *
      * @param error - The error code value is passed through.
      *                "0" Indicates no errors, through the fragment or the test case.
-     * @param username - Only passed in if no errors exist.
-     * @param password - Only passed in if no errors exist.
+     * @param search - Only passed in if no errors exist.
      * @param isTest - Only passed in if no errors exist.
      */
-    public void errorCode(int error, String username, String password, Boolean isTest){
+    public void errorCode(int error, String search, Boolean isTest){
         String message = "";
-        switch (error) {
+        switch (error){
             case 0:
-                message = "Welcome " + username + "!";
-                if (isTest) {
+                message = "Search results were successful!";
+                if(isTest){
                     displayTestResults(message);
                     //new User(username, email, password, null, null);
-                    System.out.print("Username: " + username + "\nPassword: " + password);
+                    System.out.print("Search: "+search+"\nResults: ");
                     break;
-                } else {
+                }else{
                     //listener.onOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }
             case 1:
-                message = "Sorry, you entered an incorrect username or password";
-                if (isTest) {
+                message = "Sorry, no results were found";
+                if(isTest){
                     displayTestResults(message);
                     break;
-                } else {
+                }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }
@@ -136,4 +127,5 @@ public class SignInFragment extends DialogFragment {
     public void displayTestResults(String message){
         System.out.print("\n"+message+"\n");
     }
+
 }
