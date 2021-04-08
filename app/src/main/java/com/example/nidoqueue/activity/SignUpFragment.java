@@ -20,8 +20,6 @@ import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Classname:   SignUpFragment.java
  * Version:     Prototype
@@ -93,100 +91,95 @@ public class SignUpFragment extends DialogFragment {
      * Error Catching methods are called.
      ******************************************************************************/
     /**
-     *
-     * @param username - User entered string is passed through.
-     * @param email - User entered string is passed through.
-     * @param password - User entered string is passed through.
+     * @param username   - User entered string is passed through.
+     * @param email      - User entered string is passed through.
+     * @param password   - User entered string is passed through.
      * @param passwordRe - User entered string is passed through.
-     * @param isTest - The value is true if it's a test case.
+     * @param isTest     - The value is true if it's a test case.
      */
-    public void trySignUp(String username, String email, String password, String passwordRe, Boolean isTest){
+    public void trySignUp(String username, String email, String password, String passwordRe, Boolean isTest) {
         /**
          * Comparisons made to contain the user entered strings into legal values for the scope of this project.
          */
-        if(username.length()>18 || username.length()<8){
+        if (username.length() > 18 || username.length() < 8) {
             // Cancels fragment if user enters a username that is under 8 character or over 18 characters in string length.
             errorCode(1, null, null, null, isTest);
-        }
-        else if(email.length()>34 || email.length()<10){
+        } else if (email.length() > 34 || email.length() < 10) {
             // Cancels fragment if user enters an email that is under 10 character or over 34 characters in string length.
-            errorCode(2,null,null, null, isTest);
-        }
-        else if(password.length()>18 || password.length()<8){
+            errorCode(2, null, null, null, isTest);
+        } else if (password.length() > 18 || password.length() < 8) {
             // Cancels fragment if user enters a password that is under 8 character or over 18 characters in string length.
             errorCode(3, null, null, null, isTest);
-        }
-        else if(!password.equals(passwordRe)){
+        } else if (!password.equals(passwordRe)) {
             // Cancels fragment if passwords do not match
             errorCode(4, null, null, null, isTest);
-        }
-        else{
+        } else {
             // Sends a "0" for an error code, which successfully adds a new user through "onOkPressed" or "test case".
             errorCode(0, username, email, password, isTest);
         }
     }
+
     /**
-     *
-     * @param error - The error code value is passed through.
-     *                "0" Indicates no errors, through the fragment or the test case.
+     * @param error    - The error code value is passed through.
+     *                 "0" Indicates no errors, through the fragment or the test case.
      * @param username - Only passed in if no errors exist.
-     * @param email - Only passed in if no errors exist.
+     * @param email    - Only passed in if no errors exist.
      * @param password - Only passed in if no errors exist.
      */
 
-    public void errorCode(int error, String username, String email, String password, Boolean isTest){
+    public void errorCode(int error, String username, String email, String password, Boolean isTest) {
         String message = "";
-        switch (error){
+        switch (error) {
             case 0:
                 message = "Thank you for signing up!";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                    System.out.print("Username: "+username+"\nEmail: "+email+"\nPassword: "+password);
-                }else{
+                    System.out.print("Username: " + username + "\nEmail: " + email + "\nPassword: " + password);
+                } else {
                     listener.onSignUpOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
                 break;
             case 1:
                 message = "Sorry, the username needs to be \nbetween 8 and 18 characters in length";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                }else{
+                } else {
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
                 break;
             case 2:
                 message = "Sorry, the email needs to be \nbetween 10 and 34 characters in length";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                }else{
+                } else {
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
                 break;
             case 3:
                 message = "Sorry, the password needs to be \nbetween 8 and 18 characters in length";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                }else{
+                } else {
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 4:
                 message = "Sorry, the passwords need to match";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                }else{
+                } else {
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
                 break;
         }
     }
+
     /**
-     *
      * @param message - Message that is displayed to the user through the user interface, or the test terminal.
      */
-    public void displayTestResults(String message){
-        System.out.print("\n"+message+"\n");
+    public void displayTestResults(String message) {
+        System.out.print("\n" + message + "\n");
     }
 
 //    @Override
@@ -197,7 +190,7 @@ public class SignUpFragment extends DialogFragment {
     @Override
     public void show(FragmentManager manager, String tag) {
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.add(this, TAG);
+        fragmentTransaction.add(this, tag);
         fragmentTransaction.commitAllowingStateLoss();
     }
 }
