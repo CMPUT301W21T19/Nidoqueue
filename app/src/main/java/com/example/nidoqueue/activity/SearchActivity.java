@@ -59,9 +59,17 @@ public class SearchActivity extends AbstractActivity implements RecyclerViewClic
     private View.OnClickListener Back = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            finish();
             requestManager.back();
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        requestManager.back();
+    }
+
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
