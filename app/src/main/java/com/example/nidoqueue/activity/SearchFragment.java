@@ -17,26 +17,23 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
-/**
- * Classname:   Recovery.java
- * Version:     Prototype
- * Date:        April 9th, 2021
- * Purpose:     Fragment window that handles the Account Recovery for the user.
- */
-public class RecoveryFragment extends DialogFragment {
-    private EditText email_EditText;
-    private String email;
+
+public class SearchFragment extends DialogFragment {
+    private EditText search_EditText;
+    private String search;
     private Boolean isTest;
     private OnFragmentInteractionListener listener;
     private static final ContextManager contextManager = ContextManager.getInstance();
 
-    public RecoveryFragment(String email, boolean isTest) {
-        this.email = email;
+    public SearchFragment(String search, Boolean isTest) {
+        this.search = search;
         this.isTest = isTest;
     }
+
     public interface OnFragmentInteractionListener {
-        void onRecoveryOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -47,63 +44,65 @@ public class RecoveryFragment extends DialogFragment {
                     + " must implement onFragmentInteractionListener");
         }
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.recovery_form, null); //  Sets up the view for the add/edit experiment window
-        email_EditText = view.findViewById(R.id.email_recovery);
-        email_EditText.setText(email);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.search_form, null); //  Sets up the view for the add/edit experiment window
+        search_EditText = view.findViewById(R.id.search_bar);
+        search_EditText.setText(search);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
-                .setTitle("Account Recovery")
+                .setTitle("Search")
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        String email = email_EditText.getText().toString();
-                        tryRecovery(email, false);
+                        String search = search_EditText.getText().toString(); // Allows the user to input text
+                        trySearch(search, false);
                     }
-                }) // New experiment is created with new arguments on the press of the "ok" button.
+                }) // New user is created with new arguments on the press of the "ok" button.
                 .create();
+
     }
     /******************************************************************************
      * Error Catching methods are called.
      ******************************************************************************/
     /**
      *
-     * @param email - User entered string is passed through.
+     * @param search - User entered string is passed through.
      * @param isTest - The value is true if it's a test case.
      */
-    public void tryRecovery(String email, Boolean isTest){
+    public void trySearch(String search, Boolean isTest){
         /**
          * Comparisons made to contain the user entered strings into legal values for the scope of this project.
          */
-        if(email.length()>34 || email.length()<10){
+        if(search.length()>18 || search.length()<1){
             // Cancels fragment if user enters a username that is under 1 character or over 18 characters in string length.
             errorCode(1, null, isTest);
         } else{
             // Sends a "0" for an error code, which successfully adds a new user through "onOkPressed" or "test case".
-            errorCode(0, email, isTest);
+            errorCode(0, search, isTest);
         }
     }
     /**
      *
      * @param error - The error code value is passed through.
      *                "0" Indicates no errors, through the fragment or the test case.
-     * @param email - Only passed in if no errors exist.
+     * @param search - Only passed in if no errors exist.
      * @param isTest - Only passed in if no errors exist.
      */
-    public void errorCode(int error, String email, Boolean isTest){
+    public void errorCode(int error, String search, Boolean isTest){
         String message = "";
         switch (error){
             case 0:
-                message = "Check your email for a recovery code!";
+                message = "Search results were successful!";
                 if(isTest){
                     displayTestResults(message);
                     //new User(username, email, password, null, null);
-                    System.out.print("Email: "+email+"\nResults: ");
+                    System.out.print("Search: "+search+"\nResults: ");
                     break;
                 }else{
                     //listener.onOkPressed(new User(username, email, password, null, null));
@@ -111,7 +110,7 @@ public class RecoveryFragment extends DialogFragment {
                     break;
                 }
             case 1:
-                message = "Sorry, this email does not exist on the system";
+                message = "Sorry, no results were found";
                 if(isTest){
                     displayTestResults(message);
                     break;
@@ -128,4 +127,5 @@ public class RecoveryFragment extends DialogFragment {
     public void displayTestResults(String message){
         System.out.print("\n"+message+"\n");
     }
+
 }

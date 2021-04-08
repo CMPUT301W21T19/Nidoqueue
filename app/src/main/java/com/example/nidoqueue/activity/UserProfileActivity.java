@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Date:        April 9th, 2021
  * Purpose:     Activity to show profile of user
  */
-public class UserProfileActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener{
+public class UserProfileActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, RecyclerViewClickListener{
     ListView userView;
     ImageButton backButton, homeButton, editButton;
     TextView userName, email;
@@ -38,6 +38,11 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
     static UserControl userControl = UserControl.getInstance();
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        requestManager.transition(ExperimentActivity.class, position);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,4 +101,3 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
 
     }
 }
-

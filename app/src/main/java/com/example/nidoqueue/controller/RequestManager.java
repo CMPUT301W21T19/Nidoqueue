@@ -87,7 +87,9 @@ public class RequestManager {
     public void select() {
         userControl.select();
     }
-
+    public void searchBar() {
+        userControl.searchBar();
+    }
     /******************************************************************************
      * ExperimentManager methods are called.
      ******************************************************************************/
