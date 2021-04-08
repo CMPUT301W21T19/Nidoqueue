@@ -13,15 +13,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
+
+import static android.content.ContentValues.TAG;
+
 /**
- * Classname:   Recovery.java
+ * Classname:   SignInFragment.java
  * Version:     Prototype
  * Date:        April 9th, 2021
- * Purpose:     Fragment window that handles the Account Recovery for the user.
+ * Purpose:     Fragment that handle sign in.
  */
 public class SignInFragment extends DialogFragment {
     private EditText username_EditText, password_EditText;
@@ -36,7 +41,7 @@ public class SignInFragment extends DialogFragment {
         this.isTest = isTest;
     }
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onSignInOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context) {
@@ -66,11 +71,20 @@ public class SignInFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int i) {
                         String username = username_EditText.getText().toString();
                         String password = password_EditText.getText().toString();
+                        listener.onSignInOkPressed(new User(username, null, password, null, null));
                         trySignIn(username, password, false);
                     }
                 }) // New experiment is created with new arguments on the press of the "ok" button.
                 .create();
     }
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
+      }
+
     /******************************************************************************
      * Error Catching methods are called.
      ******************************************************************************/

@@ -1,10 +1,8 @@
 package com.example.nidoqueue.activity;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.View;
-import android.widget.Toast;
+import android.provider.Settings;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
@@ -26,11 +24,14 @@ public class MainActivity extends AbstractActivity {
     DatabaseManager databaseManager = DatabaseManager.getInstance();
 
 
+    @SuppressLint("HardwareIds")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contextManager.setContext(MainActivity.this);
         setContentView(R.layout.activity_main);
+        databaseManager.setAndroid_id(Settings.Secure.getString(contextManager.getActivity().getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
         requestManager.startApp();
     }
 

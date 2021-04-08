@@ -35,7 +35,7 @@ public class RecoveryFragment extends DialogFragment {
         this.isTest = isTest;
     }
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onRecoveryOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context) {
