@@ -1,29 +1,25 @@
 package com.example.nidoqueue;
-import android.widget.Toast;
 
-import com.example.nidoqueue.activity.SignUpFragment;
+import com.example.nidoqueue.activity.SignInFragment;
+
 import org.junit.Test;
-
-import static com.example.nidoqueue.controller.UserControl.contextManager;
 /**
- * Functional - April 7th, Colin
+ * Incomplete - April 7th, Colin
  */
-public class SignUpTest {
+public class SignInTest {
     @Test
-    public void testSignUp(){
-        SignUpFragment test = new SignUpFragment("", "", "", "", false);
+    public void testSignIn(){
+        SignInFragment test = new SignInFragment("", "", false);
         String small = "1234";
         String large = "12345678901234567891234567891234567899999";
         String normal = "1234567890";
         String misMatch = "123456790";
         String[] username = {small, large, normal, normal, normal, normal, normal, normal};
-        String[] email = {normal, normal, small, large, normal, normal, normal, normal};
         String[] password = {normal, normal, normal, normal, small, large, normal, normal};
-        String[] passwordRe = {normal, normal, normal, normal, normal, normal, misMatch, normal};
 
         for(int testNum = 0; testNum < username.length; testNum++){
             displayTestName(testNum);
-            test.trySignUp(username[testNum], email[testNum],password[testNum],passwordRe[testNum], true);
+            test.trySignIn(username[testNum],password[testNum], true);
         }
     }
     public void displayTestName(int num){

@@ -75,6 +75,13 @@
     <string name="qa_button">QA</string>
     <string name="record_button">Record</string>
     <string name="view_results">View Results</string>
+    <string name="search">Search</string>
+    <string name="trials">Trials</string>
+    <string name="measurement_button">Measurement</string>
+    <string name="count_button">Count</string>
+    <string name="binomial__button">Binomial</string>
+    <string name="non_negative__button">Non-Negative</string>
+
 
 
 

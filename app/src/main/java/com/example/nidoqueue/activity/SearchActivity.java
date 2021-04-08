@@ -1,8 +1,11 @@
 package com.example.nidoqueue.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.Experiment;
@@ -20,16 +23,18 @@ import java.util.ArrayList;
  */
 import com.example.nidoqueue.R;
 
-public class SearchActivity extends AbstractActivity {
-
+public class SearchActivity extends AbstractActivity implements RecyclerViewClickListener  {
+    ImageButton searchBar, backButton;
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
-    User user;
-    String android_id;
-
 
     ArrayList<Experiment> exps;
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        requestManager.transition(SearchActivity.class, position);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +42,34 @@ public class SearchActivity extends AbstractActivity {
         setContentView(R.layout.search_trials);
         contextManager.setContext(this);
 
-        //user = dbManager.getUser();
-        //android_id = dbManager.getAndroid_id();
+        searchBar = findViewById(R.id.search_button2);
+        searchBar.setOnClickListener(SearchBar);
+
+        backButton = findViewById(R.id.back_button3);
+        backButton.setOnClickListener(Back);
 
         exps = new ArrayList<>();
-
-
     }
+    private View.OnClickListener SearchBar = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.searchBar();
+        }
+    };
+    private View.OnClickListener Back = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            finish();
+            requestManager.back();
+        }
+    };
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        requestManager.back();
+    }
+
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/
