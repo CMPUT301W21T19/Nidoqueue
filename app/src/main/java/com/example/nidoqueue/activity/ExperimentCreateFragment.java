@@ -130,7 +130,7 @@ public class ExperimentCreateFragment extends DialogFragment {
     @Override
     public void show(FragmentManager manager, String tag) {
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.add(this, TAG);
+        fragmentTransaction.add(this, tag);
         fragmentTransaction.commitAllowingStateLoss();
     }
 }
