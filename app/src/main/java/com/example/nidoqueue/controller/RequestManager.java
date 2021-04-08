@@ -6,9 +6,13 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.activity.ExpListAdapter;
 import com.example.nidoqueue.activity.ExperimentCreateFragment;
+import com.example.nidoqueue.activity.ExperimentDataActivity;
 import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.DatabaseManager;
+import com.example.nidoqueue.model.ExpBinomial;
+import com.example.nidoqueue.model.ExpCount;
+import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
@@ -17,6 +21,8 @@ import com.example.nidoqueue.activity.MainActivity;
 import com.example.nidoqueue.activity.SearchActivity;
 import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.UserProfileActivity;
+
+import java.util.ArrayList;
 
 import static com.example.nidoqueue.controller.UserControl.contextManager;
 import static com.example.nidoqueue.controller.UserControl.databaseManager;
@@ -53,7 +59,8 @@ public class RequestManager {
      * UserControl methods are called.
      ******************************************************************************/
     public void setUserId(User user) {
-        //userControl.setID(user);
+        user.setSubscribedExp(new ArrayList<Experiment>());
+       databaseManager.setUser(user);
     }
     public void signIn() {
         userControl.signIn();
@@ -89,11 +96,9 @@ public class RequestManager {
      * General methods are called.
      ******************************************************************************/
     public void startApp() {
-        // Set user
-        String username = "NameNameName";
-        String email = "EmailEmailEmail";
-        String password = "9994445555";
-        databaseManager.setUser(new User(username, email, password, null, null));
+
+        userControl.init();
+        experimentManager.init();
         transition(WelcomeActivity.class);
     }
     public void resetApp() {
@@ -111,9 +116,34 @@ public class RequestManager {
     public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
         expListAdapter.list.add(exp);
     }
-    public void sub_exp(Experiment experiment) {
+    public void user_subExp(Experiment experiment) {
         databaseManager.getUser().addSubscribedExp(experiment);
     }
+
+    public void Owner_unPubExp(Experiment experiment) {
+        experiment.unpublish();
+    }
+
+    public void user_unSubExp(Experiment experiment) {
+        databaseManager.getUser().remSubscribedExp(experiment);
+    }
+
+    public void Owner_endExp(Experiment experiment) {
+        experiment.end();
+    }
+
+    public void recordTrials(Experiment experiment) {
+        transition(ExperimentDataActivity.class);
+    }
+
+    public void setCurrentExp(Experiment experiment) {
+        experimentManager.setCurrentExperiment(experiment);
+    }
+
+    public Experiment getExperiment() {
+       return experimentManager.getCurrentExperiment();
+    }
+
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
      ******************************************************************************/

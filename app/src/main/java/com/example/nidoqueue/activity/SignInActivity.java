@@ -40,7 +40,6 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
     RecyclerView created, subscribed;
     User user;
 
-    static ArrayList<Experiment> createdExps;
     ExpListAdapter expListAdapter;
 
     static RequestManager requestManager = RequestManager.getInstance();
@@ -60,7 +59,6 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         contextManager.setContext(this);
         user = userControl.getUser();
 
-        createdExps = new ArrayList<>();
 
         createExp = findViewById(R.id.create_exp_button);
         profile = findViewById(R.id.profile_button);
@@ -70,7 +68,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         search.setOnClickListener(Search);
         createExp.setOnClickListener(CreateExp);
 
-        expListAdapter = new ExpListAdapter(createdExps, this);
+        expListAdapter = new ExpListAdapter(databaseManager.getCreatedExps(), this);
         created = findViewById(R.id.created_exps_list);
         created.setLayoutManager(new LinearLayoutManager(this));
         created.setAdapter(expListAdapter);

@@ -11,6 +11,8 @@ import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 /**
  * Classname:   DatabaseManager.java
  * Version:     Prototype
@@ -32,6 +34,9 @@ public class DatabaseManager {
     public static DatabaseManager getInstance() {
         return databaseManager;
     }
+
+    static ArrayList<Experiment> createdExps = new ArrayList<Experiment>();
+    static ArrayList<Experiment> subscribedExps = new ArrayList<Experiment>();
 
 
     public void setUser(User user) {
@@ -73,5 +78,13 @@ public class DatabaseManager {
 
     public void setAndroid_id(String android_id) {
         this.android_id = android_id;
+    }
+
+    public ArrayList<Experiment> getCreatedExps() {
+        return createdExps;
+    }
+
+    public void setCreatedExps() {
+//        createdExps.add(new ExpBinomial(databaseManager.getUser(), "name", "descript", false));
     }
 }

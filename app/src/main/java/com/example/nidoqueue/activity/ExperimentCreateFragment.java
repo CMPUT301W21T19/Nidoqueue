@@ -54,8 +54,8 @@ public class ExperimentCreateFragment extends DialogFragment {
         expName_EditText = view.findViewById(R.id.exp_name);
         expDesc_EditText = view.findViewById(R.id.exp_desc);
         minTrials_EditText = view.findViewById(R.id.minTrials);
-        region = view.findViewById(R.id.region);
-        type = view.findViewById(R.id.type);
+        region = (Spinner)view.findViewById(R.id.region);
+        type = (Spinner)view.findViewById(R.id.type);
         geoLocation = view.findViewById(R.id.geoLocation);
 
         ArrayAdapter regionAdapter = ArrayAdapter.createFromResource(getContext(), R.array.countries_array, R.layout.custom_dropdown);
@@ -87,14 +87,15 @@ public class ExperimentCreateFragment extends DialogFragment {
 
 
 
+
         if (typeSelected.equals("Count")) {
-            listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+            listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
         } else if (typeSelected.equals("Binomial")) {
-            listener.onOkPressed(new ExpBinomial(databaseManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+            listener.onOkPressed(new ExpBinomial(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
         } else if (typeSelected.equals("Non Negative")) {
-            listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
+            listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
         } else if (typeSelected.equals("Measurement")) {
-            listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, "", geoLocationChecked), typeSelected);
+            listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, "", geoLocationChecked, regionSelected), typeSelected);
         } else {
             Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
         }

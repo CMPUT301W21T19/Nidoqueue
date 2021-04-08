@@ -67,24 +67,111 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/exp_info"
-        android:layout_width="320dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
+    <TextView
+        android:id="@+id/exp_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/name_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintTop_toBottomOf="@+id/exp_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/exp_list_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/description_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/exp_list_trials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/trial_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_region"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/exp_list_geolocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/geo_location_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_trials"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/exp_list_published"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/status_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_geolocation"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/exp_list_region"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/region_expData"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_info"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/exp_title"
@@ -118,5 +205,74 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <Button
+        android:id="@+id/unpublish_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/unpublish_button"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toTopOf="@+id/subscribe_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/end_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/end_button"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toTopOf="@+id/unsubscribe_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/unpublish_button" />
+
+    <Button
+        android:id="@+id/data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/data_button"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toTopOf="@+id/unpublish_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/qa_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/qa_button"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintBottom_toTopOf="@+id/end_button"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/exo"
+        android:text="@string/record_button"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:backgroundTint="#80D9FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_list_published" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

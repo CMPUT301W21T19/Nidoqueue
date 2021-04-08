@@ -23,6 +23,7 @@ public abstract class Experiment {
     private int num_of_trials;
     private boolean geoLocation;
     private boolean published;
+    private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
 
@@ -30,14 +31,16 @@ public abstract class Experiment {
 
     }
 
-    public Experiment(User owner, String name, String description, Boolean geoLocation) {
+    public Experiment(User owner, String name, String description, Boolean geoLocation, String region) {
         this.owner = owner;
         this.name = name;
         this.description = description;
         this.geoLocation = geoLocation;
+        this.region = region;
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
         published = true;
+        ended = false;
     }
 
     /**
@@ -52,6 +55,13 @@ public abstract class Experiment {
      */
     public void unpublish() {
         this.published = false;
+    }
+
+    /**
+     * This ends the experiment.
+     */
+    public void end() {
+        this.ended = true;
     }
 
     /**

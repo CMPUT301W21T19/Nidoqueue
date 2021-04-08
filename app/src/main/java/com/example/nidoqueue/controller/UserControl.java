@@ -67,4 +67,12 @@ public class UserControl {
     public void select(){
 
     }
+
+    public void init() {
+        // Set user
+        String username = "NameNameName";
+        String email = "EmailEmailEmail";
+        String password = "9994445555";
+        databaseManager.setUser(new User(username, email, password, null, null));
+    }
 }

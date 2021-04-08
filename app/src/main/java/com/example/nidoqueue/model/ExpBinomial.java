@@ -15,8 +15,8 @@ public class ExpBinomial extends Experiment {
     private final String TYPE = "binomial";
     private ArrayList<Trial> trials;
 
-    public ExpBinomial(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpBinomial(User owner, String name, String description, Boolean geoLocation, String regionSelected) {
+        super(owner, name, description, geoLocation, regionSelected);
         pass = 0;
         fail = 0;
         trials = new ArrayList<>();
