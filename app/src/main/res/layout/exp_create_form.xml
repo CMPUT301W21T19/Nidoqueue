@@ -8,7 +8,6 @@
         android:orientation="vertical">
 
 
-
     <EditText
         android:id="@+id/exp_name"
         android:layout_width="match_parent"
@@ -93,14 +92,11 @@
         android:layout_height="wrap_content"
         android:text="@string/enable_geolocation"
         android:textSize="20sp"
-        android:fontFamily="@font/exo"
+
         android:paddingTop="10sp"
 
         app:layout_constraintLeft_toRightOf="@+id/geoLocation"
         app:layout_constraintTop_toBottomOf="@+id/type"
         />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

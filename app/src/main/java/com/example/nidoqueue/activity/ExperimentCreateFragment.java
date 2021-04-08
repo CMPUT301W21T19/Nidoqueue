@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.DatabaseManager;
@@ -25,6 +27,15 @@ import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
+import static android.content.ContentValues.TAG;
+
+/**
+ * Classname:   ExperimentCreateFragment.java
+ * Version:     Prototype
+ * Date:        Apr 9th, 2021
+ * Purpose:     Fragment to create and publish new Experiment
+ * Issues:      None
+ */
 public class ExperimentCreateFragment extends DialogFragment {
     private EditText expName_EditText, expDesc_EditText, minTrials_EditText;
     private Spinner region, type;
@@ -46,10 +57,12 @@ public class ExperimentCreateFragment extends DialogFragment {
         this.databaseManager = databaseManager;
     }
 
+
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.exp_create_from, null); //  Sets up the view for the add/edit experiment window
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.exp_create_form, null); //  Sets up the view for the add/edit experiment window
 
         expName_EditText = view.findViewById(R.id.exp_name);
         expDesc_EditText = view.findViewById(R.id.exp_desc);
@@ -86,7 +99,6 @@ public class ExperimentCreateFragment extends DialogFragment {
         Boolean geoLocationChecked = geoLocation.isChecked();
 
 
-
         if (typeSelected.equals("Count")) {
             listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, geoLocationChecked), typeSelected);
         } else if (typeSelected.equals("Binomial")) {
@@ -99,8 +111,6 @@ public class ExperimentCreateFragment extends DialogFragment {
             Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
     public interface OnFragmentInteractionListener {
         void onOkPressed(Experiment exp, String type); // The new experiment is passed into this method when the "ok" button is pressed.
@@ -117,6 +127,10 @@ public class ExperimentCreateFragment extends DialogFragment {
         }
     }
 
-
-
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 }

@@ -135,7 +135,7 @@ public class TrialFragment extends DialogFragment {
                     System.out.print("Username: "+username+"\nEmail: "+email+"\nPassword: "+password);
                     break;
                 }else{
-                    listener.onOkPressed(new User(username, email, password, null, null));
+                    listener.onSignUpOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }
