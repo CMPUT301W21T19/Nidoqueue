@@ -16,10 +16,10 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.model.User;
 /**
- * Classname:   Recovery.java
+ * Classname:   SignInFragment.java
  * Version:     Prototype
  * Date:        April 9th, 2021
- * Purpose:     Fragment window that handles the Account Recovery for the user.
+ * Purpose:     Fragment that handle sign in.
  */
 public class SignInFragment extends DialogFragment {
     private EditText username_EditText, password_EditText;

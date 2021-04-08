@@ -22,7 +22,12 @@ import com.example.nidoqueue.model.UserProfileContent;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-
+/**
+ * Classname:   UserProfileActivity.java
+ * Version:     Prototype
+ * Date:        April 9th, 2021
+ * Purpose:     Activity to show profile of user
+ */
 public class UserProfileActivity extends AbstractActivity{
     ListView userView;
     ImageButton backButton, homeButton, editButton;

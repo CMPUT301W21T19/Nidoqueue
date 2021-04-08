@@ -25,6 +25,13 @@ import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
+/**
+ * Classname:   ExperimentCreateFragment.java
+ * Version:     Prototype
+ * Date:        Apr 9th, 2021
+ * Purpose:     Fragment to create and publish new Experiment
+ * Issues:      None
+ */
 public class ExperimentCreateFragment extends DialogFragment {
     private EditText expName_EditText, expDesc_EditText, minTrials_EditText;
     private Spinner region, type;

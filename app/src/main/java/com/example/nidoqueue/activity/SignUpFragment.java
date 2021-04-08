@@ -17,7 +17,12 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
-
+/**
+ * Classname:   SignUpFragment.java
+ * Version:     Prototype
+ * Date:        April 9th, 2021
+ * Purpose:     Fragment that handle sign up process.
+ */
 public class SignUpFragment extends DialogFragment {
     private EditText userName_EditText, email_EditText, password_EditText, passwordRe_EditText;
     private String username, email, password, passwordRe;

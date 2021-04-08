@@ -35,6 +35,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Classname:   SignInActivity.java
+ * Version:     Prototype
+ * Date:        Apr 9th, 2021
+ * Purpose:     Activity to show the list of created and subscribed experiments of the user.
+ * Issues:      Non-functional, planning stages.
+ */
+
 public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     ImageButton createExp, profile, search;
     RecyclerView created, subscribed;
