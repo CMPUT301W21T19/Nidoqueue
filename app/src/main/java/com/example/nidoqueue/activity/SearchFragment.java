@@ -109,7 +109,7 @@ public class SearchFragment extends DialogFragment {
                 if(isTest){
                     displayTestResults(message);
                     //new User(username, email, password, null, null);
-                    System.out.print("Search: "+search+"\nResults: ");
+                    System.out.print("Search: "+search+"\nResults: Success!\n");
                     break;
                 }else{
                     //listener.onOkPressed(new User(username, email, password, null, null));
