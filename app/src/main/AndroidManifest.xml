@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nidoqueue">
-        <activity android:name=".activity.QRScaner"></activity>
+        <activity android:name=".activity.AddQuestionActivity" />
+        <activity android:name=".activity.AddReplyActivity" />
+        <activity android:name=".activity.QuestionActivity" />
+        <activity android:name=".activity.QRScaner" />
         <activity android:name=".activity.QRActivity" />
         <activity android:name=".activity.SignInActivity" />
         <activity android:name=".activity.UserProfileActivity" />

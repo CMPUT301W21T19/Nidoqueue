@@ -1,8 +1,9 @@
 package com.example.nidoqueue;
 
 import com.example.nidoqueue.activity.SignUpFragment;
-import org.junit.Test;
 
+
+import org.junit.Test;
 /**
  * Classname: 	SignUpTest.java
  * Version:		Final

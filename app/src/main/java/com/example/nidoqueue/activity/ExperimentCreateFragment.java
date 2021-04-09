@@ -29,8 +29,6 @@ import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Classname:   ExperimentCreateFragment.java
  * Version:     Final
@@ -58,8 +56,6 @@ public class ExperimentCreateFragment extends DialogFragment {
         this.geoLocationInfo = geoLocationInfo;
         this.databaseManager = databaseManager;
     }
-
-
 
     @NonNull
     @Override
@@ -99,9 +95,9 @@ public class ExperimentCreateFragment extends DialogFragment {
         int minTrials = Integer.parseInt(minTrials_EditText.getText().toString());
         String typeSelected = type.getSelectedItem().toString();
         Boolean geoLocationChecked = geoLocation.isChecked();
+
         tryExperiment(expName, expDesc, regionSelected, minTrials, typeSelected, geoLocationChecked, false);
     }
-
 
 
     public interface OnFragmentInteractionListener {

@@ -52,7 +52,6 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         signIn.setOnClickListener(SignIn);
         signUp.setOnClickListener(SignUp);
         clickHere.setOnClickListener(ClickHere);
-
     }
     public FirebaseFirestore getDB() {
         return database.getDb();
