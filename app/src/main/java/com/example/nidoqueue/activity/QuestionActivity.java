@@ -66,6 +66,7 @@ public class QuestionActivity extends AbstractActivity {
         listPosition = mIntent.getIntExtra("ListPosition", 0);
         name = mIntent.getStringExtra("Experiment Name");
 
+        //set the designated questions
         question = databaseManager.getTargetQuestions().get(listPosition);
         answers = question.getAnswers();
 

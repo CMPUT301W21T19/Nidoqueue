@@ -66,15 +66,12 @@ public class AddQuestionActivity extends AbstractActivity {
     //endregion
 
 
-    //region OnClickListeners - some functionality required
 
-    //functionality for postQuestion required
     private View.OnClickListener postQuestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String stringQuestion = editText_question.getText().toString();
-            Question question = new Question(stringQuestion);
-            // add database functionality
+            //Posting Question to the Database
+            Question question = new Question(editText_question.getText().toString());
             Intent mIntent = getIntent();
             String name = mIntent.getStringExtra("Experiment Name");
             for (Experiment experiment : databaseManager.getExperiments()) {
