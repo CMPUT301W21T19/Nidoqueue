@@ -150,6 +150,7 @@ public class RequestManager {
     }
     public void addExperiment(Experiment exp, String type, ExpListAdapter expListAdapter) {
         expListAdapter.list.add(exp);
+        expListAdapter.notifyDataSetChanged();
     }
     public void user_subExp(Experiment experiment) {
         databaseManager.getUser().addSubscribedExp(experiment);
@@ -179,6 +180,8 @@ public class RequestManager {
        return experimentManager.getCurrentExperiment();
     }
 
+
+    //region Dead Code
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
      ******************************************************************************/
@@ -187,4 +190,5 @@ public class RequestManager {
      experimentManager.addExp(exp, type);
      }
      */
+    //endregion
 }
