@@ -191,7 +191,7 @@ public class RequestManager {
 
     }
 
-//    private void autoSignIn() {
+    private void autoSignIn() {
 //        if(databaseManager.getUser() == null) {
 //            transition(WelcomeActivity.class);
 //        } else {
@@ -225,7 +225,7 @@ public class RequestManager {
 //        userControl.init();
 //        experimentManager.init();
 //        transition(WelcomeActivity.class);
-//    }
+    }
 
     public void resetApp() {
         transition(MainActivity.class);
