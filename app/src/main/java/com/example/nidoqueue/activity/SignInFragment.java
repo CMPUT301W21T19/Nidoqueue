@@ -24,9 +24,9 @@ import static android.content.ContentValues.TAG;
 
 /**
  * Classname:   SignInFragment.java
- * Version:     Prototype
+ * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Fragment that handle sign in.
+ * Purpose:     Fragment that handles the sign in process.
  */
 public class SignInFragment extends DialogFragment {
     private EditText username_EditText, password_EditText;

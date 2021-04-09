@@ -5,9 +5,8 @@ import java.util.ArrayList;
 /**
  * Classname:   ExpMeasurement.java
  * Version:     Prototype
- * Date:        March 19th, 2021
+ * Date:        April 9th, 2021
  * Purpose:     Handles the measurement aspect of the experiments.
- * Issues:      Non-functional, planning stages.
  */
 public class ExpMeasurement extends Experiment{
     // since measurements require units, I think we should consider using a custom ArrayList or something similar
@@ -19,8 +18,13 @@ public class ExpMeasurement extends Experiment{
     private ArrayList<Trial> trial;
     final private String TYPE = "measurement";
 
-    public ExpMeasurement(User owner, String name, String description, String unit, Boolean geoLocation, String regionSelected) {
-        super(owner, name, description, geoLocation, regionSelected);
+    public ExpMeasurement() {
+
+    }
+
+    public ExpMeasurement(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published, String unit) {
+        super(owner, name, description, region, num_of_trials, geoLocation, published);
+
         this.unit = unit;
         this.trials = new ArrayList<>();
         this.trial = new ArrayList<>();

@@ -3,7 +3,10 @@ package com.example.nidoqueue;
 import org.junit.Test;
 
 /**
- * Incomplete - April 7th, Colin
+ * Classname: 	TrialTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the Trial process.
  */
 public class TrialTest {
     @Test

@@ -14,19 +14,17 @@ import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.Answer;
 import com.example.nidoqueue.model.AnswerAdapter;
-import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Classname:   QuestionActivity.java
- * Version:     Prototype
- * Date:        April 8th, 2021
- * Purpose:     Activity that displays the question segment of Q&A Forum
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity displays the questions to the user.
  */
 public class QuestionActivity extends AbstractActivity{
     //region class variables
@@ -49,7 +47,6 @@ public class QuestionActivity extends AbstractActivity{
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final DatabaseManager database = DatabaseManager.getInstance();
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
     //endregion
     //endregion

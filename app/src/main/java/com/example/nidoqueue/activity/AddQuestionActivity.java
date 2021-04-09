@@ -10,16 +10,14 @@ import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 /**
- * Classname:   AddQuestionActivity.java
- * Version:     Prototype
- * Date:        April 8th, 2021
- * Purpose:     Activity that adds questions
+ * Classname:   AddReplyActivity.java
+ * Version:     Final
+ * Date:        Apr 9th, 2021
+ * Purpose:     Activity handles the question process.
  */
 public class AddQuestionActivity extends AbstractActivity{
 
@@ -35,7 +33,6 @@ public class AddQuestionActivity extends AbstractActivity{
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final DatabaseManager database = DatabaseManager.getInstance();
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
     //endregion
     //endregion

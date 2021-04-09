@@ -8,7 +8,7 @@
     tools:context=".activity.UserProfileActivity">
 
     <View
-        android:id="@+id/user_info"
+        android:id="@+id/search_result"
         android:layout_width="320dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -38,9 +38,9 @@
         android:text="@string/email_display"
         android:textColor="@color/Nido_Blue"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/user_info"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="@+id/user_info" />
+        app:layout_constraintEnd_toEndOf="@+id/search_result"
+        app:layout_constraintStart_toStartOf="@+id/search_result"
+        app:layout_constraintTop_toTopOf="@+id/search_result" />
 
     <ImageButton
         android:id="@+id/back_button5"

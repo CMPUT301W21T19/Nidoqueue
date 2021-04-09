@@ -15,9 +15,7 @@ import com.google.firebase.firestore.QuerySnapshot;
  * Date:        April 9th, 2021
  * Purpose:     Replaces AppCompactActivity, in which our Activities extend this class instead.
  *              Places a big part in the overall functionality.
- * Issues:	    No issues currently.
  */
-
 public abstract class AbstractActivity extends AppCompatActivity {
     public Context getContext() {
         return this;

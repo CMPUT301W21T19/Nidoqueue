@@ -14,12 +14,11 @@ import com.example.nidoqueue.R;
 import java.util.ArrayList;
 
 import javax.annotation.Nullable;
-
 /**
  * Classname:   AnswerAdapter.java
- * Version:     final
- * Date:        April 8th, 2021
- * Purpose:     ArrayAdapter to assist QuestionActivity
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Adapter for the User Answers in the Forum.
  */
 public class AnswerAdapter extends ArrayAdapter<Answer> {
 

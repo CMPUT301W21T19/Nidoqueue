@@ -11,7 +11,12 @@ import com.example.nidoqueue.activity.UserProfileActivity;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
+/**
+ * Classname:   UserControl.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     This handles the User Controlled methods throughout the program.
+ */
 public class UserControl {
     private User user;
 //    private String password, email;
@@ -67,7 +72,8 @@ public class UserControl {
     public void profile() {
         requestManager.transition(UserProfileActivity.class);
     }
-    public void signIn(){
+
+    public void signIn() {
         new SignInFragment("", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
         // Check if Android ID exists in User Database
 //        requestManager.transition(SignInActivity.class);
@@ -82,16 +88,14 @@ public class UserControl {
             }
         });
     }
-    public void clickHere(){
+
+    public void clickHere() {
         new RecoveryFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
 
     public void edit() {
         User user = getUser();
         new SignUpFragment(user.getUsername(), user.getEmail(), user.getPassword(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Edit_User");
-    }
-
-    public void select() {
     }
 
     public void trySignIn(User user) {
@@ -148,15 +152,54 @@ public class UserControl {
                     }
                 });
     }
+    public void tryRecovery(User user) {
+        databaseManager.getDb().collection("users")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        boolean id_exist = false;
+                        for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                            if (documentSnapshot.getString("email").equals(user.getEmail())) {
+                                //Need to update android_id.
+                                id_exist = true;
+                                databaseManager.setUser(new User(user.getUsername(), user.getEmail(), user.getPassword(), null, null));
+                                requestManager.home();
+                                break;
+                            }
+                        }
+                        if (!id_exist) {
+                            Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
+                            new RecoveryFragment(user.getEmail(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Recovery");
+                        }
+                    }
+                });
+    }
+    public void tryEdit(User user) {
+        databaseManager.getDb().collection("users")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        boolean id_exist = false;
+                        for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                            if (documentSnapshot.getString("username").equals(user.getUsername())) {
+                                if (documentSnapshot.getString("password").equals(user.getPassword())) {
+                                    //Need to update android_id.
+                                    id_exist = true;
+                                    databaseManager.setUser(new User(user.getUsername(), user.getEmail(), user.getPassword(), null, null));
+                                    requestManager.home();
+                                    break;
+                                }
+                            }
+                        }
+                        if (!id_exist) {
+                            Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
+                            new SignInFragment(user.getUsername(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+                        }
+                    }
+                });
+    }
     public void searchBar(){
         new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
 
-    public void init() {
-        // Set user
-        String username = "NameNameName";
-        String email = "EmailEmailEmail";
-        String password = "9994445555";
-        databaseManager.setUser(new User(username, email, password, null, null));
-    }
 }

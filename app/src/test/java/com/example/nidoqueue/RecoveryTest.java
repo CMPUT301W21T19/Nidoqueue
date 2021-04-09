@@ -5,7 +5,10 @@ import com.example.nidoqueue.activity.SignUpFragment;
 
 import org.junit.Test;
 /**
- * Incomplete - April 7th, Colin
+ * Classname: 	RecoveryTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the Account Recovery process.
  */
 public class RecoveryTest {
     @Test

@@ -3,7 +3,10 @@ package com.example.nidoqueue;
 import org.junit.Test;
 
 /**
- * Incomplete - April 7th, Colin
+ * Classname: 	UserProfileTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the User Profile process.
  */
 public class UserProfileTest {
     @Test
