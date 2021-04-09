@@ -16,10 +16,9 @@ import java.util.ArrayList;
 
 /**
  * Classname:   ExpListAdapter.java
- * Version:     Prototype
- * Date:        March 19th, 2021
+ * Version:     Final
+ * Date:        April 9th, 2021
  * Purpose:     Adapter for recyclerview that shows list of experiments
- * Issues:      None
  */
 public class ExpListAdapter extends RecyclerView.Adapter<ExpListAdapter.Vh> {
     public ArrayList<Experiment> list;

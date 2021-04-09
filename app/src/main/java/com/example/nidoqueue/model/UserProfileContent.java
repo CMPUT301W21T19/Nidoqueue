@@ -14,7 +14,12 @@ import androidx.annotation.Nullable;
 import com.example.nidoqueue.R;
 
 import java.util.ArrayList;
-
+/**
+ * Classname: 	UserProfileContent.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Class for user class that holds the User Profile information for the user.
+ */
 public class UserProfileContent extends ArrayAdapter<User> {
     private ArrayList<User> profiles;
     private Context context;

@@ -5,13 +5,12 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import java.time.ZonedDateTime;
-
 /**
  * Classname: 	Trial.java
- * Version:		Prototype
- * Date:		March 19th, 2021
- * Purpose:		Necessary for performing calculations for ExperimentDataActivity. Stores data related to individual experiment trials, including a timestamp
- * Issues: 		Needs to be tested
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Necessary for performing calculations for ExperimentDataActivity.
+ *              Stores data related to individual experiment trials, including a timestamp
  */
 public class Trial {
     private ZonedDateTime zonedDateTime;

@@ -22,9 +22,9 @@ import com.example.nidoqueue.model.User;
 
 /**
  * Classname:   SignUpFragment.java
- * Version:     Prototype
+ * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Fragment that handle sign up process.
+ * Purpose:     Fragment that handles the sign up process.
  */
 public class SignUpFragment extends DialogFragment {
     private EditText userName_EditText, email_EditText, password_EditText, passwordRe_EditText;

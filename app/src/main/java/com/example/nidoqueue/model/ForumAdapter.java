@@ -18,9 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Classname:   ForumAdapter.java
  * Version:     Final
- * Date:        April 4, 2021
- * Purpose:     ArrayAdapter for the question and answer forum
- * Issues:      Yet to be tested
+ * Date:        April 9, 2021
+ * Purpose:     ArrayAdapter for the question and answer forum.
  */
 public class ForumAdapter extends ArrayAdapter<Question> {
     private ArrayList<Question> questions;

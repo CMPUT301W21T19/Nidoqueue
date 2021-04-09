@@ -6,8 +6,7 @@ import java.util.ArrayList;
  * Classname: 	User.java
  * Version:		Final
  * Date:		April 9th, 2021
- * Purpose:		Class for user class that holds user information
- * Issues: 		None
+ * Purpose:		Class for user class that holds user information.
  */
 public class User {
     private String username, email, password;

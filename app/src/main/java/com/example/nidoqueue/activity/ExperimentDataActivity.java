@@ -25,10 +25,9 @@ import com.example.nidoqueue.R;
 
 /**
  * Classname:   ExperimentDataActivity.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Activity that will handle the experiment data, using OnClickListeners.
- * Issues:      Unable to take in data. Needs to be tested.
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity that handles the experiment data.
  */
 public class ExperimentDataActivity extends AbstractActivity {
     RequestManager requestManager = RequestManager.getInstance();

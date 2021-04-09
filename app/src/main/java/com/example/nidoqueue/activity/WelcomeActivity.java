@@ -1,21 +1,15 @@
 package com.example.nidoqueue.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.controller.RequestManager;
-import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.User;
 import com.example.nidoqueue.model.UserProfileContent;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,7 +20,9 @@ import java.util.ArrayList;
  * Classname:   WelcomeActivity.java
  * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In)
+ * Purpose:     Functions as title screen for users who have just downloaded the app.
+ *              They have the option to sign in with an existing account, sign up with a new account
+ *              or recover their account through email.
  */
 
 public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
@@ -34,14 +30,11 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
     User username, email, password;
-    User currentUser = null;
 
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final DatabaseManager database = DatabaseManager.getInstance();
-    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
 
     @Override
@@ -93,38 +86,21 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     @Override
     public void onSignUpOkPressed(User newUser) {
         requestManager.trySignUp(newUser);
-//        requestManager.setUserId(newUser);
-//
-//        Adapter.add(newUser);
-//        requestManager.setUserId(newUser);
-//        requestManager.transition(SignInActivity.class);
-//        if(newUser.getUsername()==null){
-//            if(newUser.getEmail().equals(email)){
-//                String Message = "Username: "+username+"\nPassword: "+password;
-//                Toast.makeText(contextManager.getActivity().getApplicationContext(), Message, Toast.LENGTH_LONG).show();
-//            }else{
-//                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, this email does not exist in the system.", Toast.LENGTH_LONG).show();
-//            }
-//        }else if(newUser.getEmail()==null){
-//            if(newUser.getUsername().equals(username) && newUser.getPassword().equals(email)){
-//                requestManager.transition(SignInActivity.class);
-//            }else{
-//                Toast.makeText(contextManager.getActivity().getApplicationContext(), "Sorry, the username or password is incorrect.", Toast.LENGTH_LONG).show();
-//            }
-//        }else{
-//            currentUser = newUser;
-//            databaseAlt.addUserDB(newUser);
-//            requestManager.transition(SignInActivity.class);
-//        }
     }
-
+    /**
+     * All the information needed to sign in is injected on the "ok" press
+     * @param user
+     */
     @Override
     public void onSignInOkPressed(User user) {
         requestManager.trySignIn(user);
     }
-
+    /**
+     * All the information needed for the account recovery is injected on the "ok" press
+     * @param user
+     */
     @Override
-    public void onRecoveryOkPressed(User newUser) {
-
+    public void onRecoveryOkPressed(User user) {
+        requestManager.tryRecovery(user);
     }
 }

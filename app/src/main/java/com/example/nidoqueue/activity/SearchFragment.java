@@ -18,7 +18,12 @@ import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
-
+/**
+ * Classname:   SearchFragment.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Fragment that handles the search process.
+ */
 public class SearchFragment extends DialogFragment {
     private EditText search_EditText;
     private String search;
