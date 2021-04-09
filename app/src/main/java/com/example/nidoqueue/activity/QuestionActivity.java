@@ -22,6 +22,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classname:   QuestionActivity.java
+ * Version:     Prototype
+ * Date:        April 8th, 2021
+ * Purpose:     Activity that displays the question segment of Q&A Forum
+ */
 public class QuestionActivity extends AbstractActivity{
     //region class variables
     private Question question;

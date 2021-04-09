@@ -15,6 +15,13 @@ import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Classname:   AddReplyActivity.java
+ * Version:     Prototype
+ * Date:        April 8th, 2021
+ * Purpose:     Activity that adds replies
+ */
+
 public class AddReplyActivity extends AbstractActivity{
 
     //region class variables

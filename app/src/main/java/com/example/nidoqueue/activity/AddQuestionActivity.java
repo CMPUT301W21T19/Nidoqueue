@@ -15,6 +15,12 @@ import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Classname:   AddQuestionActivity.java
+ * Version:     Prototype
+ * Date:        April 8th, 2021
+ * Purpose:     Activity that adds questions
+ */
 public class AddQuestionActivity extends AbstractActivity{
 
     //region class variables

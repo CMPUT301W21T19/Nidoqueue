@@ -30,11 +30,11 @@ import java.util.ArrayList;
  */
 
 public class WelcomeActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, SignInFragment.OnFragmentInteractionListener, RecoveryFragment.OnFragmentInteractionListener {
-    Button signUp, signIn, clickHere;
-    ArrayAdapter<User> Adapter;
-    ArrayList<User> userList;
-    User username, email, password;
-    User currentUser = null;
+    private Button signUp, signIn, clickHere;
+    private ArrayAdapter<User> Adapter;
+    private ArrayList<User> userList;
+    private String username, email, password;
+    private User currentUser = null;
 
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
@@ -61,13 +61,15 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         signUp.setOnClickListener(SignUp);
         clickHere.setOnClickListener(ClickHere);
 
-        username = userControl.getUser();
+        username = userControl.getUsername();
         password = userControl.getPassword();
         email = userControl.getEmail();
     }
     public FirebaseFirestore getDB() {
         return database.getDb();
     }
+
+    //region OnClickListeners
     private View.OnClickListener SignIn = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -86,10 +88,12 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
             requestManager.clickHere();
         }
     };
+    //endregion
     /**
      * All the information needed for the user profile is injected on the "ok" press
      * @param newUser
      */
+    //region OnOkPressed
     @Override
     public void onSignUpOkPressed(User newUser) {
         requestManager.trySignUp(newUser);
@@ -127,4 +131,5 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     public void onRecoveryOkPressed(User newUser) {
 
     }
+    //endregion
 }

@@ -15,6 +15,12 @@ import java.util.ArrayList;
 
 import javax.annotation.Nullable;
 
+/**
+ * Classname:   AnswerAdapter.java
+ * Version:     final
+ * Date:        April 8th, 2021
+ * Purpose:     ArrayAdapter to assist QuestionActivity
+ */
 public class AnswerAdapter extends ArrayAdapter<Answer> {
 
     private ArrayList<Answer> answers;

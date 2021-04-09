@@ -13,36 +13,53 @@ import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class UserControl {
+    private User user;
+//    private String password, email;
     private static UserControl userControl = new UserControl();
 
     private UserControl() {
     }
 
-    User user, password, email;
-
+    //region setters
     public void setUser(User user) {
         this.user = user;
     }
-
+    //endregion
+    //region getters
     public User getUser() {
         return databaseManager.getUser();
     }
 
-    public User getEmail() {
-        return email;
+    public String getUsername(){
+        if(user == null){
+            return null;
+        }
+        return user.getUsername();
     }
 
-    public User getPassword() {
-        return password;
+    public String getEmail() {
+        if(user == null){
+            return null;
+        }
+        return user.getEmail();
+    }
+
+    public String getPassword() {
+        if(user == null){
+            return null;
+        }
+        return user.getPassword();
     }
 
     public static UserControl getInstance() {
         return userControl;
     }
+    //endregion
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
+
 
     /******************************************************************************
      * User Control Methods
