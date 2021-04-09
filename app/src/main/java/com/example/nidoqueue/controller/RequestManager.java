@@ -99,9 +99,6 @@ public class RequestManager {
     public void edit() {
         userControl.edit();
     }
-    public void select() {
-        userControl.select();
-    }
     public void searchBar() {
         userControl.searchBar();
     }
