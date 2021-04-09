@@ -119,11 +119,10 @@ public class SearchFragment extends DialogFragment {
                 message = "Search results were successful!";
                 if (isTest) {
                     displayTestResults(message);
-                    //new User(username, email, password, null, null);
-                    System.out.print("Search: " + search + "\nResults: ");
+
+                    System.out.print("Search: "+search+"\nResults: Success!\n");
                     break;
-                } else {
-                    //listener.onOkPressed(new User(username, email, password, null, null));
+                }else{
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }

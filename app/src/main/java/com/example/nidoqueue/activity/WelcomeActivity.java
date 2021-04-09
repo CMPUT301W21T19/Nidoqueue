@@ -29,7 +29,6 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     Button signUp, signIn, clickHere;
     ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
-    User username, email, password;
 
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();

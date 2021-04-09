@@ -47,7 +47,7 @@ public class User {
         return subscribedExp;
     }
     /******************************************************************************
-     * Dead Code --- Dead Code --- Dead Code
+     * Extra Methods
      ******************************************************************************/
     public void createExp(Experiment experiment) {
         createdExp.add(experiment);
