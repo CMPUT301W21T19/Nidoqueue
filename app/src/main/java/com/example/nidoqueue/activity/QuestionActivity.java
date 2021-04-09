@@ -68,7 +68,7 @@ public class QuestionActivity extends AbstractActivity{
 
         btn_add = findViewById(R.id.add_button3);
         btn_back = findViewById(R.id.back_button9);
-        btn_home = findViewById(R.id.home_button6);
+        //btn_home = findViewById(R.id.home_button6);
 
         btn_add.setOnClickListener(addReply);
         btn_back.setOnClickListener(goBack);

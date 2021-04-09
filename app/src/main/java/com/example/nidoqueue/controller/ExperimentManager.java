@@ -28,6 +28,7 @@ public class ExperimentManager {
         return experimentManager;
     }
     private static final ContextManager contextManager = ContextManager.getInstance();
+    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
     String android_id;
     DataCalc calc;
