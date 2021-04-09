@@ -11,20 +11,15 @@
         android:id="@+id/created_exp_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/exo"
         android:text="@string/created_experiments"
         android:textColor="#038CC6"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintStart_toStartOf="@+id/subscribed_exp_label"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_user_title" />
 
     <TextView
         android:id="@+id/subscribed_exp_label"
@@ -52,7 +47,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="#FFFFFF"
         android:clickable="true"
         android:focusable="true"

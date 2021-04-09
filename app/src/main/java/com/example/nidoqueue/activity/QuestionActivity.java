@@ -72,7 +72,7 @@ public class QuestionActivity extends AbstractActivity{
 
         btn_add.setOnClickListener(addReply);
         btn_back.setOnClickListener(goBack);
-        btn_home.setOnClickListener(goHome);
+        //btn_home.setOnClickListener(goHome);
         //endregion
     }
 
