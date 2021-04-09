@@ -98,7 +98,7 @@ public class ExperimentActivity extends AbstractActivity {
         setContentView(R.layout.experiment);
         contextManager.setContext(this);
         Intent mIntent = getIntent();
-        int listPosition = mIntent.getIntExtra("ListPosition", 0);
+        int listPosition = mIntent.getIntExtra("Integer", 0);
         experiment = databaseManager.getCreatedExps().get(listPosition);
         requestManager.setCurrentExp(experiment);
         backButton = findViewById(R.id.back_button4);
