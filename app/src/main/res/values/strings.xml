@@ -58,4 +58,35 @@
     <string name="email_display">Email</string>
     <string name="phone_display">Phone Number</string>
     <string name="username_display">Username</string>
+    <string name="profile_button">profile button</string>
+    <string name="name_expData">Name</string>
+    <string name="description_expData">Description</string>
+    <string name="region_expData">Region</string>
+    <string name="trial_expData">Trial #</string>
+    <string name="geo_location_expData">Geo-Location</string>
+    <string name="status_expData">Status</string>
+    <string name="password">Password:</string>
+    <string name="re_enter_password">Re-enter Password:</string>
+    <string name="user_profile">User Profile</string>
+    <string name="enable_geolocation">Enable GeoLocation</string>
+    <string name="unpublish_button">Unpublish</string>
+    <string name="end_button">End Experiment</string>
+    <string name="data_button">Data</string>
+    <string name="qa_button">QA</string>
+    <string name="record_button">Record</string>
+    <string name="view_results">View Results</string>
+    <string name="search">Search</string>
+    <string name="claer">Clear</string>
+    <string name="trials">Trials</string>
+    <string name="measurement_button">Measurement</string>
+    <string name="count_button">Count</string>
+    <string name="binomial__button">Binomial</string>
+    <string name="non_negative__button">Non-Negative</string>
+
+
+
+
+
+
+
 </resources>
