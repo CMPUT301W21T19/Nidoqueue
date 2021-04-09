@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.example.nidoqueue.R;
+import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.QRCodeFoundListener;
 import com.example.nidoqueue.model.QRCodeImageAnalyzer;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.util.Size;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -40,6 +42,7 @@ import java.util.concurrent.ExecutionException;
  * Issues:      None
  */
 public class QRScanner extends AbstractActivity {
+    //region QR Scanning variables
     private static final int PERMISSION_REQUEST_CAMERA = 0;
 
     private PreviewView previewView;
@@ -47,6 +50,10 @@ public class QRScanner extends AbstractActivity {
 
     private Button qrCodeFoundButton;
     private String qrCode;
+    //endregion
+    private ImageButton btnBack, btnHome;
+
+    RequestManager requestManager = RequestManager.getInstance();
 
 
     @Override
@@ -54,6 +61,13 @@ public class QRScanner extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_scaner);
 
+        btnBack = findViewById(R.id.back_buttonScanner);
+        btnHome = findViewById(R.id.home_buttonScanner);
+
+        btnBack.setOnClickListener(goBack);
+        btnHome.setOnClickListener(goHome);
+
+        //region QR Scanning functionality
         previewView = findViewById(R.id.previewView);
 
         qrCodeFoundButton = findViewById(R.id.qrCodeFoundButton);
@@ -68,6 +82,7 @@ public class QRScanner extends AbstractActivity {
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestCamera();
+        //endregion
     }
 
     //region requestCamera
@@ -128,6 +143,9 @@ public class QRScanner extends AbstractActivity {
         imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(this), new QRCodeImageAnalyzer(new QRCodeFoundListener() {
             @Override
             public void onQRCodeFound(String _qrCode) {
+                //todo
+                // I would really like to change this part.
+                // I would like it if instead of becoming visible, it immediately performs an action determined by the QR code.
                 qrCode = _qrCode;
                 qrCodeFoundButton.setVisibility(View.VISIBLE);
             }
@@ -147,5 +165,22 @@ public class QRScanner extends AbstractActivity {
     public FirebaseFirestore getDB() {
         return null;
     }
+    //endregion
+
+    //region OnClickListeners
+    private View.OnClickListener goBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.transition(SignInActivity.class); //todo
+        }
+    };
+
+    private View.OnClickListener goHome = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.transition(SignInActivity.class);
+        }
+    };
+
     //endregion
 }
