@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.ArrayList;
+
 /**
  * Classname:   Experiment.java
  * Version:     Final
@@ -24,14 +25,12 @@ public abstract class Experiment implements Comparable<Experiment> {
     private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
-    private String type;
 
     public Experiment() {
 
     }
 
     public Experiment(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
-
         this.owner = owner;
         this.name = name;
         this.description = description;
@@ -86,6 +85,10 @@ public abstract class Experiment implements Comparable<Experiment> {
     @Exclude
     public User getOwner() {
         return owner;
+    }
+
+    public void setOwner(User user) {
+        this.owner = user;
     }
 
     /**
@@ -176,6 +179,18 @@ public abstract class Experiment implements Comparable<Experiment> {
      */
     public boolean isPublished() {
         return published;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public void addQuestion(Question question) {
+        questions.add(question);
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
     }
 
     public abstract String getType();

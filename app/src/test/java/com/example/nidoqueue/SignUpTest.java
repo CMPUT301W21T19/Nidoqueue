@@ -1,8 +1,9 @@
 package com.example.nidoqueue;
 
 import com.example.nidoqueue.activity.SignUpFragment;
-import org.junit.Test;
 
+
+import org.junit.Test;
 /**
  * Classname: 	SignUpTest.java
  * Version:		Final
@@ -11,8 +12,11 @@ import org.junit.Test;
  */
 public class SignUpTest {
     @Test
-    public void testSignUp(){
+    public void testSignUpLength(){
         SignUpFragment test = new SignUpFragment("", "", "", "", false);
+        /**
+         * Manipulate these variables below to test any values you want.
+         */
         String small = "1234";
         String large = "12345678901234567891234567891234567899999";
         String normal = "1234567890";

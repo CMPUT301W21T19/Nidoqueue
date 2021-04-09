@@ -47,7 +47,7 @@ public class User {
         return subscribedExp;
     }
     /******************************************************************************
-     * Dead Code --- Dead Code --- Dead Code
+     * Extra Methods
      ******************************************************************************/
     public void createExp(Experiment experiment) {
         createdExp.add(experiment);
@@ -55,8 +55,6 @@ public class User {
     public void subscribeExp(Experiment experiment) {
         subscribedExp.add(experiment);
     }
-
-
 
     public void setCreatedExp(ArrayList<Experiment> createdExperiments) {
         this.createdExp = createdExperiments;

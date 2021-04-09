@@ -3,6 +3,7 @@ package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,11 +25,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class ExperimentActivity extends AbstractActivity {
 
-    private Button subscribeButton, unsubscribeButton, unpublishButton, endButton, recordButton, dataButton;
+    private Button subscribeButton, unsubscribeButton, unpublishButton, endButton, recordButton, dataButton, forumButton;
     private ImageButton backButton, homeButton;
 
     private Experiment experiment;
 
+    private TextView title;
     private TextView nameView;
     private TextView descriptView;
     private TextView regionView;
@@ -39,19 +41,20 @@ public class ExperimentActivity extends AbstractActivity {
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
 
-    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
 
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            finish();
             requestManager.transition(SignInActivity.class);
         }
     };
     private View.OnClickListener Back = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class);
-
+            finish();
+            requestManager.transition(requestManager.getPreviousActivity());
         }
     };
     private View.OnClickListener Add = new View.OnClickListener() {
@@ -84,12 +87,23 @@ public class ExperimentActivity extends AbstractActivity {
             requestManager.recordTrials(experiment);
         }
     };
+    private View.OnClickListener Forum = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.transition(ForumActivity.class, experiment.getName());
+        }
+    };
     private View.OnClickListener Data = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             requestManager.transition(ExperimentDataActivity.class);
         }
     };
+    @Override
+    public void onBackPressed() {
+        finish();
+        requestManager.transition(requestManager.getPreviousActivity());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +112,7 @@ public class ExperimentActivity extends AbstractActivity {
         contextManager.setContext(this);
         Intent mIntent = getIntent();
         int listPosition = mIntent.getIntExtra("ListPosition", 0);
-        experiment = databaseManager.getCreatedExps().get(listPosition);
+        experiment = databaseManager.getTargetExps().get(listPosition);
         requestManager.setCurrentExp(experiment);
         backButton = findViewById(R.id.back_button4);
 
@@ -109,6 +123,7 @@ public class ExperimentActivity extends AbstractActivity {
         endButton = findViewById(R.id.end_button);
         recordButton = findViewById(R.id.record_button);
         dataButton = findViewById(R.id.data_button);
+        forumButton = findViewById(R.id.qa_button);
 
         backButton.setOnClickListener(Back);
         subscribeButton.setOnClickListener(Add);
@@ -118,6 +133,10 @@ public class ExperimentActivity extends AbstractActivity {
         endButton.setOnClickListener(End);
         recordButton.setOnClickListener(Record);
         dataButton.setOnClickListener(Data);
+        forumButton.setOnClickListener(Forum);
+
+        title = findViewById(R.id.exp_title);
+        title.setText(experiment.getName());
 
         nameView = findViewById(R.id.exp_list_name);
         nameView.setText("Name : " + experiment.getName());
@@ -137,8 +156,14 @@ public class ExperimentActivity extends AbstractActivity {
         statusView = findViewById(R.id.exp_list_published);
         statusView.setText("Status : " + experiment.isPublished());
 
-
-
+        for(Experiment experiment: databaseManager.getCreatedExps()) {
+            if(this.experiment.getName().equals(experiment.getName())) {
+                unpublishButton.setEnabled(true);
+                subscribeButton.setEnabled(false);
+                unsubscribeButton.setEnabled(false);
+                break;
+            }
+        }
     }
 
     /******************************************************************************

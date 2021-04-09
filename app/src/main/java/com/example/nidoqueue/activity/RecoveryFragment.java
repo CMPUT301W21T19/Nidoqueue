@@ -102,11 +102,9 @@ public class RecoveryFragment extends DialogFragment {
                 message = "Check your email for a recovery code!";
                 if(isTest){
                     displayTestResults(message);
-                    //new User(username, email, password, null, null);
-                    System.out.print("Email: "+email+"\nResults: ");
+                    System.out.print("Email: "+email+"\nResults: Success!\n");
                     break;
                 }else{
-                    //listener.onOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }

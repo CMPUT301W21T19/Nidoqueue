@@ -210,26 +210,27 @@
         android:id="@+id/unpublish_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginBottom="8dp"
+        android:enabled="false"
         android:fontFamily="@font/exo"
         android:text="@string/unpublish_button"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:backgroundTint="#80D9FF"
         app:layout_constraintBottom_toTopOf="@+id/subscribe_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/data_button" />
 
     <Button
         android:id="@+id/end_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/exo"
         android:text="@string/end_button"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:backgroundTint="#80D9FF"
-        app:layout_constraintBottom_toTopOf="@+id/unsubscribe_button"
+        app:layout_constraintBottom_toBottomOf="@+id/unpublish_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/unpublish_button" />
@@ -238,7 +239,7 @@
         android:id="@+id/data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/exo"
         android:text="@string/data_button"
@@ -252,13 +253,13 @@
         android:id="@+id/qa_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/exo"
         android:text="@string/qa_button"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:backgroundTint="#80D9FF"
-        app:layout_constraintBottom_toTopOf="@+id/end_button"
+        app:layout_constraintBottom_toBottomOf="@+id/data_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button

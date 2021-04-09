@@ -1,6 +1,8 @@
 package com.example.nidoqueue.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,10 +28,10 @@ import java.util.ArrayList;
  * Date:        April 9th, 2021
  * Purpose:     Activity displays the questions to the user.
  */
-public class QuestionActivity extends AbstractActivity{
+public class QuestionActivity extends AbstractActivity {
     //region class variables
     private Question question;
-    private ArrayList<Answer> answers;
+    private ArrayList<String> answers;
     //region UI tools
     //region Buttons
     private ImageButton btn_back, btn_home;
@@ -38,28 +40,37 @@ public class QuestionActivity extends AbstractActivity{
     private TextView text_question;
     //region ListView tools
     private ListView listView;
-    private ArrayAdapter<Answer> arrayAdapter;
+    private ArrayAdapter<String> arrayAdapter;
     //endregion
     //endregion
     //region RequestManager and ContextManager
     //these were copied from WelcomeActivity.java
-    private static final RequestManager requestManager = RequestManager.getInstance();
-    private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final DatabaseManager database = DatabaseManager.getInstance();
-    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private static final UserControl userControl = UserControl.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static UserControl userControl = UserControl.getInstance();
     //endregion
     //endregion
 
     //region class functions
+    int listPosition;
+    String name;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
 
-        question = new Question("REPLACE ME"); //REPLACE ME!
+        Intent mIntent = getIntent();
+        listPosition = mIntent.getIntExtra("ListPosition", 0);
+        name = mIntent.getStringExtra("Experiment Name");
+
+        question = databaseManager.getTargetQuestions().get(listPosition);
         answers = question.getAnswers();
+
+        text_question = findViewById(R.id.display_question);
+        text_question.setText(question.getQuestion());
 
         //region UI setup
         listView = findViewById(R.id.reply_list);
@@ -72,10 +83,9 @@ public class QuestionActivity extends AbstractActivity{
 
         btn_add.setOnClickListener(addReply);
         btn_back.setOnClickListener(goBack);
-        btn_home.setOnClickListener(goHome);
+        //btn_home.setOnClickListener(goHome);
         //endregion
     }
-
 
 
     //region Database Functions
@@ -90,16 +100,21 @@ public class QuestionActivity extends AbstractActivity{
     private View.OnClickListener addReply = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(AddReplyActivity.class);
+            requestManager.transition(AddReplyActivity.class, listPosition, name);
         }
     };
 
     private View.OnClickListener goBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class); //CHANGE ME
+            requestManager.transition(ForumActivity.class, listPosition, name);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        requestManager.transition(ForumActivity.class, listPosition, name);
+    }
 
     private View.OnClickListener goHome = new View.OnClickListener() {
         @Override

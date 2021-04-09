@@ -38,7 +38,7 @@ public class UserProfileContent extends ArrayAdapter<User> {
         User pro = profiles.get(position);
         TextView Username = view.findViewById(R.id.username_display);
         TextView Email = view.findViewById(R.id.email_display);
-        Username.setText(pro.getUsername()); // Retrieves the info from get methods found in the experiment class
+        Username.setText(pro.getUsername()); // Retrieves the info from get methods found in the user class
         Email.setText(pro.getEmail());
         return view;
     }

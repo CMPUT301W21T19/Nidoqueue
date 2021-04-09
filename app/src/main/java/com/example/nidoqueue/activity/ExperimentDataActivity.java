@@ -81,13 +81,13 @@ public class ExperimentDataActivity extends AbstractActivity {
         stDevView = findViewById(R.id.exp_stat_stDev);
         homeBtn = findViewById(R.id.home_button3);
         backBtn = findViewById(R.id.back_button6);
-        resultsBtn = findViewById(R.id.results_button);
+        //resultsBtn = findViewById(R.id.results_button);
         histogram = findViewById(R.id.histogram);
         plots = findViewById(R.id.plots);
 
         homeBtn.setOnClickListener(Home);
         backBtn.setOnClickListener(Back);
-        resultsBtn.setOnClickListener(Results);
+        //resultsBtn.setOnClickListener(Results);
 
         histogram.setTitle("Histogram");
         plots.setTitle("Change over Time");

@@ -13,11 +13,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
+
 /**
  * Classname:   SearchFragment.java
  * Version:     Final
@@ -74,65 +77,72 @@ public class SearchFragment extends DialogFragment {
                 .create();
 
     }
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(this, tag);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+
     /******************************************************************************
      * Error Catching methods are called.
      ******************************************************************************/
     /**
-     *
      * @param search - User entered string is passed through.
      * @param isTest - The value is true if it's a test case.
      */
-    public void trySearch(String search, Boolean isTest){
+    public void trySearch(String search, Boolean isTest) {
         /**
          * Comparisons made to contain the user entered strings into legal values for the scope of this project.
          */
-        if(search.length()>18 || search.length()<1){
+        if (search.length() > 18 || search.length() < 1) {
             // Cancels fragment if user enters a username that is under 1 character or over 18 characters in string length.
             errorCode(1, null, isTest);
-        } else{
+        } else {
             // Sends a "0" for an error code, which successfully adds a new user through "onOkPressed" or "test case".
             errorCode(0, search, isTest);
         }
     }
+
     /**
-     *
-     * @param error - The error code value is passed through.
-     *                "0" Indicates no errors, through the fragment or the test case.
+     * @param error  - The error code value is passed through.
+     *               "0" Indicates no errors, through the fragment or the test case.
      * @param search - Only passed in if no errors exist.
      * @param isTest - Only passed in if no errors exist.
      */
-    public void errorCode(int error, String search, Boolean isTest){
+    public void errorCode(int error, String search, Boolean isTest) {
         String message = "";
-        switch (error){
+        switch (error) {
             case 0:
                 message = "Search results were successful!";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
-                    //new User(username, email, password, null, null);
-                    System.out.print("Search: "+search+"\nResults: ");
+
+                    System.out.print("Search: "+search+"\nResults: Success!\n");
                     break;
                 }else{
-                    //listener.onOkPressed(new User(username, email, password, null, null));
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }
             case 1:
                 message = "Sorry, no results were found";
-                if(isTest){
+                if (isTest) {
                     displayTestResults(message);
                     break;
-                }else{
+                } else {
                     Toast.makeText(contextManager.getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     break;
                 }
         }
     }
+
     /**
-     *
      * @param message - Message that is displayed to the user through the user interface, or the test terminal.
      */
-    public void displayTestResults(String message){
-        System.out.print("\n"+message+"\n");
+    public void displayTestResults(String message) {
+        System.out.print("\n" + message + "\n");
     }
 
 }

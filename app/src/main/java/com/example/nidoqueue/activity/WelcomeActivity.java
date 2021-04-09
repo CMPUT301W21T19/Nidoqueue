@@ -29,7 +29,6 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
     Button signUp, signIn, clickHere;
     ArrayAdapter<User> Adapter;
     ArrayList<User> userList;
-    User username, email, password;
 
     // get instances of RequestManager and ContextManager
     private static final RequestManager requestManager = RequestManager.getInstance();
@@ -53,10 +52,6 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         signIn.setOnClickListener(SignIn);
         signUp.setOnClickListener(SignUp);
         clickHere.setOnClickListener(ClickHere);
-
-//        username = userControl.getUser();
-//        password = userControl.getPassword();
-//        email = userControl.getEmail();
     }
     public FirebaseFirestore getDB() {
         return database.getDb();
