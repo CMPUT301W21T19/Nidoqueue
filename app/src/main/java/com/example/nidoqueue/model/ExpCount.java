@@ -2,6 +2,8 @@ package com.example.nidoqueue.model;
 
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 /**
  * Classname:   ExpCount.java
  * Version:     Final
@@ -10,7 +12,6 @@ import java.util.ArrayList;
  */
 public class ExpCount extends Experiment {
 
-    private int count;
     private ArrayList<Trial> trials;
     final private String TYPE = "count";
 
@@ -21,19 +22,27 @@ public class ExpCount extends Experiment {
     public ExpCount(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
         super(owner, name, description, region, num_of_trials, geoLocation, published);
 
-        count = 0;
+        total_count = 0;
         this.trials = new ArrayList<>();
     }
 
-    private void increaseCount() {
+    @Override
+    public void increaseCount(int count) {
         // I have this designed to be used with a button that is pressed to increment the value by one
         // we could have it take a specific number input from the user but I think that would be confusing and cumbersome to the user
-        count += 1;
+        total_count += count;
+        trials.add(new Trial((double) this.getCount(), Integer.toString(this.getCount())));
+    }
+    public void decreaseCount(int count) {
+        // I have this designed to be used with a button that is pressed to increment the value by one
+        // we could have it take a specific number input from the user but I think that would be confusing and cumbersome to the user
+        total_count -= count;
         trials.add(new Trial((double) this.getCount(), Integer.toString(this.getCount())));
     }
 
+    @Override
     public int getCount() {
-        return count;
+        return total_count;
     }
 
     public ArrayList<Trial> getTrials() {
@@ -43,5 +52,20 @@ public class ExpCount extends Experiment {
     @Override
     public String getType() {
         return TYPE;
+    }
+
+    @Override
+    public void addTrial(double measurement){ }
+    @Override
+    public void increasePass() { }
+    @Override
+    public void increaseFail() { }
+    @Override
+    public int getPass() {
+        return 0;
+    }
+    @Override
+    public int getFail() {
+        return 0;
     }
 }

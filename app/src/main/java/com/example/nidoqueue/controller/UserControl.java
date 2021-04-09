@@ -5,11 +5,14 @@ import android.widget.Toast;
 
 import com.example.nidoqueue.activity.RecoveryFragment;
 import com.example.nidoqueue.activity.SearchFragment;
+import com.example.nidoqueue.activity.SignInActivity;
 import com.example.nidoqueue.activity.SignInFragment;
 import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.activity.UserProfileActivity;
+import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.User;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 /**
@@ -61,12 +64,10 @@ public class UserControl {
     public static UserControl getInstance() {
         return userControl;
     }
-    //endregion
 
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
-
 
     /******************************************************************************
      * User Control Methods
@@ -218,6 +219,18 @@ public class UserControl {
 
     public void searchBar() {
         new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
+    }
+
+    public void init() {
+        databaseManager.checkDocument("users", databaseManager.getAndroid_id(), exist -> {
+            if (exist) {
+                DocumentSnapshot documentSnapshot = databaseManager.getDocument();
+                String username = documentSnapshot.getString("username");
+                String email = documentSnapshot.getString("email");
+                String password = documentSnapshot.getString("password");
+                databaseManager.setUser(new User(username, email, password, null, null));
+            }
+        });
     }
 
 }

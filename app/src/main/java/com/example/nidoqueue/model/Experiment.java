@@ -4,7 +4,6 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.ArrayList;
-
 /**
  * Classname:   Experiment.java
  * Version:     Final
@@ -25,6 +24,13 @@ public abstract class Experiment implements Comparable<Experiment> {
     private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
+    private String type;
+    int total_count;
+
+    public String unit;
+    public ArrayList<Double> measurement_trials = new ArrayList<>();
+    public ArrayList<Integer> int_trials = new ArrayList<>();
+    public ArrayList<Trial> trial = new ArrayList<>();
 
     public Experiment() {
 
@@ -199,4 +205,20 @@ public abstract class Experiment implements Comparable<Experiment> {
     public int compareTo(Experiment experiment) {
         return this.getType().compareTo(experiment.getType());
     }
+
+    public abstract void increaseCount(int count);
+
+    public abstract void decreaseCount(int i);
+
+    public abstract int getCount();
+
+    public abstract void addTrial(double measurement);
+
+    public abstract void increaseFail();
+
+    public abstract void increasePass();
+
+    public abstract int getPass();
+
+    public abstract int getFail();
 }
