@@ -20,8 +20,13 @@ public class User {
         this.password = password;
         this.createdExp = createdExp;
         this.subscribedExp = subscribedExp;
-        //createdExp = new ArrayList<>();
-       // subscribedExp = new ArrayList<>();
+        if(createdExp == null){
+            this.createdExp = new ArrayList<>();
+        }
+        if(subscribedExp == null){
+            this.subscribedExp = new ArrayList<>();
+        }
+
     }
     /******************************************************************************
      * Getter methods. Contains "Username, Email, and Phone Number"
@@ -34,7 +39,7 @@ public class User {
     }
     public String getPassword() {
         return password;
-    }
+    } // I (Spencer) strongly believe that if we aren't hashing passwords, that we shouldn't have passwords at all
     public ArrayList<Experiment> getCreatedExp() {
         return createdExp;
     }
