@@ -2,42 +2,30 @@ package com.example.nidoqueue.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.DatabaseManager;
-import com.example.nidoqueue.model.ForumAdapter;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-
 /**
- * Classname:   ForumActivity.java
+ * Classname:   AddReplyActivity.java
  * Version:     Final
- * Date:        April 9th, 2021
- * Purpose:     Activity displays the questions & answers to the user.
+ * Date:        Apr 9th, 2021
+ * Purpose:     Activity handles the question process.
  */
-public class ForumActivity extends AbstractActivity {
-    //region Class variables
-    private ArrayList<Question> questions;
-    //region UI tools
-    //region Buttons
-    private Button btn_add;
-    private ImageButton btn_home;
-    private ImageButton btn_back;
-    //endregion
-    //region ListView tools
-    private ListView listView;
-    private ArrayAdapter<Question> arrayAdapter;
-    //endregion
+public class AddQuestionActivity extends AbstractActivity{
+
+    //region class variables
+    //region UI elements
+    private ImageButton btn_back, btn_home;
+    private Button btn_post;
+    private EditText editText_question;
     //endregion
     //region RequestManager and ContextManager
     //these were copied from WelcomeActivity.java
@@ -49,56 +37,49 @@ public class ForumActivity extends AbstractActivity {
     //endregion
     //endregion
 
-    //region class functions
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forum);
-
-        questions = new ArrayList<>(); //REPLACE ME!
+        setContentView(R.layout.add_question);
 
         //region UI setup
-        listView = findViewById(R.id.forum_info);
-        arrayAdapter = new ForumAdapter(this, questions);
-        listView.setAdapter(arrayAdapter);
+        btn_back = findViewById(R.id.back_button8);
+        btn_home = findViewById(R.id.home_button5);
+        btn_post = findViewById(R.id.post_button);
+        editText_question = findViewById(R.id.enter_question);
 
-        btn_add = findViewById(R.id.add_button2);
-        btn_back = findViewById(R.id.back_button7);
-        btn_home = findViewById(R.id.home_button4);
-
-        btn_add.setOnClickListener(addQuestion);
         btn_back.setOnClickListener(goBack);
         btn_home.setOnClickListener(goHome);
-        listView.setOnItemClickListener(selectQuestion);
+        btn_post.setOnClickListener(postQuestion);
         //endregion
     }
 
-    //region Database Functions
+    //region Database functions
     @Override
     public FirebaseFirestore getDB() {
         return null;
     }
     //endregion
 
+
     //region OnClickListeners - some functionality required
-    private AdapterView.OnItemClickListener selectQuestion = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            requestManager.transition(QuestionActivity.class);
-            //will need way to specify question
-        }
-    };
-    private View.OnClickListener addQuestion = new View.OnClickListener(){
+
+    //functionality for postQuestion required
+    private View.OnClickListener postQuestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(AddQuestionActivity.class);
+
+            String stringQuestion = editText_question.getText().toString();
+            Question question = new Question(stringQuestion);
+            // add database functionality
+            requestManager.transition(ForumActivity.class);
         }
     };
 
     private View.OnClickListener goBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class); //CHANGE ME
+            requestManager.transition(ForumActivity.class);
         }
     };
 
@@ -108,7 +89,5 @@ public class ForumActivity extends AbstractActivity {
             requestManager.transition(SignInActivity.class);
         }
     };
-    //endregion
-
     //endregion
 }

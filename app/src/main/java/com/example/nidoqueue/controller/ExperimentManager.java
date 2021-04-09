@@ -16,16 +16,20 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Classname:   ExperimentManager.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     This handles the experiments throughout the program.
+ */
 public class ExperimentManager {
     private static final ExperimentManager experimentManager = new ExperimentManager();
     public static ExperimentManager getInstance() {
         return experimentManager;
     }
     private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final RequestManager requestManager = RequestManager.getInstance();
-    private static final UserControl userControl = UserControl.getInstance();
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
+    private static final UserControl userControl = UserControl.getInstance();
     String android_id;
     DataCalc calc;
     Experiment currentExperiment;

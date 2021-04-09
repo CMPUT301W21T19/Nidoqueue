@@ -24,6 +24,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 
+
+/**
+ * Classname:   RequestManager.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     This handles the activity transitions throughout the program.
+ */
 //import static com.example.nidoqueue.controller.UserControl.contextManager;
 //import static com.example.nidoqueue.controller.UserControl.databaseManager;
 
@@ -70,7 +77,6 @@ public class RequestManager {
         currentActivity.startActivity(intent);
     }
 
-
     /******************************************************************************
      * UserControl methods are called.
      ******************************************************************************/
@@ -94,6 +100,13 @@ public class RequestManager {
         userControl.trySignUp(newUser);
     }
 
+    public void tryRecovery(User newUser) {
+        userControl.tryRecovery(newUser);
+    }
+    public void tryEdit(User newUser) {
+        userControl.tryEdit(newUser);
+    }
+
     public void clickHere() {
         userControl.clickHere();
     }
@@ -102,9 +115,6 @@ public class RequestManager {
     }
     public void edit() {
         userControl.edit();
-    }
-    public void select() {
-        userControl.select();
     }
     public void searchBar() {
         userControl.searchBar();
@@ -139,10 +149,6 @@ public class RequestManager {
                 transition(WelcomeActivity.class);
             }
         });
-//        userControl.init();
-//        experimentManager.init();
-//        requestManager.autoSignIn();
-
 
     }
 
@@ -190,9 +196,9 @@ public class RequestManager {
         String typeSelected = experiment.getType();
         if (typeSelected.equals("count")) {
             transition(TrialActivity.class, R.layout.count_based);
-        } else if (typeSelected.equals("Binomial")) {
+        } else if (typeSelected.equals("binomial")) {
             transition(TrialActivity.class, R.layout.binomial);
-        } else if (typeSelected.equals("non negative")) {
+        } else if (typeSelected.equals("nonNegative")) {
             transition(TrialActivity.class, R.layout.non_negative);
         } else if (typeSelected.equals("measurement")) {
             transition(TrialActivity.class, R.layout.measurement);
@@ -209,6 +215,8 @@ public class RequestManager {
        return experimentManager.getCurrentExperiment();
     }
 
+
+    //region Dead Code
     /******************************************************************************
      * Dead Code --- Dead Code --- Dead Code
      ******************************************************************************/
@@ -217,4 +225,5 @@ public class RequestManager {
      experimentManager.addExp(exp, type);
      }
      */
+    //endregion
 }

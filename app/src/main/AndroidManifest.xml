@@ -9,17 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nidoqueue">
-        <activity android:name=".activity.SignInActivity"></activity>
-        <activity android:name=".activity.UserProfileActivity"></activity>
-        <activity android:name=".activity.SearchActivity"></activity>
-        <activity android:name=".activity.ExperimentDataActivity"></activity>
-        <activity android:name=".activity.ExperimentActivity"></activity>
-        <activity android:name=".activity.ForumActivity"></activity>
-        <activity android:name=".activity.WelcomeActivity"></activity>
-        <activity android:name=".activity.TrialActivity"></activity>
+        <activity android:name=".activity.QRActivity"></activity>
+        <activity android:name=".activity.SignInActivity" />
+        <activity android:name=".activity.UserProfileActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.ExperimentDataActivity" />
+        <activity android:name=".activity.ExperimentActivity" />
+        <activity android:name=".activity.ForumActivity" />
+        <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.TrialActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

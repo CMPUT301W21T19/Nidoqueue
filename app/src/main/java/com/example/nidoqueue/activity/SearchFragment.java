@@ -16,8 +16,14 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.User;
-
+/**
+ * Classname:   SearchFragment.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Fragment that handles the search process.
+ */
 public class SearchFragment extends DialogFragment {
     private EditText search_EditText;
     private String search;
@@ -31,7 +37,7 @@ public class SearchFragment extends DialogFragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onOkPressed(String keyword); // The new experiment is passed into this method when the "ok" button is pressed.
     }
 
     @Override
@@ -61,6 +67,7 @@ public class SearchFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         String search = search_EditText.getText().toString(); // Allows the user to input text
+                        listener.onOkPressed(search);
                         trySearch(search, false);
                     }
                 }) // New user is created with new arguments on the press of the "ok" button.

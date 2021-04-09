@@ -76,6 +76,7 @@
     <string name="record_button">Record</string>
     <string name="view_results">View Results</string>
     <string name="search">Search</string>
+    <string name="claer">Clear</string>
     <string name="trials">Trials</string>
     <string name="measurement_button">Measurement</string>
     <string name="count_button">Count</string>

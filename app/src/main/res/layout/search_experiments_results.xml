@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/desc_results"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/sample_description"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/status_results"
+        app:layout_constraintStart_toStartOf="@+id/owner_results"
+        app:layout_constraintTop_toBottomOf="@+id/owner_results" />
+
+    <TextView
+        android:id="@+id/name_results"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/experiment"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/owner_results"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/sample_user"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/status_results"
+        app:layout_constraintStart_toStartOf="@+id/name_results"
+        app:layout_constraintTop_toBottomOf="@+id/name_results" />
+
+    <TextView
+        android:id="@+id/status_results"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/exo"
+        android:padding="10dp"
+        android:text="@string/inactive"
+        android:textColor="@color/Nido_Blue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/name_results"
+        app:layout_constraintTop_toTopOf="@+id/owner_results" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
