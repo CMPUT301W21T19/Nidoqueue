@@ -71,6 +71,7 @@ public class ForumActivity extends AbstractActivity {
         //region UI setup
         listView = findViewById(R.id.forum_info);
 
+        //Get Questions from database for the forum
         databaseManager.getDb().collection("experiments")
                 .document(this.expName.toLowerCase())
                 .get()
@@ -119,7 +120,7 @@ public class ForumActivity extends AbstractActivity {
     private View.OnClickListener goBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class); //CHANGE ME
+            requestManager.transition(ExperimentActivity.class);
         }
     };
 

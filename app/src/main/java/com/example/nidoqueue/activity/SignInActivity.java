@@ -91,6 +91,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         createdExpRecyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), R.drawable.divider));
         subscribedExpRecyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), R.drawable.divider));
 
+        //Get created and subscribed experiments from databse for the user.
         databaseManager.getDb().collection("experiments")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -125,7 +126,6 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         databaseManager.getDb().collection("users")
                 .get()
                 .addOnCompleteListener(task -> {
-                    //Experiment experiment = null;
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                         List<String> subExps = (List<String>) documentSnapshot.get("subscribedExp");
                         if (subExps != null) {

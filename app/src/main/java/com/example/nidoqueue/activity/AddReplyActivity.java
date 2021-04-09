@@ -76,9 +76,8 @@ public class AddReplyActivity extends AbstractActivity {
     private View.OnClickListener postReply = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //Post Reply to the database
             String stringAnswer = editText_reply.getText().toString();
-            Answer answer = new Answer(stringAnswer);
-            // add database functionality
             databaseManager.getTargetQuestions().get(listPosition).reply(stringAnswer);
 
             databaseManager.getDb().collection("experiments")

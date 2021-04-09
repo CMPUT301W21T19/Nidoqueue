@@ -42,6 +42,7 @@
     <string name="enter_reply_here">Enter Reply Here</string>
     <string name="binomial_title">Binomial</string>
     <string name="type"><![CDATA[<Type>]]></string>
+    <string name="name"><![CDATA[<Name>]]></string>
     <string name="ignore">Ignore</string>
     <string name="sort_by">Sort by:</string>
     <string name="sample_time">12:42pm</string>

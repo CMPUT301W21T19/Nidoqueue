@@ -2,6 +2,8 @@ package com.example.nidoqueue.model;
 
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 /**
  * Classname:   ExpBinomial.java
  * Version:     Final
@@ -23,21 +25,21 @@ public class ExpBinomial extends Experiment {
         fail = 0;
         trials = new ArrayList<>();
     }
-
+    @Override
     public void increasePass() {
         pass += 1;
         trials.add(new Trial((double) this.getPass(), "p" + Integer.toString(this.getPass())));
     }
-
+    @Override
     public void increaseFail() {
         fail += 1;
         trials.add(new Trial((double) this.getPass(), "f" + Integer.toString(this.getFail())));
     }
-
+    @Override
     public int getPass() {
         return pass;
     }
-
+    @Override
     public int getFail() {
         return fail;
     }
@@ -50,4 +52,19 @@ public class ExpBinomial extends Experiment {
     public ArrayList<Trial> getTrials() {
         return trials;
     }
+
+    @Override
+    public void increaseCount(int count) {
+        // I have this designed to be used with a button that is pressed to increment the value by one
+        // we could have it take a specific number input from the user but I think that would be confusing and cumbersome to the user
+    }
+    public void decreaseCount(int count) {
+    }
+    @Override
+    public int getCount() {
+        return total_count;
+    }
+
+    @Override
+    public void addTrial(double measurement){ }
 }

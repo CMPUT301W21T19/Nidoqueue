@@ -1,9 +1,11 @@
 package com.example.nidoqueue.controller;
 
 import android.content.Intent;
+import android.widget.Toast;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.nidoqueue.R;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.nidoqueue.R;
@@ -16,6 +18,7 @@ import com.example.nidoqueue.activity.MainActivity;
 import com.example.nidoqueue.activity.RecyclerViewDivider;
 import com.example.nidoqueue.activity.SearchActivity;
 import com.example.nidoqueue.activity.SignInActivity;
+import com.example.nidoqueue.activity.TrialActivity;
 import com.example.nidoqueue.activity.WelcomeActivity;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.ExpBinomial;
@@ -33,8 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.nidoqueue.controller.UserControl.contextManager;
-import static com.example.nidoqueue.controller.UserControl.databaseManager;
+
 /**
  * Classname:   RequestManager.java
  * Version:     Final
@@ -46,17 +48,16 @@ public class RequestManager {
     // Singleton pattern
     private static final RequestManager requestManager = new RequestManager();
 
-    private RequestManager() {
-    }
-
+    private RequestManager() { }
     public static RequestManager getInstance() {
         return requestManager;
     }
-
     // Get instances of other Singleton classes needed
     private static final UserControl userControl = UserControl.getInstance();
     private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
-    private static final DatabaseManager database = DatabaseManager.getInstance();
+    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
+    private static final ContextManager contextManager = ContextManager.getInstance();
+
 
     private Class previousActivity;
 
@@ -76,10 +77,19 @@ public class RequestManager {
     }
 
     // Transition between Activities with position parameter
-    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int position) {
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int integer) {
         AbstractActivity currentActivity = (AbstractActivity) contextManager.getContext();
         Intent intent = new Intent(currentActivity, nextActivity);
-        intent.putExtra("ListPosition", position);
+        intent.putExtra("Integer", integer);
+        currentActivity.startActivity(intent);
+    }
+
+    // Transition between Activities with position parameter
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int integer, int integer2) {
+        AbstractActivity currentActivity = (AbstractActivity) contextManager.getContext();
+        Intent intent = new Intent(currentActivity, nextActivity);
+        intent.putExtra("Integer", integer);
+        intent.putExtra("Integer2", integer2);
         currentActivity.startActivity(intent);
     }
 
@@ -102,7 +112,7 @@ public class RequestManager {
      ******************************************************************************/
     public void setUserId(User user) {
         user.setSubscribedExp(new ArrayList<Experiment>());
-        databaseManager.setUser(user);
+       databaseManager.setUser(user);
     }
 
     public void signIn() {
@@ -148,7 +158,7 @@ public class RequestManager {
      * ExperimentManager methods are called.
      ******************************************************************************/
     public void createExp() {
-        new ExperimentCreateFragment(null, null, null, null, null, null, database).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
+        new ExperimentCreateFragment(null, null, null, null, null, null, databaseManager).show(contextManager.getActivity().getSupportFragmentManager(), "Create Exp");
     }
 
     public void getCurrentExp() {
@@ -175,6 +185,15 @@ public class RequestManager {
                 transition(WelcomeActivity.class);
             }
         });
+
+    }
+
+    private void autoSignIn() {
+//        if(databaseManager.getUser() == null) {
+//            transition(WelcomeActivity.class);
+//        } else {
+//            transition(SignInActivity.class);
+//        }
         ArrayList<Experiment> all_experiments = new ArrayList<>();
         databaseManager.getDb().collection("experiments")
                 .get()
@@ -272,7 +291,18 @@ public class RequestManager {
     }
 
     public void recordTrials(Experiment experiment) {
-        transition(ExperimentDataActivity.class);
+        String typeSelected = experiment.getType();
+        if (typeSelected.equals("count")) {
+            transition(TrialActivity.class, R.layout.count_based);
+        } else if (typeSelected.equals("binomial")) {
+            transition(TrialActivity.class, R.layout.binomial);
+        } else if (typeSelected.equals("nonNegative")) {
+            transition(TrialActivity.class, R.layout.non_negative);
+        } else if (typeSelected.equals("measurement")) {
+            transition(TrialActivity.class, R.layout.measurement);
+        } else {
+            Toast.makeText(contextManager.getContext(), "Experiment not a valid type", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setCurrentExp(Experiment experiment) {

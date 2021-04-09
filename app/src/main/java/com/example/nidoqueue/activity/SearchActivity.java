@@ -36,7 +36,7 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
 
     ImageButton searchBar, backButton;
-    Button clear;
+    Button clear, sortType;
 
     ArrayList<Experiment> exps, search_result;
     RecyclerView result;
@@ -64,11 +64,16 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
         clear = findViewById(R.id.clear);
         clear.setOnClickListener(Clear);
 
+        sortType = findViewById(R.id.sort_type);
+        sortType.setOnClickListener(SortBy);
+        sortType.setText(R.string.name);
+
         result = findViewById(R.id.search_result);
 
         exps = new ArrayList<>();
         search_result = new ArrayList<>();
 
+        //Get All Experiment from Database
         databaseManager.getDb().collection("experiments")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -102,6 +107,20 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
         result.addItemDecoration(
                 new RecyclerViewDivider(getContext(), R.drawable.divider));
     }
+
+    private View.OnClickListener SortBy = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (sortType.getText().toString().toLowerCase().equals("<name>")) {
+                exps.sort(new TypeAscending());
+                sortType.setText(R.string.type);
+            } else {
+                exps.sort(new NameAscending());
+                sortType.setText(R.string.name);
+            }
+            expAdapter.notifyDataSetChanged();
+        }
+    };
 
     private View.OnClickListener SearchBar = new View.OnClickListener() {
         @Override
@@ -151,6 +170,7 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
     }
 }
 
+//Class for sort experiment search result
 class NameAscending implements Comparator<Experiment> {
     @Override
     public int compare(Experiment e1, Experiment e2) {
@@ -158,23 +178,9 @@ class NameAscending implements Comparator<Experiment> {
     }
 }
 
-class NameDescending implements Comparator<Experiment> {
-    @Override
-    public int compare(Experiment e1, Experiment e2) {
-        return e2.getName().toLowerCase().compareTo(e1.getName().toLowerCase());
-    }
-}
-
 class TypeAscending implements Comparator<Experiment> {
     @Override
     public int compare(Experiment e1, Experiment e2) {
         return e1.getType().compareTo(e2.getType());
-    }
-}
-
-class TypeDescending implements Comparator<Experiment> {
-    @Override
-    public int compare(Experiment e1, Experiment e2) {
-        return e2.getType().compareTo(e1.getType());
     }
 }
