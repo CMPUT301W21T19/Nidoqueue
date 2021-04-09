@@ -91,6 +91,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         createdExpRecyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), R.drawable.divider));
         subscribedExpRecyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), R.drawable.divider));
 
+        //Get created and subscribed experiments from databse for the user.
         databaseManager.getDb().collection("experiments")
                 .get()
                 .addOnCompleteListener(task -> {
