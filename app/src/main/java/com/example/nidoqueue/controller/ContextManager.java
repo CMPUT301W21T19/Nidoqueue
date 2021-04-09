@@ -4,11 +4,10 @@ import android.content.Context;
 
 import com.example.nidoqueue.activity.AbstractActivity;
 /**
- * Classname:   ExperimentManager.java
- * Version:     Prototype
+ * Classname:   ContextManager.java
+ * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     This handles experiment transitions similar to the UserControl class.
- * Issues:      Incomplete, will be worked on in the future.
+ * Purpose:     This handles the contexts that are set and retrieved throughout the program.
  */
 public class ContextManager {
     private static ContextManager contextManager = new ContextManager();

@@ -5,7 +5,10 @@ import com.example.nidoqueue.activity.SignInFragment;
 import org.junit.Test;
 
 /**
- * Incomplete - April 7th, Colin
+ * Classname: 	QRCodeTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the QR Code process.
  */
 public class QRCodeTest {
     @Test

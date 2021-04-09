@@ -13,10 +13,9 @@ import java.util.ArrayList;
 
 /**
  * Classname:   DatabaseManager.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Sets up the Firestore which handles our database and retrieving user information.
- * Issues:      No issues currently.
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Sets up the Firestore which handles our database and retrieves user information.
  */
 public class DatabaseManager {
     FirebaseFirestore db;

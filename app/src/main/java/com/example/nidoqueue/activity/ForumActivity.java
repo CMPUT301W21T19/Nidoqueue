@@ -8,13 +8,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.controller.UserControl;
-import com.example.nidoqueue.model.DatabaseAlt;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.ForumAdapter;
 import com.example.nidoqueue.model.Question;
@@ -24,10 +21,9 @@ import java.util.ArrayList;
 
 /**
  * Classname:   ForumActivity.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Main activity for the question and answer forum.
- * Issues:      needs to connect to DB to get questions
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity displays the questions & answers to the user.
  */
 public class ForumActivity extends AbstractActivity {
     //region Class variables
@@ -49,7 +45,6 @@ public class ForumActivity extends AbstractActivity {
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final DatabaseManager database = DatabaseManager.getInstance();
     private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private static final DatabaseAlt databaseAlt = DatabaseAlt.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
     //endregion
     //endregion

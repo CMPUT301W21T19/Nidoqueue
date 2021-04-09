@@ -31,12 +31,11 @@ import java.util.List;
 
 /**
  * Classname:   SignInActivity.java
- * Version:     Prototype
- * Date:        Apr 9th, 2021
- * Purpose:     Activity to show the list of created and subscribed experiments of the user.
- * Issues:      Non-functional, planning stages.
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity displays created and subscribed experiments to the user.
+ *              Functions as a main menu for the signed in user.
  */
-
 public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     ImageButton createExp, profile, search;
     TextView title;

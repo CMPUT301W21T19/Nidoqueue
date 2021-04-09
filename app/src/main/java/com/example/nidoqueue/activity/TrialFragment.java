@@ -17,7 +17,12 @@ import androidx.fragment.app.DialogFragment;
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
-
+/**
+ * Classname:   TrialFragment.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Fragment to handle the trial inputs..
+ */
 public class TrialFragment extends DialogFragment {
     private EditText userName_EditText, email_EditText, password_EditText, passwordRe_EditText;
     private String username, email, password, passwordRe;

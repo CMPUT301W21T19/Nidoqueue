@@ -3,9 +3,11 @@ package com.example.nidoqueue;
 import com.example.nidoqueue.activity.ExperimentCreateFragment;
 
 import org.junit.Test;
-
 /**
- * Incomplete - April 7th, Colin
+ * Classname: 	ExperimentTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the Experiment process.
  */
 public class ExperimentTest {
     @Test

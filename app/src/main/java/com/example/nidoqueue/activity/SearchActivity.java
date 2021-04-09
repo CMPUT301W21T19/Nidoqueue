@@ -26,12 +26,10 @@ import java.util.Comparator;
 
 /**
  * Classname:   SearchActivity.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Activity that handles the OnClickListeners for the search function.
- * Issues:      Incomplete
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity displays searched experiments to the user.
  */
-
 public class SearchActivity extends AbstractActivity implements SearchFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();

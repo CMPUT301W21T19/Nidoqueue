@@ -18,8 +18,8 @@ import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.model.User;
 /**
- * Classname:   Recovery.java
- * Version:     Prototype
+ * Classname:   RecoveryFragment.java
+ * Version:     Final
  * Date:        April 9th, 2021
  * Purpose:     Fragment window that handles the Account Recovery for the user.
  */
@@ -35,7 +35,7 @@ public class RecoveryFragment extends DialogFragment {
         this.isTest = isTest;
     }
     public interface OnFragmentInteractionListener {
-        void onRecoveryOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
+        void onRecoveryOkPressed(User user); // The new experiment is passed into this method when the "ok" button is pressed.
     }
     @Override
     public void onAttach(Context context) {

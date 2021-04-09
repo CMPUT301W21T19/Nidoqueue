@@ -29,10 +29,9 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 
 /**
  * Classname:   ExperimentCreateFragment.java
- * Version:     Prototype
+ * Version:     Final
  * Date:        Apr 9th, 2021
- * Purpose:     Fragment to create and publish new Experiment
- * Issues:      None
+ * Purpose:     Fragment to create and publish new Experiments.
  */
 public class ExperimentCreateFragment extends DialogFragment {
     private EditText expName_EditText, expDesc_EditText, minTrials_EditText;

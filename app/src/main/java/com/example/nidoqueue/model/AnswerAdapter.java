@@ -14,7 +14,12 @@ import com.example.nidoqueue.R;
 import java.util.ArrayList;
 
 import javax.annotation.Nullable;
-
+/**
+ * Classname:   AnswerAdapter.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Adapter for the User Answers in the Forum.
+ */
 public class AnswerAdapter extends ArrayAdapter<Answer> {
 
     private ArrayList<Answer> answers;

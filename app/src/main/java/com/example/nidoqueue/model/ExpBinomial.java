@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 /**
  * Classname:   ExpBinomial.java
- * Version:     Prototype
- * Date:        March 19th, 2021
+ * Version:     Final
+ * Date:        April 9th, 2021
  * Purpose:     Handles the Binomial aspect of the experiments.
- * Issues:      Non-functional, planning stages.
  */
 public class ExpBinomial extends Experiment {
     private int pass;

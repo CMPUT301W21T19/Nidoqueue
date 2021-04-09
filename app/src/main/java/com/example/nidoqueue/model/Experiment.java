@@ -4,13 +4,11 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.ArrayList;
-
 /**
  * Classname:   Experiment.java
- * Version:     Prototype
- * Date:        March 19th, 2021
+ * Version:     Final
+ * Date:        April 9th, 2021
  * Purpose:     This is the main experiment class. Backbone of the experiments for this project.
- * Issues:      Needs more tests.
  */
 @IgnoreExtraProperties
 public abstract class Experiment implements Comparable<Experiment> {

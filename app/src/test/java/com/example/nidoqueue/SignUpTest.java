@@ -2,9 +2,13 @@ package com.example.nidoqueue;
 
 import com.example.nidoqueue.activity.SignUpFragment;
 
+
 import org.junit.Test;
 /**
- * Functional - April 7th, Colin
+ * Classname: 	SignUpTest.java
+ * Version:		Final
+ * Date:		April 9th, 2021
+ * Purpose:		Tests the functionality of the Sign Up process.
  */
 public class SignUpTest {
     @Test

@@ -20,25 +20,20 @@ import java.util.ArrayList;
 
 /**
  * Classname:   UserProfileActivity.java
- * Version:     Prototype
+ * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Activity to show profile of user
+ * Purpose:     Activity to show the profile of the user.
  */
+
 public class UserProfileActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     ListView userView;
     ImageButton backButton, homeButton, editButton;
     TextView userName, email;
-    ArrayList<User> userList;
-    ArrayAdapter<User> Adapter;
-    User editRemove;
-    String message;
-    User user;
 
     // get instances of RequestManager and ContextManager
     static RequestManager requestManager = RequestManager.getInstance();
     static ContextManager contextManager = ContextManager.getInstance();
     static DatabaseManager databaseManager = DatabaseManager.getInstance();
-    static UserControl userControl = UserControl.getInstance();
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
@@ -61,7 +56,6 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
         userName.setText(databaseManager.getUser().getUsername());
         email.setText(databaseManager.getUser().getEmail());
 
-        //userView.setOnClickListener(Profile);
         backButton.setOnClickListener(Back);
         homeButton.setOnClickListener(Home);
         editButton.setOnClickListener(Edit);
@@ -86,12 +80,6 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
             requestManager.edit();
         }
     };
-    private View.OnClickListener Profile = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.select();
-        }
-    };
 
     @Override
     public void onBackPressed() {
@@ -105,9 +93,12 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
     public FirebaseFirestore getDB() {
         return null;
     }
-
+    /**
+     * All the information needed for the user profile is injected on the "ok" press
+     * @param user
+     */
     @Override
-    public void onSignUpOkPressed(User newUser) {
-
+    public void onSignUpOkPressed(User user) {
+        requestManager.tryEdit(user);
     }
 }
