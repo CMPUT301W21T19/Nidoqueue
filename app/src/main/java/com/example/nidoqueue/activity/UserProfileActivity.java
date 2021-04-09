@@ -81,13 +81,6 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
         }
     };
 
-    private View.OnClickListener Profile = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            requestManager.select();
-        }
-    };
-
     @Override
     public void onBackPressed() {
         finish();
