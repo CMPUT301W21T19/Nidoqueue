@@ -21,6 +21,7 @@ public class ExpNonNegative extends Experiment{
 
     public ExpNonNegative(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
         super(owner, name, description, region, num_of_trials, geoLocation, published);
+
         trials = new ArrayList<>();
     }
 

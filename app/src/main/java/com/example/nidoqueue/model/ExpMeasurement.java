@@ -25,6 +25,7 @@ public class ExpMeasurement extends Experiment{
 
     public ExpMeasurement(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published, String unit) {
         super(owner, name, description, region, num_of_trials, geoLocation, published);
+
         this.unit = unit;
         this.trials = new ArrayList<>();
         this.trial = new ArrayList<>();

@@ -99,6 +99,8 @@ public class ExperimentCreateFragment extends DialogFragment {
         Boolean geoLocationChecked = geoLocation.isChecked();
 
 
+
+
         if (typeSelected.equals("Count")) {
             listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Binomial")) {
@@ -107,10 +109,13 @@ public class ExperimentCreateFragment extends DialogFragment {
             listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Measurement")) {
             listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true, ""), typeSelected);
+
         } else {
             Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     public interface OnFragmentInteractionListener {
         void onOkPressed(Experiment exp, String type); // The new experiment is passed into this method when the "ok" button is pressed.

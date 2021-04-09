@@ -23,6 +23,7 @@ public abstract class Experiment implements Comparable<Experiment> {
     private int num_of_trials;
     private boolean geoLocation;
     private boolean published;
+    private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
     private String type;
@@ -32,6 +33,7 @@ public abstract class Experiment implements Comparable<Experiment> {
     }
 
     public Experiment(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
+
         this.owner = owner;
         this.name = name;
         this.description = description;
@@ -39,9 +41,11 @@ public abstract class Experiment implements Comparable<Experiment> {
         this.num_of_trials = num_of_trials;
         this.geoLocation = geoLocation;
         this.published = published;
+
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
         published = true;
+        ended = false;
     }
 
     /**
@@ -56,6 +60,13 @@ public abstract class Experiment implements Comparable<Experiment> {
      */
     public void unpublish() {
         this.published = false;
+    }
+
+    /**
+     * This ends the experiment.
+     */
+    public void end() {
+        this.ended = true;
     }
 
     /**
