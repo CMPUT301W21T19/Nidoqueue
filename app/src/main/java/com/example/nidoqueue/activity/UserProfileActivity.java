@@ -17,13 +17,16 @@ import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+
 /**
  * Classname:   UserProfileActivity.java
  * Version:     Final
  * Date:        April 9th, 2021
  * Purpose:     Activity to show the profile of the user.
  */
-public class UserProfileActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, RecyclerViewClickListener{
+
+public class UserProfileActivity extends AbstractActivity implements SignUpFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
+    ListView userView;
     ImageButton backButton, homeButton, editButton;
     TextView userName, email;
 
@@ -57,6 +60,7 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
         homeButton.setOnClickListener(Home);
         editButton.setOnClickListener(Edit);
     }
+
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -66,6 +70,7 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
     private View.OnClickListener Back = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            finish();
             requestManager.back();
         }
     };
@@ -75,6 +80,20 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
             requestManager.edit();
         }
     };
+
+    private View.OnClickListener Profile = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.select();
+        }
+    };
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        requestManager.back();
+    }
+
     /******************************************************************************
      * Firebase Database Code
      ******************************************************************************/

@@ -40,6 +40,7 @@ public class SignInFragment extends DialogFragment {
         this.password = password;
         this.isTest = isTest;
     }
+
     public interface OnFragmentInteractionListener {
         void onSignInOkPressed(User newUser); // The new experiment is passed into this method when the "ok" button is pressed.
     }

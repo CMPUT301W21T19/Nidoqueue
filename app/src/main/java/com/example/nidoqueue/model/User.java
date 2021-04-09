@@ -61,5 +61,10 @@ public class User {
     }
     public void addSubscribedExp(Experiment experiment) {
         subscribedExp.add(experiment);
+
     }
+    public void remSubscribedExp(Experiment experiment) {
+        subscribedExp.remove(experiment);
+    }
+
 }

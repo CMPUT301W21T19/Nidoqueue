@@ -89,4 +89,8 @@ public class ExperimentManager {
                     }
                 });
     }
+
+    public void init() {
+        databaseManager.setCreatedExps();
+    }
 }

@@ -72,7 +72,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
         search.setOnClickListener(Search);
         createExp.setOnClickListener(CreateExp);
 
-        expListAdapter = new ExpListAdapter(createdExps, this);
+        expListAdapter = new ExpListAdapter(databaseManager.getCreatedExps(), this);
         created = findViewById(R.id.created_exps_list);
         created.setLayoutManager(new LinearLayoutManager(this));
         created.setAdapter(expListAdapter);

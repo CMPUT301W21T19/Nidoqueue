@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Purpose:     This is the main experiment class. Backbone of the experiments for this project.
  */
 @IgnoreExtraProperties
-public abstract class Experiment {
+public abstract class Experiment implements Comparable<Experiment> {
     // class attributes
 
     private User owner;
@@ -21,21 +21,29 @@ public abstract class Experiment {
     private int num_of_trials;
     private boolean geoLocation;
     private boolean published;
+    private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
+    private String type;
 
     public Experiment() {
 
     }
 
-    public Experiment(User owner, String name, String description, Boolean geoLocation) {
+    public Experiment(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
+
         this.owner = owner;
         this.name = name;
         this.description = description;
+        this.region = region;
+        this.num_of_trials = num_of_trials;
         this.geoLocation = geoLocation;
+        this.published = published;
+
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
         published = true;
+        ended = false;
     }
 
     /**
@@ -50,6 +58,13 @@ public abstract class Experiment {
      */
     public void unpublish() {
         this.published = false;
+    }
+
+    /**
+     * This ends the experiment.
+     */
+    public void end() {
+        this.ended = true;
     }
 
     /**
@@ -164,4 +179,9 @@ public abstract class Experiment {
     }
 
     public abstract String getType();
+
+    @Override
+    public int compareTo(Experiment experiment) {
+        return this.getType().compareTo(experiment.getType());
+    }
 }

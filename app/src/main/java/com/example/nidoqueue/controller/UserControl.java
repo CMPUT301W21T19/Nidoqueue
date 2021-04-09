@@ -55,7 +55,8 @@ public class UserControl {
     public void profile() {
         requestManager.transition(UserProfileActivity.class);
     }
-    public void signIn(){
+
+    public void signIn() {
         new SignInFragment("", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
         // Check if Android ID exists in User Database
 //        requestManager.transition(SignInActivity.class);
@@ -70,7 +71,8 @@ public class UserControl {
             }
         });
     }
-    public void clickHere(){
+
+    public void clickHere() {
         new RecoveryFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
 
@@ -182,4 +184,5 @@ public class UserControl {
     public void searchBar(){
         new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
+
 }
