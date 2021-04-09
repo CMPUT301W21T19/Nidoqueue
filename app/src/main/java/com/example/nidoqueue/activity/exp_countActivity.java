@@ -14,6 +14,15 @@ import com.example.nidoqueue.model.ExpBinomial;
 import com.example.nidoqueue.model.ExpCount;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Classname:   exp_countActivity.java
+ * version:     prototype
+ * Date:        April 9th, 2021
+ * Purpose:     Activity for count experiments
+ * issues:      lacking database functionality
+ *              the done and back button lack functionality
+ *              QR codes need some sort of link
+ */
 public class exp_countActivity extends AbstractActivity{
 
     private ImageButton btn_back, btn_home;
@@ -69,7 +78,12 @@ public class exp_countActivity extends AbstractActivity{
     private View.OnClickListener QRtap = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //todo
+            String data = "change me"; //todo change this to a link to the database
+            Bundle bundle = new Bundle();
+            bundle.putString("QR", data);
+            QRfragment qRfragment = new QRfragment();
+            qRfragment.setArguments(bundle);
+            qRfragment.show(getSupportFragmentManager(), null);
         }
     };
 
