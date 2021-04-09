@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.QRScanner">
+
+<!--back_buttonScanner-->
+    <ImageButton
+        android:id="@+id/back_buttonScanner"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:contentDescription="back_arrow"
+        android:tint="#FFFFFF"
+
+
+        app:layout_constraintBottom_toBottomOf="@+id/exp_data_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/exp_data_title"
+
+
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+<!--home_buttonScanner-->
+    <ImageButton
+        android:id="@+id/home_buttonScanner"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:contentDescription="Home_button"
+        android:tint="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="@+id/exp_data_title"
+        app:layout_constraintLeft_toRightOf="@+id/exp_data_title"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+<!--previewView-->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<!--qrCodeFoundButton-->
+    <Button
+        android:id="@+id/qrCodeFoundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR Code Found"
+        app:layout_constraintBottom_toBottomOf="@+id/previewView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
