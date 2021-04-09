@@ -79,13 +79,13 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
                             case "count":
                                 experiment = documentSnapshot.toObject(ExpCount.class);
                                 break;
-                            case "binomial":
+                            case "exp_binomial.xml":
                                 experiment = documentSnapshot.toObject(ExpBinomial.class);
                                 break;
                             case "nonNegative":
                                 experiment = documentSnapshot.toObject(ExpNonNegative.class);
                                 break;
-                            case "measurement":
+                            case "exp_measurement.xml":
                                 experiment = documentSnapshot.toObject(ExpMeasurement.class);
                                 break;
                         }

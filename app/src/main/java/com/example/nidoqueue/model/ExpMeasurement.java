@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Classname:   ExpMeasurement.java
  * Version:     Prototype
  * Date:        April 9th, 2021
- * Purpose:     Handles the measurement aspect of the experiments.
+ * Purpose:     Handles the exp_measurement.xml aspect of the experiments.
  */
 public class ExpMeasurement extends Experiment{
     // since measurements require units, I think we should consider using a custom ArrayList or something similar
@@ -16,7 +16,7 @@ public class ExpMeasurement extends Experiment{
     private String unit;
     private ArrayList<Double> trials;
     private ArrayList<Trial> trial;
-    final private String TYPE = "measurement";
+    final private String TYPE = "exp_measurement.xml";
 
     public ExpMeasurement() {
 
