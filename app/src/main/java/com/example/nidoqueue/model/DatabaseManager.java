@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.example.nidoqueue.controller.ContextManager;
+import com.example.nidoqueue.controller.ExperimentManager;
+import com.example.nidoqueue.controller.RequestManager;
+import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.controller.documentCallBack;
 import com.example.nidoqueue.controller.documentSuccessCallBack;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -18,22 +21,27 @@ import java.util.ArrayList;
  * Purpose:     Sets up the Firestore which handles our database and retrieves user information.
  */
 public class DatabaseManager {
-    FirebaseFirestore db;
-    DocumentSnapshot document;
-    String android_id;
-    User user;
 
+    // Singleton Pattern
     private static final DatabaseManager databaseManager = new DatabaseManager();
-    private static final ContextManager contextManager = ContextManager.getInstance();
 
     @SuppressLint("HardwareIds")
     private DatabaseManager() {
         db = FirebaseFirestore.getInstance();
     }
-
     public static DatabaseManager getInstance() {
         return databaseManager;
     }
+    // Get instances of other Singleton classes needed
+    //    private static final ContextManager contextManager = ContextManager.getInstance();
+    //    private static final RequestManager requestManager = RequestManager.getInstance();
+    //    private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
+    //    private static final UserControl userControl = UserControl.getInstance();
+
+    FirebaseFirestore db;
+    DocumentSnapshot document;
+    String android_id;
+    User user;
 
     ArrayList<Experiment> experiments = new ArrayList<>();
     ArrayList<Experiment> targetExps = new ArrayList<>();

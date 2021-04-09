@@ -21,12 +21,21 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
  * Purpose:     This handles the User Controlled methods throughout the program.
  */
 public class UserControl {
-    private User user;
-//    private String password, email;
+
+    // Singleton pattern
     private static UserControl userControl = new UserControl();
 
-    private UserControl() {
+    private UserControl() { }
+    public static UserControl getInstance() {
+        return userControl;
     }
+    // Get instances of other Singleton classes needed
+    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
+    private static final ContextManager contextManager = ContextManager.getInstance();
+    private static final RequestManager requestManager = RequestManager.getInstance();
+    // private static final ExperimentManager experimentManager = ExperimentManager.getInstance();
+
+    private User user;
 
     //region setters
     public void setUser(User user) {
@@ -58,14 +67,6 @@ public class UserControl {
         }
         return user.getPassword();
     }
-
-    public static UserControl getInstance() {
-        return userControl;
-    }
-
-    static RequestManager requestManager = RequestManager.getInstance();
-    static ContextManager contextManager = ContextManager.getInstance();
-    static DatabaseManager databaseManager = DatabaseManager.getInstance();
 
     /******************************************************************************
      * User Control Methods

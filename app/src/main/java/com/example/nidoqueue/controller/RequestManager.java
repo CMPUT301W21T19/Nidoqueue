@@ -48,13 +48,10 @@ public class RequestManager {
     // Singleton pattern
     private static final RequestManager requestManager = new RequestManager();
 
-    private RequestManager() {
-    }
-
+    private RequestManager() { }
     public static RequestManager getInstance() {
         return requestManager;
     }
-
     // Get instances of other Singleton classes needed
     private static final UserControl userControl = UserControl.getInstance();
     private static final ExperimentManager experimentManager = ExperimentManager.getInstance();

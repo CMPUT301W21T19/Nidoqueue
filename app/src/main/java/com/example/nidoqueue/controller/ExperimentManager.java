@@ -21,15 +21,19 @@ import java.util.Map;
  * Purpose:     This handles the experiments throughout the program.
  */
 public class ExperimentManager {
+
+    // Singleton Pattern
     private static final ExperimentManager experimentManager = new ExperimentManager();
 
-    public static ExperimentManager getInstance() {
+    public static final ExperimentManager getInstance() {
         return experimentManager;
     }
-
+    // Get instances of other Singleton classes needed
     private static final ContextManager contextManager = ContextManager.getInstance();
-    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
+    //    private static final RequestManager requestManager = RequestManager.getInstance();
+    //    private static final DatabaseManager databaseManager = DatabaseManager.getInstance();
+
     String android_id;
     DataCalc calc;
     Experiment currentExperiment;
