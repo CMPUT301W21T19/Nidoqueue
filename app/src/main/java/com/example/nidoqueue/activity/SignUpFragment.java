@@ -131,7 +131,7 @@ public class SignUpFragment extends DialogFragment {
         String message = "";
         switch (error) {
             case 0:
-                message = "Thank you for signing up!";
+                message = "Success!";
                 if (isTest) {
                     displayTestResults(message);
                     System.out.print("Username: " + username + "\nEmail: " + email + "\nPassword: " + password);
