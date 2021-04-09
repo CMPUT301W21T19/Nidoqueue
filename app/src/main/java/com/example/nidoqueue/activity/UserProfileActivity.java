@@ -100,5 +100,6 @@ public class UserProfileActivity extends AbstractActivity implements SignUpFragm
     @Override
     public void onSignUpOkPressed(User user) {
         requestManager.tryEdit(user);
+
     }
 }
