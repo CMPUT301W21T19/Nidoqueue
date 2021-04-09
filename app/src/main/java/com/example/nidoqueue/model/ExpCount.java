@@ -15,8 +15,8 @@ public class ExpCount extends Experiment {
     private ArrayList<Trial> trials;
     final private String TYPE = "count";
 
-    public ExpCount(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpCount(User owner, String name, String description, Boolean geoLocation, String regionSelected) {
+        super(owner, name, description, geoLocation, regionSelected);
         count = 0;
         this.trials = new ArrayList<>();
     }

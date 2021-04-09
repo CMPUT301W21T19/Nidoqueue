@@ -15,8 +15,8 @@ public class ExpNonNegative extends Experiment{
     private ArrayList<Trial> trial;
     final private String TYPE = "nonNegative";
 
-    public ExpNonNegative(User owner, String name, String description, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpNonNegative(User owner, String name, String description, Boolean geoLocation, String regionSelected) {
+        super(owner, name, description, geoLocation, regionSelected);
         trials = new ArrayList<>();
     }
 

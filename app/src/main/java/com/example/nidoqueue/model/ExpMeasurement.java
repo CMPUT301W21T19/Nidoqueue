@@ -19,8 +19,8 @@ public class ExpMeasurement extends Experiment{
     private ArrayList<Trial> trial;
     final private String TYPE = "measurement";
 
-    public ExpMeasurement(User owner, String name, String description, String unit, Boolean geoLocation) {
-        super(owner, name, description, geoLocation);
+    public ExpMeasurement(User owner, String name, String description, String unit, Boolean geoLocation, String regionSelected) {
+        super(owner, name, description, geoLocation, regionSelected);
         this.unit = unit;
         this.trials = new ArrayList<>();
         this.trial = new ArrayList<>();
