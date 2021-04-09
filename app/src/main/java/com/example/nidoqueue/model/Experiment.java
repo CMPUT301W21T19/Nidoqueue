@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Issues:      Needs more tests.
  */
 @IgnoreExtraProperties
-public abstract class Experiment {
+public abstract class Experiment implements Comparable<Experiment> {
     // class attributes
 
     private User owner;
@@ -26,17 +26,22 @@ public abstract class Experiment {
     private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
+    private String type;
 
     public Experiment() {
 
     }
 
-    public Experiment(User owner, String name, String description, Boolean geoLocation, String region) {
+    public Experiment(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
+
         this.owner = owner;
         this.name = name;
         this.description = description;
-        this.geoLocation = geoLocation;
         this.region = region;
+        this.num_of_trials = num_of_trials;
+        this.geoLocation = geoLocation;
+        this.published = published;
+
         questions = new ArrayList<>();
         experimenters = new ArrayList<>();
         published = true;
@@ -176,4 +181,9 @@ public abstract class Experiment {
     }
 
     public abstract String getType();
+
+    @Override
+    public int compareTo(Experiment experiment) {
+        return this.getType().compareTo(experiment.getType());
+    }
 }

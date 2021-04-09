@@ -93,8 +93,8 @@ public class ExperimentCreateFragment extends DialogFragment {
     public void saveExperimentDetails() {
         String expName = expName_EditText.getText().toString();
         String expDesc = expDesc_EditText.getText().toString();
-        String minTrials = minTrials_EditText.getText().toString();
         String regionSelected = region.getSelectedItem().toString();
+        int minTrials = Integer.parseInt(minTrials_EditText.getText().toString());
         String typeSelected = type.getSelectedItem().toString();
         Boolean geoLocationChecked = geoLocation.isChecked();
 
@@ -102,13 +102,14 @@ public class ExperimentCreateFragment extends DialogFragment {
 
 
         if (typeSelected.equals("Count")) {
-            listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
+            listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Binomial")) {
-            listener.onOkPressed(new ExpBinomial(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
+            listener.onOkPressed(new ExpBinomial(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Non Negative")) {
-            listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, geoLocationChecked, regionSelected), typeSelected);
+            listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Measurement")) {
-            listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, "", geoLocationChecked, regionSelected), typeSelected);
+            listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true, ""), typeSelected);
+
         } else {
             Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
         }

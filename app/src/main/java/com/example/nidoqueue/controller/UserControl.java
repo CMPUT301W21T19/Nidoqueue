@@ -50,7 +50,8 @@ public class UserControl {
     public void profile() {
         requestManager.transition(UserProfileActivity.class);
     }
-    public void signIn(){
+
+    public void signIn() {
         new SignInFragment("", "", false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
         // Check if Android ID exists in User Database
 //        requestManager.transition(SignInActivity.class);
@@ -65,7 +66,8 @@ public class UserControl {
             }
         });
     }
-    public void clickHere(){
+
+    public void clickHere() {
         new RecoveryFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Recover_User");
     }
 
@@ -95,7 +97,6 @@ public class UserControl {
                             }
                         }
                         if (!id_exist) {
-                            Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
                             new SignInFragment(user.getUsername(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
                         }
                     }
@@ -131,15 +132,9 @@ public class UserControl {
                     }
                 });
     }
-    public void searchBar(){
+
+    public void searchBar() {
         new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
 
-    public void init() {
-        // Set user
-        String username = "NameNameName";
-        String email = "EmailEmailEmail";
-        String password = "9994445555";
-        databaseManager.setUser(new User(username, email, password, null, null));
-    }
 }
