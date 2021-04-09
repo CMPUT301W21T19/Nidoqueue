@@ -12,12 +12,15 @@ import org.junit.Test;
  */
 public class RecoveryTest {
     @Test
-    public void testRecovery(){
+    public void testRecoveryLength(){
         RecoveryFragment test = new RecoveryFragment("", false);
+        /**
+         * Manipulate these variables below to test any values you want.
+         */
         String small = "1234";
         String large = "12345678901234567891234567891234567899999";
         String normal = "1234567890";
-        String[] email = {normal, normal, small, large, normal, normal, normal, normal};
+        String[] email = {small, large, normal};
 
         for(int testNum = 0; testNum < email.length; testNum++){
             displayTestName(testNum);
@@ -25,8 +28,7 @@ public class RecoveryTest {
         }
     }
     public void displayTestName(int num){
-        String[] testMessage = {"Test 1: Short Username", "Test 2: Long Username", "Test 3: Short Email", "Test 4: Long Email",
-                "Test 5: Short Password", "Test 6: Long Password", "Test 7: Password Mismatch", "Test 8: No Errors"};
+        String[] testMessage = {"Test 1: Short Email", "Test 2: Long Email", "Test 3: Good Email"};
         System.out.print("\n"+testMessage[num]+"\n");
     }
 }

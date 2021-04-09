@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nidoqueue">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nidoqueue">
-        <activity android:name=".activity.QRActivity"></activity>
+        <activity android:name=".activity.AddQuestionActivity" />
+        <activity android:name=".activity.AddReplyActivity" />
+        <activity android:name=".activity.QuestionActivity" />
+        <activity android:name=".activity.QRScaner" />
+        <activity android:name=".activity.QRActivity" />
         <activity android:name=".activity.SignInActivity" />
         <activity android:name=".activity.UserProfileActivity" />
         <activity android:name=".activity.SearchActivity" />
