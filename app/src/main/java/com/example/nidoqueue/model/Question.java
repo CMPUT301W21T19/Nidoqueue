@@ -13,6 +13,10 @@ public class Question {
     private String question;
     private ArrayList<Answer> answers;
 
+    public Question() {
+
+    }
+
     public Question(String question) {
         this.question = question;
         answers = new ArrayList<>();
@@ -45,6 +49,10 @@ public class Question {
 
     public String getQuestion() {
         return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     //endregion

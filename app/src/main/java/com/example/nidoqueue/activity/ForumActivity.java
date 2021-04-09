@@ -1,12 +1,16 @@
 package com.example.nidoqueue.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 
 import com.example.nidoqueue.R;
 import com.example.nidoqueue.controller.ContextManager;
@@ -15,9 +19,13 @@ import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.ForumAdapter;
 import com.example.nidoqueue.model.Question;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classname:   ForumActivity.java
@@ -41,6 +49,7 @@ public class ForumActivity extends AbstractActivity {
     //endregion
     //region RequestManager and ContextManager
     //these were copied from WelcomeActivity.java
+    String expName;
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final DatabaseManager database = DatabaseManager.getInstance();
@@ -54,13 +63,24 @@ public class ForumActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum);
+        Intent mIntent = getIntent();
+        expName = mIntent.getStringExtra("Experiment Name");
 
         questions = new ArrayList<>(); //REPLACE ME!
 
         //region UI setup
         listView = findViewById(R.id.forum_info);
-        arrayAdapter = new ForumAdapter(this, questions);
-        listView.setAdapter(arrayAdapter);
+
+        databaseManager.getDb().collection("experiments")
+                .document(this.expName.toLowerCase())
+                .get()
+                .addOnCompleteListener(task -> {
+                    List<Question> questions = task.getResult().toObject(QuestionDocument.class).questions;
+                    this.questions.addAll(questions);
+
+                    arrayAdapter = new ForumAdapter(this, this.questions);
+                    listView.setAdapter(arrayAdapter);
+                });
 
         btn_add = findViewById(R.id.add_button2);
         btn_back = findViewById(R.id.back_button7);
@@ -84,14 +104,15 @@ public class ForumActivity extends AbstractActivity {
     private AdapterView.OnItemClickListener selectQuestion = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            requestManager.transition(QuestionActivity.class);
+            database.setTargetQuestions(questions);
+            requestManager.transition(QuestionActivity.class, position, expName);
             //will need way to specify question
         }
     };
     private View.OnClickListener addQuestion = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            requestManager.transition(AddQuestionActivity.class);
+            requestManager.transition(AddQuestionActivity.class, expName);
         }
     };
 
@@ -111,4 +132,8 @@ public class ForumActivity extends AbstractActivity {
     //endregion
 
     //endregion
+}
+
+class QuestionDocument {
+    public List<Question> questions;
 }

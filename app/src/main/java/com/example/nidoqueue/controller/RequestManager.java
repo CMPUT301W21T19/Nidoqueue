@@ -83,6 +83,20 @@ public class RequestManager {
         currentActivity.startActivity(intent);
     }
 
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, String expName) {
+        AbstractActivity currentActivity = (AbstractActivity) contextManager.getContext();
+        Intent intent = new Intent(currentActivity, nextActivity);
+        intent.putExtra("Experiment Name", expName);
+        currentActivity.startActivity(intent);
+    }
+
+    public <T extends AbstractActivity> void transition(Class<T> nextActivity, int position, String expName) {
+        AbstractActivity currentActivity = (AbstractActivity) contextManager.getContext();
+        Intent intent = new Intent(currentActivity, nextActivity);
+        intent.putExtra("ListPosition", position);
+        intent.putExtra("Experiment Name", expName);
+        currentActivity.startActivity(intent);
+    }
     /******************************************************************************
      * UserControl methods are called.
      ******************************************************************************/

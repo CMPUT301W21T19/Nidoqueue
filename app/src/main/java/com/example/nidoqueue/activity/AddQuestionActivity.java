@@ -1,5 +1,6 @@
 package com.example.nidoqueue.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,15 +12,18 @@ import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.controller.UserControl;
 import com.example.nidoqueue.model.DatabaseManager;
+import com.example.nidoqueue.model.Experiment;
 import com.example.nidoqueue.model.Question;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 /**
  * Classname:   AddReplyActivity.java
  * Version:     Final
  * Date:        Apr 9th, 2021
  * Purpose:     Activity handles the question process.
  */
-public class AddQuestionActivity extends AbstractActivity{
+public class AddQuestionActivity extends AbstractActivity {
 
     //region class variables
     //region UI elements
@@ -38,7 +42,7 @@ public class AddQuestionActivity extends AbstractActivity{
     //endregion
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_question);
 
@@ -68,11 +72,21 @@ public class AddQuestionActivity extends AbstractActivity{
     private View.OnClickListener postQuestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             String stringQuestion = editText_question.getText().toString();
             Question question = new Question(stringQuestion);
             // add database functionality
-            requestManager.transition(ForumActivity.class);
+            Intent mIntent = getIntent();
+            String name = mIntent.getStringExtra("Experiment Name");
+            for (Experiment experiment : databaseManager.getExperiments()) {
+                if (name.equals(experiment.getName())) {
+                    experiment.addQuestion(question);
+                    databaseManager.getDb().collection("experiments")
+                            .document(experiment.getName().toLowerCase())
+                            .update("questions", FieldValue.arrayUnion(question));
+                }
+            }
+            finish();
+            requestManager.transition(ForumActivity.class, name);
         }
     };
 

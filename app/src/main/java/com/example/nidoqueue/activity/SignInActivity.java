@@ -2,7 +2,6 @@ package com.example.nidoqueue.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -34,7 +33,7 @@ import java.util.List;
  * Version:     Final
  * Date:        April 9th, 2021
  * Purpose:     Activity displays created and subscribed experiments to the user.
- *              Functions as a main menu for the signed in user.
+ * Functions as a main menu for the signed in user.
  */
 public class SignInActivity extends AbstractActivity implements ExperimentCreateFragment.OnFragmentInteractionListener, RecyclerViewClickListener {
     ImageButton createExp, profile, search;
@@ -54,7 +53,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
-        if(v.getId() == R.id.created_exps_list) {
+        if (((RecyclerView) v.getParent()).getId() == R.id.created_exps_list) {
             databaseManager.setTargetExps(createdExpListAdapter.list);
         } else {
             databaseManager.setTargetExps(subscribedExpListAdapter.list);
@@ -131,7 +130,7 @@ public class SignInActivity extends AbstractActivity implements ExperimentCreate
                         List<String> subExps = (List<String>) documentSnapshot.get("subscribedExp");
                         if (subExps != null) {
                             for (String name : subExps) {
-                                for(Experiment exp: databaseManager.getExperiments()) {
+                                for (Experiment exp : databaseManager.getExperiments()) {
                                     if (exp.getName().toLowerCase().equals(name)) {
                                         subscribedExps.add(exp);
                                         break;

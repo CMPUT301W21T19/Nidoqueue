@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.ArrayList;
+
 /**
  * Classname:   Experiment.java
  * Version:     Final
@@ -178,6 +179,18 @@ public abstract class Experiment implements Comparable<Experiment> {
      */
     public boolean isPublished() {
         return published;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public void addQuestion(Question question) {
+        questions.add(question);
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
     }
 
     public abstract String getType();

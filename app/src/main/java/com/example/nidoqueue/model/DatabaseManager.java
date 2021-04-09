@@ -37,6 +37,7 @@ public class DatabaseManager {
 
     ArrayList<Experiment> experiments = new ArrayList<>();
     ArrayList<Experiment> targetExps = new ArrayList<>();
+    ArrayList<Question> targetQuestions = new ArrayList<>();
     ArrayList<Experiment> createdExps = new ArrayList<>();
     ArrayList<Experiment> subscribedExps = new ArrayList<Experiment>();
 
@@ -149,6 +150,14 @@ public class DatabaseManager {
 
     public void setTargetExps(ArrayList<Experiment> targetExps) {
         this.targetExps = targetExps;
+    }
+
+    public ArrayList<Question> getTargetQuestions() {
+        return targetQuestions;
+    }
+
+    public void setTargetQuestions(ArrayList<Question> targetQuestions) {
+        this.targetQuestions = targetQuestions;
     }
 
     public void addCreatedExps(Experiment experiment) {

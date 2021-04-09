@@ -25,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class ExperimentActivity extends AbstractActivity {
 
-    private Button subscribeButton, unsubscribeButton, unpublishButton, endButton, recordButton, dataButton;
+    private Button subscribeButton, unsubscribeButton, unpublishButton, endButton, recordButton, dataButton, forumButton;
     private ImageButton backButton, homeButton;
 
     private Experiment experiment;
@@ -41,7 +41,7 @@ public class ExperimentActivity extends AbstractActivity {
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
 
-    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
 
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
@@ -87,6 +87,12 @@ public class ExperimentActivity extends AbstractActivity {
             requestManager.recordTrials(experiment);
         }
     };
+    private View.OnClickListener Forum = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            requestManager.transition(ForumActivity.class, experiment.getName());
+        }
+    };
     private View.OnClickListener Data = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -117,6 +123,7 @@ public class ExperimentActivity extends AbstractActivity {
         endButton = findViewById(R.id.end_button);
         recordButton = findViewById(R.id.record_button);
         dataButton = findViewById(R.id.data_button);
+        forumButton = findViewById(R.id.qa_button);
 
         backButton.setOnClickListener(Back);
         subscribeButton.setOnClickListener(Add);
@@ -126,6 +133,7 @@ public class ExperimentActivity extends AbstractActivity {
         endButton.setOnClickListener(End);
         recordButton.setOnClickListener(Record);
         dataButton.setOnClickListener(Data);
+        forumButton.setOnClickListener(Forum);
 
         title = findViewById(R.id.exp_title);
         title.setText(experiment.getName());
