@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ExpBinomial extends Experiment {
     private int pass;
     private int fail;
-    private final String TYPE = "binomial";
+    private final String TYPE = "exp_binomial.xml";
     private ArrayList<Trial> trials;
 
     public ExpBinomial(){}

@@ -54,9 +54,9 @@ public class WelcomeActivity extends AbstractActivity implements SignUpFragment.
         signUp.setOnClickListener(SignUp);
         clickHere.setOnClickListener(ClickHere);
 
-        username = userControl.getUser();
-        password = userControl.getPassword();
-        email = userControl.getEmail();
+//        username = userControl.getUser();
+//        password = userControl.getPassword();
+//        email = userControl.getEmail();
     }
     public FirebaseFirestore getDB() {
         return database.getDb();
