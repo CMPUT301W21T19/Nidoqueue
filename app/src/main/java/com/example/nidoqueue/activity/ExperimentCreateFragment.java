@@ -27,8 +27,6 @@ import com.example.nidoqueue.model.ExpNonNegative;
 import com.example.nidoqueue.model.Experiment;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Classname:   ExperimentCreateFragment.java
  * Version:     Prototype
@@ -56,8 +54,6 @@ public class ExperimentCreateFragment extends DialogFragment {
         this.geoLocationInfo = geoLocationInfo;
         this.databaseManager = databaseManager;
     }
-
-
 
     @NonNull
     @Override
@@ -99,8 +95,6 @@ public class ExperimentCreateFragment extends DialogFragment {
         Boolean geoLocationChecked = geoLocation.isChecked();
 
 
-
-
         if (typeSelected.equals("Count")) {
             listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
         } else if (typeSelected.equals("Binomial")) {
@@ -114,7 +108,6 @@ public class ExperimentCreateFragment extends DialogFragment {
             Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     public interface OnFragmentInteractionListener {

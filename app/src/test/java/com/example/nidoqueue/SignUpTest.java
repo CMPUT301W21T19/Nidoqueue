@@ -1,10 +1,8 @@
 package com.example.nidoqueue;
-import android.widget.Toast;
 
 import com.example.nidoqueue.activity.SignUpFragment;
-import org.junit.Test;
 
-import static com.example.nidoqueue.controller.UserControl.contextManager;
+import org.junit.Test;
 /**
  * Functional - April 7th, Colin
  */

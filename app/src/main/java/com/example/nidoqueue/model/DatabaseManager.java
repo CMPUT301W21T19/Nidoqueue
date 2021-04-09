@@ -1,7 +1,6 @@
 package com.example.nidoqueue.model;
 
 import android.annotation.SuppressLint;
-import android.provider.Settings;
 import android.util.Log;
 
 import com.example.nidoqueue.controller.ContextManager;
@@ -37,8 +36,10 @@ public class DatabaseManager {
         return databaseManager;
     }
 
-    static ArrayList<Experiment> createdExps = new ArrayList<Experiment>();
-    static ArrayList<Experiment> subscribedExps = new ArrayList<Experiment>();
+    ArrayList<Experiment> experiments = new ArrayList<>();
+    ArrayList<Experiment> targetExps = new ArrayList<>();
+    ArrayList<Experiment> createdExps = new ArrayList<>();
+    ArrayList<Experiment> subscribedExps = new ArrayList<Experiment>();
 
 
     public void setUser(User user) {
@@ -70,9 +71,11 @@ public class DatabaseManager {
 //        updateUser();
         return user;
     }
+
     public void setAndroid_id(String android_id) {
         this.android_id = android_id;
     }
+
     public String getAndroid_id() {
         return android_id;
     }
@@ -125,11 +128,31 @@ public class DatabaseManager {
                 });
     }
 
+    public ArrayList<Experiment> getExperiments() {
+        return experiments;
+    }
+
+    public void setExperiments(ArrayList<Experiment> experiments) {
+        this.experiments = experiments;
+    }
+
     public ArrayList<Experiment> getCreatedExps() {
         return createdExps;
     }
 
-    public void setCreatedExps() {
-//        createdExps.add(new ExpBinomial(databaseManager.getUser(), "name", "descript", false));
+    public void setCreatedExps(ArrayList<Experiment> createdExps) {
+        this.createdExps = createdExps;
+    }
+
+    public ArrayList<Experiment> getTargetExps() {
+        return targetExps;
+    }
+
+    public void setTargetExps(ArrayList<Experiment> targetExps) {
+        this.targetExps = targetExps;
+    }
+
+    public void addCreatedExps(Experiment experiment) {
+        this.createdExps.add(experiment);
     }
 }

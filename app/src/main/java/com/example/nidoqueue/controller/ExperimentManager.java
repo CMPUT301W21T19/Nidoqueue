@@ -3,8 +3,6 @@ package com.example.nidoqueue.controller;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.nidoqueue.activity.ExperimentCreateFragment;
-import com.example.nidoqueue.activity.SignUpFragment;
 import com.example.nidoqueue.model.DataCalc;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Experiment;
@@ -19,9 +17,11 @@ import java.util.Map;
 
 public class ExperimentManager {
     private static final ExperimentManager experimentManager = new ExperimentManager();
+
     public static ExperimentManager getInstance() {
         return experimentManager;
     }
+
     private static final ContextManager contextManager = ContextManager.getInstance();
     private static final RequestManager requestManager = RequestManager.getInstance();
     private static final UserControl userControl = UserControl.getInstance();
@@ -43,8 +43,6 @@ public class ExperimentManager {
     public DataCalc getCurrentCalc() {
         return (this.calc);
     }
-
-
 
     public void addExp(Experiment exp, String type) {
 
@@ -87,7 +85,7 @@ public class ExperimentManager {
                 });
     }
 
-    public void init() {
-        databaseManager.setCreatedExps();
-    }
+//    public void init() {
+//        databaseManager.setCreatedExps();
+//    }
 }

@@ -3,6 +3,7 @@ package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class ExperimentActivity extends AbstractActivity {
 
     private Experiment experiment;
 
+    private TextView title;
     private TextView nameView;
     private TextView descriptView;
     private TextView regionView;
@@ -45,14 +47,15 @@ public class ExperimentActivity extends AbstractActivity {
     private View.OnClickListener Home = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            finish();
             requestManager.transition(SignInActivity.class);
         }
     };
     private View.OnClickListener Back = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class);
-
+            finish();
+            requestManager.transition(requestManager.getPreviousActivity());
         }
     };
     private View.OnClickListener Add = new View.OnClickListener() {
@@ -91,6 +94,11 @@ public class ExperimentActivity extends AbstractActivity {
             requestManager.transition(ExperimentDataActivity.class);
         }
     };
+    @Override
+    public void onBackPressed() {
+        finish();
+        requestManager.transition(requestManager.getPreviousActivity());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +107,7 @@ public class ExperimentActivity extends AbstractActivity {
         contextManager.setContext(this);
         Intent mIntent = getIntent();
         int listPosition = mIntent.getIntExtra("ListPosition", 0);
-        experiment = databaseManager.getCreatedExps().get(listPosition);
+        experiment = databaseManager.getTargetExps().get(listPosition);
         requestManager.setCurrentExp(experiment);
         backButton = findViewById(R.id.back_button4);
 
@@ -120,6 +128,9 @@ public class ExperimentActivity extends AbstractActivity {
         recordButton.setOnClickListener(Record);
         dataButton.setOnClickListener(Data);
 
+        title = findViewById(R.id.exp_title);
+        title.setText(experiment.getName());
+
         nameView = findViewById(R.id.exp_list_name);
         nameView.setText("Name : " + experiment.getName());
 
@@ -138,8 +149,14 @@ public class ExperimentActivity extends AbstractActivity {
         statusView = findViewById(R.id.exp_list_published);
         statusView.setText("Status : " + experiment.isPublished());
 
-
-
+        for(Experiment experiment: databaseManager.getCreatedExps()) {
+            if(this.experiment.getName().equals(experiment.getName())) {
+                unpublishButton.setEnabled(true);
+                subscribeButton.setEnabled(false);
+                unsubscribeButton.setEnabled(false);
+                break;
+            }
+        }
     }
 
     /******************************************************************************

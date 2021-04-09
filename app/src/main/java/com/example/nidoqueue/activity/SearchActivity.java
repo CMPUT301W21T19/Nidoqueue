@@ -46,7 +46,8 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
-        requestManager.transition(SearchActivity.class, position);
+        databaseManager.setTargetExps(expAdapter.list);
+        requestManager.transition(ExperimentActivity.class, position);
     }
 
     @Override
@@ -54,6 +55,8 @@ public class SearchActivity extends AbstractActivity implements SearchFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_experiments);
         contextManager.setContext(this);
+        requestManager.setPreviousActivity(SearchActivity.class);
+
 
         searchBar = findViewById(R.id.search_button2);
         searchBar.setOnClickListener(SearchBar);

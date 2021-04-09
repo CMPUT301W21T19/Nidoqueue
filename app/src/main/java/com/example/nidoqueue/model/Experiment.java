@@ -26,14 +26,12 @@ public abstract class Experiment implements Comparable<Experiment> {
     private boolean ended;
     private ArrayList<Question> questions;
     private ArrayList<User> experimenters;
-    private String type;
 
     public Experiment() {
 
     }
 
     public Experiment(User owner, String name, String description, String region, int num_of_trials, boolean geoLocation, boolean published) {
-
         this.owner = owner;
         this.name = name;
         this.description = description;
@@ -88,6 +86,10 @@ public abstract class Experiment implements Comparable<Experiment> {
     @Exclude
     public User getOwner() {
         return owner;
+    }
+
+    public void setOwner(User user) {
+        this.owner = user;
     }
 
     /**
