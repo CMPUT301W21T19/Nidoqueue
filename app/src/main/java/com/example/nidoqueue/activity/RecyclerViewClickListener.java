@@ -7,6 +7,6 @@ import android.view.View;
  * Date:        April 9th, 2021
  * Purpose:     Interface that handles the parameters for a view and the position in the view.
  */
-public interface RecyclerViewClickListener {
-    public void recyclerViewListClicked(View v, int position);
+interface RecyclerViewClickListener {
+    void recyclerViewListClicked(View v, int position);
 }

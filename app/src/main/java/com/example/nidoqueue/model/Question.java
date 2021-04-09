@@ -11,7 +11,11 @@ import java.util.ArrayList;
 public class Question {
 
     private String question;
-    private ArrayList<Answer> answers;
+    private ArrayList<String> answers;
+
+    public Question() {
+
+    }
 
     public Question(String question) {
         this.question = question;
@@ -23,7 +27,7 @@ public class Question {
      *
      * @param ans This is a candidate answer to the question.
      */
-    public void reply(Answer ans) {
+    public void reply(String ans) {
         answers.add(ans);
     }
 
@@ -39,12 +43,16 @@ public class Question {
         return answers.size();
     }
 
-    public ArrayList<Answer> getAnswers() {
+    public ArrayList<String> getAnswers() {
         return answers;
     }
 
     public String getQuestion() {
         return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     //endregion
