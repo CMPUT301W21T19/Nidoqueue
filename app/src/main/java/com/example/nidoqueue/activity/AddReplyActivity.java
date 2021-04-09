@@ -2,7 +2,6 @@ package com.example.nidoqueue.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +16,10 @@ import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.Question;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Classname:   AddReplyActivity.java
@@ -34,10 +37,10 @@ public class AddReplyActivity extends AbstractActivity {
     //endregion
     //region RequestManager and ContextManager
     //these were copied from WelcomeActivity.java
-    RequestManager requestManager = RequestManager.getInstance();
-    ContextManager contextManager = ContextManager.getInstance();
-    DatabaseManager databaseManager = DatabaseManager.getInstance();
-    UserControl userControl = UserControl.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static UserControl userControl = UserControl.getInstance();
     //endregion
     private Question question; //need Database functionality to get question
     //endregion
@@ -76,26 +79,31 @@ public class AddReplyActivity extends AbstractActivity {
             String stringAnswer = editText_reply.getText().toString();
             Answer answer = new Answer(stringAnswer);
             // add database functionality
-            databaseManager.getTargetQuestions().get(listPosition).reply(answer);
-            Log.d("Question", databaseManager.getTargetQuestions().get(listPosition).getQuestion());
-            Log.d("Answer", databaseManager.getTargetQuestions().get(listPosition).getAnswers().get(0).getAnswer());
+            databaseManager.getTargetQuestions().get(listPosition).reply(stringAnswer);
 
             databaseManager.getDb().collection("experiments")
                     .document(name.toLowerCase())
-                    .update("questions", FieldValue.arrayUnion(databaseManager.getTargetQuestions()));
+                    .update("questions", FieldValue.delete());
 
-            finish();
-            requestManager.transition(QuestionActivity.class, listPosition);
+            databaseManager.getDb().collection("experiments")
+                    .document(name.toLowerCase())
+                    .update("questions", FieldValue.arrayUnion(databaseManager.getTargetQuestions().get(listPosition)));
+
+            requestManager.transition(QuestionActivity.class, listPosition, name);
         }
     };
 
     private View.OnClickListener goBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            finish();
-            requestManager.transition(QuestionActivity.class, listPosition);
+            requestManager.transition(QuestionActivity.class, listPosition, name);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        requestManager.transition(QuestionActivity.class, listPosition, name);
+    }
 
     private View.OnClickListener goHome = new View.OnClickListener() {
         @Override

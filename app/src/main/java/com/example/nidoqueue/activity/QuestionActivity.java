@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class QuestionActivity extends AbstractActivity {
     //region class variables
     private Question question;
-    private ArrayList<Answer> answers;
+    private ArrayList<String> answers;
     //region UI tools
     //region Buttons
     private ImageButton btn_back, btn_home;
@@ -40,15 +40,15 @@ public class QuestionActivity extends AbstractActivity {
     private TextView text_question;
     //region ListView tools
     private ListView listView;
-    private ArrayAdapter<Answer> arrayAdapter;
+    private ArrayAdapter<String> arrayAdapter;
     //endregion
     //endregion
     //region RequestManager and ContextManager
     //these were copied from WelcomeActivity.java
-    RequestManager requestManager = RequestManager.getInstance();
-    ContextManager contextManager = ContextManager.getInstance();
-    DatabaseManager databaseManager = DatabaseManager.getInstance();
-    UserControl userControl = UserControl.getInstance();
+    static RequestManager requestManager = RequestManager.getInstance();
+    static ContextManager contextManager = ContextManager.getInstance();
+    static DatabaseManager databaseManager = DatabaseManager.getInstance();
+    static UserControl userControl = UserControl.getInstance();
     //endregion
     //endregion
 
@@ -65,9 +65,6 @@ public class QuestionActivity extends AbstractActivity {
         Intent mIntent = getIntent();
         listPosition = mIntent.getIntExtra("ListPosition", 0);
         name = mIntent.getStringExtra("Experiment Name");
-
-        Log.d("Intent Value", String.valueOf(listPosition));
-        Log.d("Questions", String.valueOf(databaseManager.getTargetQuestions().size()));
 
         question = databaseManager.getTargetQuestions().get(listPosition);
         answers = question.getAnswers();
@@ -113,6 +110,11 @@ public class QuestionActivity extends AbstractActivity {
             requestManager.transition(ForumActivity.class, listPosition, name);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        requestManager.transition(ForumActivity.class, listPosition, name);
+    }
 
     private View.OnClickListener goHome = new View.OnClickListener() {
         @Override

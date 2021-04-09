@@ -85,7 +85,6 @@ public class AddQuestionActivity extends AbstractActivity {
                             .update("questions", FieldValue.arrayUnion(question));
                 }
             }
-            finish();
             requestManager.transition(ForumActivity.class, name);
         }
     };

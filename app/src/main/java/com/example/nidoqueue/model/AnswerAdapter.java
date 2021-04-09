@@ -20,12 +20,12 @@ import javax.annotation.Nullable;
  * Date:        April 9th, 2021
  * Purpose:     Adapter for the User Answers in the Forum.
  */
-public class AnswerAdapter extends ArrayAdapter<Answer> {
+public class AnswerAdapter extends ArrayAdapter<String> {
 
-    private ArrayList<Answer> answers;
+    private ArrayList<String> answers;
     private Context context;
 
-    public AnswerAdapter(@NonNull Context context, @NonNull ArrayList<Answer> answers){
+    public AnswerAdapter(@NonNull Context context, @NonNull ArrayList<String> answers){
         super(context, 0, answers);
         this.answers = answers;
         this.context = context;
@@ -35,14 +35,14 @@ public class AnswerAdapter extends ArrayAdapter<Answer> {
         View view = convertView;
 
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.forum_content, parent, false);
+            view = LayoutInflater.from(context).inflate(R.layout.answer_content, parent, false);
         }
 
-       Answer answer = answers.get(position);
+       String answer = answers.get(position);
 
         TextView dispAnswer = view.findViewById(R.id.answer_display);
 
-        dispAnswer.setText(answer.getAnswer());
+        dispAnswer.setText(answer);
 
         return view;
     }
