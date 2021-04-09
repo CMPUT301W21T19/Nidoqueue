@@ -162,7 +162,7 @@ public class ExperimentCreateFragment extends DialogFragment {
         }
     }
     /**
-     *
+     * The error code value is passed through. "0" Indicates no errors, through the fragment or the test case.
      * @param error
      * @param expName
      * @param expDesc
