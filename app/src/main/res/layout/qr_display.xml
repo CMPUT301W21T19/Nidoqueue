@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.QRActivity"
+    tools:context=".activity."
     android:background="#80D9FF">
-
-<!--
-    Not sure if this will be best as a fragment or an activity.
-    I'm keeping things really basic for now.
--->
 
 <!--QRcode-->
     <ImageView
