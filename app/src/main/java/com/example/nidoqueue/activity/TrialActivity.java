@@ -10,7 +10,12 @@ import com.example.nidoqueue.controller.RequestManager;
 import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+/**
+ * Classname:   TrialActivity.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity to show the trials to the user.
+ */
 public class TrialActivity extends AbstractActivity implements TrialFragment.OnFragmentInteractionListener{
     // initialize Managers & Database
     ImageButton backButton, homeButton;

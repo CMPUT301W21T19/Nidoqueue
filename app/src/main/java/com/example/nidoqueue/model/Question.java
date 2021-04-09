@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 /**
  * Classname:   Question.java
- * Version:     Prototype
- * Date:        March 19th, 2021
+ * Version:     Final
+ * Date:        April 9th, 2021
  * Purpose:     Handles User Questions in the Forum.
- * Issues:      Incomplete. This will be worked on in the future.
  */
 public class Question {
 

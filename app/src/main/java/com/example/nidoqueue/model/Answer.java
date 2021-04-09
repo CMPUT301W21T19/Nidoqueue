@@ -2,10 +2,9 @@ package com.example.nidoqueue.model;
 
 /**
  * Classname:   Answer.java
- * Version:     Prototype
- * Date:        March 19th, 2021
+ * Version:     Final
+ * Date:        April 9th, 2021
  * Purpose:     Handles User Answers in the Forum.
- * Issues:      Incomplete. This will be worked on in the future.
  */
 public class Answer {
     private String answer;

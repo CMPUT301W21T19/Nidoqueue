@@ -14,7 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * Classname:   MainActivity.java
  * Version:     Final
  * Date:        April 9th, 2021
- * Purpose:     Functions as an automatic transition over to the either the Welcome screen or the title screen (Sign up, Sign In)
+ * Purpose:     Functions as an automatic transition over to either the WelcomeActivity or the SignInActivity.
+ *              The WelcomeActivity if the user hasn't signed up yet. The SignInActivity if a user already exists on the system.
  */
 
 public class MainActivity extends AbstractActivity {
@@ -22,7 +23,6 @@ public class MainActivity extends AbstractActivity {
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
     DatabaseManager databaseManager = DatabaseManager.getInstance();
-
 
     @SuppressLint("HardwareIds")
     @Override

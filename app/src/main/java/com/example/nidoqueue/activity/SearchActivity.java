@@ -22,7 +22,12 @@ import java.util.ArrayList;
  * Issues:      Incomplete
  */
 import com.example.nidoqueue.R;
-
+/**
+ * Classname:   SearchActivity.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     Activity displays searched experiments to the user.
+ */
 public class SearchActivity extends AbstractActivity implements RecyclerViewClickListener  {
     ImageButton searchBar, backButton;
     static RequestManager requestManager = RequestManager.getInstance();

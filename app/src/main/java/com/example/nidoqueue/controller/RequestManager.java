@@ -16,7 +16,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import static com.example.nidoqueue.controller.UserControl.contextManager;
 import static com.example.nidoqueue.controller.UserControl.databaseManager;
-
+/**
+ * Classname:   RequestManager.java
+ * Version:     Final
+ * Date:        April 9th, 2021
+ * Purpose:     This handles the activity transitions throughout the program.
+ */
 public class RequestManager {
 
     // Singleton pattern
@@ -72,6 +77,13 @@ public class RequestManager {
         userControl.trySignUp(newUser);
     }
 
+    public void tryRecovery(User newUser) {
+        userControl.tryRecovery(newUser);
+    }
+    public void tryEdit(User newUser) {
+        userControl.tryEdit(newUser);
+    }
+
     public void clickHere() {
         userControl.clickHere();
     }
@@ -84,9 +96,6 @@ public class RequestManager {
         userControl.edit();
     }
 
-    public void select() {
-        userControl.select();
-    }
     public void searchBar() {
         userControl.searchBar();
     }

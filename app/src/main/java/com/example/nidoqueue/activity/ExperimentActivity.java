@@ -15,10 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Classname:   ExperimentActivity.java
- * Version:     Prototype
- * Date:        March 19th, 2021
- * Purpose:     Activity that handles the experiments. OnClickListeners are housed here.
- * Issues:      Not actived yet.
+ * Version:     Final
+ * Date:        Apr 9th, 2021
+ * Purpose:     Activity handles the experiment process.
  */
 public class ExperimentActivity extends AbstractActivity {
     private Button subscribeButton, unsubscribeButton;
