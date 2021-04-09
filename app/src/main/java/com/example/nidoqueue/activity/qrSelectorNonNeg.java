@@ -10,6 +10,15 @@ import com.example.nidoqueue.controller.ContextManager;
 import com.example.nidoqueue.controller.RequestManager;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Classname:   qrSelectorNonNeg.java
+ * version:     prototype
+ * Date:        April 9th, 2021
+ * Purpose:     Activity for selecting QR code type
+ * issues:      lacking database functionality
+ *              the back button lack functionality
+ *              QR codes need some sort of link
+ */
 public class qrSelectorNonNeg extends AbstractActivity{
 
     //region Class Variables
