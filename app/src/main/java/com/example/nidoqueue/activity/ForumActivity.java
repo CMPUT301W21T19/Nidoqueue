@@ -119,7 +119,7 @@ public class ForumActivity extends AbstractActivity {
     private View.OnClickListener goBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            requestManager.transition(SignInActivity.class); //CHANGE ME
+            requestManager.transition(ExperimentActivity.class);
         }
     };
 

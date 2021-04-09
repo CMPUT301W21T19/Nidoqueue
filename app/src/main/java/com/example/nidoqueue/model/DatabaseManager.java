@@ -68,8 +68,7 @@ public class DatabaseManager {
      * }
      */
     public User getUser() {
-//        updateUser();
-        return user;
+        return this.user;
     }
 
     public void setAndroid_id(String android_id) {
