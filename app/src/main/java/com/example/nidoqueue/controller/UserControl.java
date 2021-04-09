@@ -14,6 +14,7 @@ import com.example.nidoqueue.model.DatabaseManager;
 import com.example.nidoqueue.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 /**
  * Classname:   UserControl.java
  * Version:     Final
@@ -21,7 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
  * Purpose:     This handles the User Controlled methods throughout the program.
  */
 public class UserControl {
-
+  
     // Singleton pattern
     private static UserControl userControl = new UserControl();
 
@@ -41,28 +42,29 @@ public class UserControl {
     public void setUser(User user) {
         this.user = user;
     }
+
     //endregion
     //region getters
     public User getUser() {
         return databaseManager.getUser();
     }
 
-    public String getUsername(){
-        if(user == null){
+    public String getUsername() {
+        if (user == null) {
             return null;
         }
         return user.getUsername();
     }
 
     public String getEmail() {
-        if(user == null){
+        if (user == null) {
             return null;
         }
         return user.getEmail();
     }
 
     public String getPassword() {
-        if(user == null){
+        if (user == null) {
             return null;
         }
         return user.getPassword();
@@ -154,6 +156,7 @@ public class UserControl {
                     }
                 });
     }
+
     public void tryRecovery(User user) {
         databaseManager.getDb().collection("users")
                 .get()
@@ -176,6 +179,7 @@ public class UserControl {
                     }
                 });
     }
+
     public void tryEdit(User user) {
         databaseManager.getDb().collection("users")
                 .get()
@@ -183,24 +187,38 @@ public class UserControl {
                     if (task.isSuccessful()) {
                         boolean id_exist = false;
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                            if (documentSnapshot.getString("username").equals(user.getUsername())) {
-                                if (documentSnapshot.getString("password").equals(user.getPassword())) {
-                                    //Need to update android_id.
+                            if (!documentSnapshot.getString("username").equals(user.getUsername())) {
+                                if (documentSnapshot.getString("username").equals(user.getUsername())) {
+                                    Toast.makeText(contextManager.getContext(), "User name already exists.\nPlease try with other user name", Toast.LENGTH_SHORT).show();
                                     id_exist = true;
-                                    databaseManager.setUser(new User(user.getUsername(), user.getEmail(), user.getPassword(), null, null));
-                                    requestManager.home();
                                     break;
                                 }
                             }
                         }
                         if (!id_exist) {
-                            Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
-                            new SignInFragment(user.getUsername(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
+                            databaseManager.getDb()
+                                    .collection("users")
+                                    .document(databaseManager.getAndroid_id())
+                                    .update("username", user.getUsername());
+                            databaseManager.getDb()
+                                    .collection("users")
+                                    .document(databaseManager.getAndroid_id())
+                                    .update("email", user.getEmail());
+                            databaseManager.getDb()
+                                    .collection("users")
+                                    .document(databaseManager.getAndroid_id())
+                                    .update("password", user.getPassword());
+
+                            databaseManager.setUser(new User(user.getUsername(), user.getEmail(), user.getPassword(), null, null));
+                            requestManager.transition(UserProfileActivity.class);
                         }
+                    } else {
+                        Log.d("FireStore", "Failed with: ", task.getException());
                     }
                 });
     }
-    public void searchBar(){
+
+    public void searchBar() {
         new SearchFragment("", false).show(contextManager.getActivity().getSupportFragmentManager(), "Search_Bar");
     }
 
