@@ -99,18 +99,6 @@ public class ExperimentCreateFragment extends DialogFragment {
         int minTrials = Integer.parseInt(minTrials_EditText.getText().toString());
         String typeSelected = type.getSelectedItem().toString();
         Boolean geoLocationChecked = geoLocation.isChecked();
-        /*
-        if (typeSelected.equals("Count")) {
-            listener.onOkPressed(new ExpCount(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
-        } else if (typeSelected.equals("Binomial")) {
-            listener.onOkPressed(new ExpBinomial(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
-        } else if (typeSelected.equals("Non Negative")) {
-            listener.onOkPressed(new ExpNonNegative(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true), typeSelected);
-        } else if (typeSelected.equals("Measurement")) {
-            listener.onOkPressed(new ExpMeasurement(databaseManager.getUser(), expName, expDesc, regionSelected, minTrials, geoLocationChecked, true, ""), typeSelected);
-        } else {
-            Toast.makeText(getContext(), "Please select experiment type", Toast.LENGTH_SHORT).show();
-        }*/
         tryExperiment(expName, expDesc, regionSelected, minTrials, typeSelected, geoLocationChecked, false);
     }
 
