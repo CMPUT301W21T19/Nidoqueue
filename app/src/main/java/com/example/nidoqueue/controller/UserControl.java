@@ -96,7 +96,7 @@ public class UserControl {
                         }
                         if (!id_exist) {
                             Toast.makeText(contextManager.getContext(), "Account not found. Try Again", Toast.LENGTH_SHORT).show();
-                            new SignInFragment(user.getUsername(), user.getPassword(), false);
+                            new SignInFragment(user.getUsername(), user.getPassword(), false).show(contextManager.getActivity().getSupportFragmentManager(), "Sign_In");
                         }
                     }
                 });
