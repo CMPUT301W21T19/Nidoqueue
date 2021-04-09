@@ -48,7 +48,7 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_info"
+        android:id="@+id/search_result"
         android:layout_width="320dp"
         android:layout_height="500dp"
         android:layout_marginStart="16dp"
