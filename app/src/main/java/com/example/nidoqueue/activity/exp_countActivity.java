@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class exp_countActivity extends AbstractActivity{
 
+    //region class variables
     private ImageButton btn_back, btn_home;
     private Button btn_QR, btn_done;
 
@@ -35,6 +36,7 @@ public class exp_countActivity extends AbstractActivity{
 
     RequestManager requestManager = RequestManager.getInstance();
     ContextManager contextManager = ContextManager.getInstance();
+    //endregion
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,12 +80,7 @@ public class exp_countActivity extends AbstractActivity{
     private View.OnClickListener QRtap = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String data = "change me"; //todo change this to a link to the database
-            Bundle bundle = new Bundle();
-            bundle.putString("QR", data);
-            QRfragment qRfragment = new QRfragment();
-            qRfragment.setArguments(bundle);
-            qRfragment.show(getSupportFragmentManager(), null);
+            requestManager.transition(qrSelectorCount.class);
         }
     };
 
